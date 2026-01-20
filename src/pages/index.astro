@@ -1,11 +1,185 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const brand = {
+  kicker: "Honoring Stories. Building Systems. Driving Change.",
+  headline: "Vision, turned into structure.",
+  subhead:
+    "I help mission-driven teams build governance, funding, and brand systems that hold up under real pressure.",
+  primaryCta: "Work with me",
+  secondaryCta: "See systems",
+};
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JaiSellers Companies</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <section class="hero" aria-label="Hero">
+        <video
+          class="bg"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="/video/hero.jpg"
+        >
+          <source src="/video/hero.mp4" type="video/mp4" />
+        </video>
+
+        <div class="overlay" aria-hidden="true"></div>
+
+        <div class="content">
+          <p class="kicker">{brand.kicker}</p>
+          <h1>{brand.headline}</h1>
+          <p class="subhead">{brand.subhead}</p>
+
+          <div class="actions">
+            <a class="btn primary" href="/contact">{brand.primaryCta}</a>
+            <a class="btn" href="/systems">{brand.secondaryCta}</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <style>
+:global(body) {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #0b0b0c;
+  color: rgba(243, 241, 236, 0.92);
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* Makes text readable no matter the footage */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px 500px at 20% 40%, rgba(0,0,0,.18), transparent 60%),
+    radial-gradient(900px 600px at 70% 55%, rgba(0,0,0,.45), transparent 60%),
+    linear-gradient(to bottom, rgba(11,11,12,.45), rgba(11,11,12,.75));
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: min(980px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.kicker {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(200, 162, 74, 0.95);
+  margin: 0 0 14px;
+}
+
+h1 {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1.03;
+  margin: 0 0 16px;
+  max-width: 16ch;
+}
+
+.subhead {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.5;
+  max-width: 62ch;
+  margin: 0 0 26px;
+  color: rgba(243, 241, 236, 0.78);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(243, 241, 236, 0.18);
+  background: rgba(11, 11, 12, 0.35);
+  backdrop-filter: blur(10px);
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn.primary {
+  border-color: rgba(200, 162, 74, 0.35);
+  box-shadow: 0 0 0 1px rgba(200, 162, 74, 0.15) inset;
+}
+
+/* Micro-motion polish (normal users) */
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.content > * {
+  animation: heroFade 0.8s ease-out both;
+}
+
+.content > *:nth-child(1) { animation-delay: 0.05s; }
+.content > *:nth-child(2) { animation-delay: 0.12s; }
+.content > *:nth-child(3) { animation-delay: 0.18s; }
+.content > *:nth-child(4) { animation-delay: 0.25s; }
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bg {
+    display: none;.bg {
+  filter: saturate(1.02) contrast(1.08) brightness(.92);
+}
+  .hero {
+    background: url("/video/hero.jpg") center / cover no-repeat;
+  }
+  .content > * {
+    animation: none;
+  }
+}
+
+    </style>
+  </body>
+</html>
