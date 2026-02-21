@@ -1,190 +1,216 @@
 ---
-const brand = {
-  kicker: "Honoring Stories. Building Systems. Driving Change.",
-  headline: "Vision, turned into structure.",
-  subhead:
-    "I help mission-driven teams build governance, funding, and brand systems that hold up under real pressure.",
-  primaryCta: "Work with me",
-  secondaryCta: "See systems",
+const SITE = {
+  name: "JaiSellers",
+  tagline: "Honoring Stories. Building Systems. Driving Change.",
+  email: "joshuajaisellers@gmail.com",
 };
+
+// Update these if your actual page paths are different
+const LINKS = [
+  { label: "Blog", href: "/blog" },
+  { label: "Galleries", href: "/galleries" },
+  { label: "501c3 Machine", href: "/501c3-machine" },
+  { label: "About", href: "/about" },
+];
+
+const SERVICES = [
+  {
+    title: "Nonprofit Strategy + Compliance",
+    bullets: ["IRS 1023 + readiness", "Bylaws + governance systems", "Budgets + reporting", "Grant strategy + execution"],
+  },
+  {
+    title: "Design Systems",
+    bullets: ["Brand identity + templates", "One-sheets + pitch decks", "Campaign toolkits", "Print + digital systems"],
+  },
+  {
+    title: "Photography + Storytelling",
+    bullets: ["Community documentation", "Events + portraits", "Editorial storytelling", "Legacy-focused visuals"],
+  },
+];
+
+const PROOF = [
+  { label: "Fast, real deliverables", text: "Templates, packets, systems — not theory." },
+  { label: "Equity-aware + practical", text: "Clarity that respects culture and context." },
+  { label: "Built for reuse", text: "Tools your team can run without you." },
+];
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>JaiSellers Companies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{SITE.name}</title>
+    <meta name="description" content="Nonprofit consulting, design systems, and photography—turning vision into structure and measurable impact." />
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --panel: rgba(255,255,255,.06);
+        --text: rgba(255,255,255,.92);
+        --muted: rgba(255,255,255,.68);
+        --line: rgba(255,255,255,.14);
+        --accent: rgba(255,255,255,.92);
+        --shadow: 0 10px 30px rgba(0,0,0,.35);
+        --radius: 18px;
+        --max: 1080px;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; background: radial-gradient(1200px 600px at 20% -10%, rgba(255,255,255,.09), transparent 60%), var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+      a { color: inherit; text-decoration: none; }
+      a:hover { text-decoration: underline; text-underline-offset: 4px; }
+      .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 18px 64px; }
+
+      .topbar {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius);
+        background: rgba(0,0,0,.25); box-shadow: var(--shadow);
+        position: sticky; top: 12px; backdrop-filter: blur(10px); z-index: 20;
+      }
+      .brand { display: flex; gap: 10px; align-items: baseline; }
+      .brand b { letter-spacing: .2px; }
+      .brand span { color: var(--muted); font-size: 13px; }
+
+      .nav { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+      .nav a { padding: 8px 10px; border-radius: 999px; border: 1px solid transparent; }
+      .nav a:hover { border-color: var(--line); text-decoration: none; background: rgba(255,255,255,.04); }
+
+      .hero { margin-top: 26px; padding: 34px 18px; border-radius: calc(var(--radius) + 6px); border: 1px solid var(--line); background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); box-shadow: var(--shadow); }
+      .kicker { color: var(--muted); font-size: 14px; letter-spacing: .14em; text-transform: uppercase; }
+      h1 { margin: 12px 0 10px; font-size: clamp(30px, 5vw, 52px); line-height: 1.05; }
+      .sub { margin: 0; color: var(--muted); font-size: 18px; max-width: 75ch; line-height: 1.55; }
+      .ctaRow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line);
+        background: rgba(0,0,0,.35); color: var(--text);
+      }
+      .btn.primary { background: rgba(255,255,255,.92); color: #0b0c10; border-color: transparent; }
+      .btn:hover { text-decoration: none; filter: brightness(1.08); }
+
+      .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; margin-top: 16px; }
+      .card {
+        grid-column: span 12;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,.04);
+        border-radius: var(--radius);
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+      .card h2 { margin: 0 0 8px; font-size: 18px; }
+      .card p { margin: 0; color: var(--muted); line-height: 1.55; }
+      .card ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+      .card li { margin: 6px 0; }
+
+      .span6 { grid-column: span 12; }
+      @media (min-width: 860px) {
+        .span6 { grid-column: span 6; }
+        .span4 { grid-column: span 4; }
+        .span8 { grid-column: span 8; }
+      }
+
+      .sectionTitle { margin: 26px 2px 10px; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+      .footer { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+      .tiny { font-size: 13px; }
+
+      .pillLinks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+      .pillLinks a { border: 1px solid var(--line); background: rgba(255,255,255,.03); padding: 10px 12px; border-radius: 999px; }
+      .pillLinks a:hover { text-decoration: none; background: rgba(255,255,255,.06); }
+    </style>
   </head>
 
   <body>
-    <main class="page">
-      <section class="hero" aria-label="Hero">
-        <video
-          class="bg"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="/video/hero.jpg"
-        >
-          <source src="/video/hero.mp4" type="video/mp4" />
-        </video>
-
-        <div class="overlay" aria-hidden="true"></div>
-
-        <div class="content">
-          <p class="kicker">{brand.kicker}</p>
-          <h1>{brand.headline}</h1>
-          <p class="subhead">{brand.subhead}</p>
-
-          <div class="actions">
-            <a class="btn primary" href="/contact">{brand.primaryCta}</a>
-            <a class="btn" href="/systems">{brand.secondaryCta}</a>
-            <a href="/501c3" class="btn">501(c)(3) Partnership</a>
-            <a href="/systems" class="cta secondary">
-  {brand.secondaryCta}
-</a>
-
-          </div>
+    <div class="wrap">
+      <header class="topbar">
+        <div class="brand">
+          <b>{SITE.name}</b>
+          <span>{SITE.tagline}</span>
         </div>
-      </section>
-    </main>
+        <nav class="nav" aria-label="Primary">
+          {LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
+          <a class="btn primary" href={"mailto:" + SITE.email}>Contact</a>
+        </nav>
+      </header>
 
-    <style>
-:global(body) {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: #0b0b0c;
-  color: rgba(243, 241, 236, 0.92);
-}
+      <main>
+        <section class="hero">
+          <div class="kicker">Nonprofit strategy • design systems • photography</div>
+          <h1>Make your work legible, fundable, and built to last.</h1>
+          <p class="sub">
+            I help mission-driven teams turn vision into structure — brand storytelling, governance, budgets, and grant-ready systems.
+            If you need something that works in real life (not just a pretty deck), you’re in the right place.
+          </p>
 
-.page {
-  min-height: 100vh;
-}
+          <div class="ctaRow">
+            <a class="btn primary" href={"mailto:" + SITE.email}>Start a project</a>
+            <a class="btn" href="/about">About me</a>
+            <a class="btn" href="/501c3-machine">Use the 501c3 Machine</a>
+          </div>
 
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: grid;
-  align-items: center;
-  overflow: hidden;
-}
+          <div class="pillLinks" aria-label="Quick links">
+            <a href="/blog">Read the blog</a>
+            <a href="/galleries">View galleries</a>
+            <a href="/work">See work</a>
+          </div>
+          <p class="tiny" style="margin-top:10px; color: var(--muted);">
+            If a link 404s, just update the path in the LINKS list at the top of this file.
+          </p>
+        </section>
 
-.bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.03);
-  filter: saturate(1.05) contrast(1.05);
-}
+        <div class="sectionTitle">What I do</div>
+        <section class="grid">
+          {SERVICES.map((s) => (
+            <article class="card span4">
+              <h2>{s.title}</h2>
+              <ul>
+                {s.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+            </article>
+          ))}
+        </section>
 
-/* Makes text readable no matter the footage */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(700px 500px at 20% 40%, rgba(0,0,0,.18), transparent 60%),
-    radial-gradient(900px 600px at 70% 55%, rgba(0,0,0,.45), transparent 60%),
-    linear-gradient(to bottom, rgba(11,11,12,.45), rgba(11,11,12,.75));
-}
+        <div class="sectionTitle">Why clients hire me</div>
+        <section class="grid">
+          {PROOF.map((p) => (
+            <article class="card span4">
+              <h2>{p.label}</h2>
+              <p>{p.text}</p>
+            </article>
+          ))}
+        </section>
 
-.content {
-  position: relative;
-  z-index: 1;
-  width: min(980px, calc(100% - 48px));
-  margin: 0 auto;
-  padding: 64px 0;
-}
+        <div class="sectionTitle">About</div>
+        <section class="grid">
+          <article class="card span8">
+            <h2>Joshua Jai Sellers</h2>
+            <p>
+              I work at the seam where creativity, strategy, and advocacy meet — honoring legacy while building what’s next.
+              Based in Kings Mountain, NC, I support nonprofits, artists, and community orgs with governance, grant systems,
+              and brand tools that people can actually use.
+            </p>
+            <p style="margin-top:10px;">
+              My north star is simple: <b>Honoring Stories. Building Systems. Driving Change.</b>
+            </p>
+          </article>
+          <aside class="card span4">
+            <h2>Best next step</h2>
+            <p>Send 3 bullets: what you need, your deadline, and your budget range. I’ll reply with the cleanest path.</p>
+            <div class="ctaRow" style="margin-top:12px;">
+              <a class="btn primary" href={"mailto:" + SITE.email}>Email me</a>
+              <a class="btn" href="/blog">Blog</a>
+            </div>
+          </aside>
+        </section>
+      </main>
 
-.kicker {
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 12px;
-  color: rgba(200, 162, 74, 0.95);
-  margin: 0 0 14px;
-}
-
-h1 {
-  font-size: clamp(42px, 5vw, 72px);
-  line-height: 1.03;
-  margin: 0 0 16px;
-  max-width: 16ch;
-}
-
-.subhead {
-  font-size: clamp(16px, 2vw, 20px);
-  line-height: 1.5;
-  max-width: 62ch;
-  margin: 0 0 26px;
-  color: rgba(243, 241, 236, 0.78);
-}
-
-.actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(243, 241, 236, 0.18);
-  background: rgba(11, 11, 12, 0.35);
-  backdrop-filter: blur(10px);
-  color: inherit;
-  text-decoration: none;
-}
-
-.btn:hover {
-  opacity: 0.9;
-}
-
-.btn.primary {
-  border-color: rgba(200, 162, 74, 0.35);
-  box-shadow: 0 0 0 1px rgba(200, 162, 74, 0.15) inset;
-}
-
-/* Micro-motion polish (normal users) */
-@keyframes heroFade {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.content > * {
-  animation: heroFade 0.8s ease-out both;
-}
-
-.content > *:nth-child(1) { animation-delay: 0.05s; }
-.content > *:nth-child(2) { animation-delay: 0.12s; }
-.content > *:nth-child(3) { animation-delay: 0.18s; }
-.content > *:nth-child(4) { animation-delay: 0.25s; }
-
-/* Respect users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .bg {
-    display: none;.bg {
-  filter: saturate(1.02) contrast(1.08) brightness(.92);
-}
-  .hero {
-    background: url("/video/hero.jpg") center / cover no-repeat;
-  }
-  .content > * {
-    animation: none;
-  }
-}
-
-    </style>
+      <footer class="footer">
+        <div class="tiny">© {new Date().getFullYear()} {SITE.name}</div>
+        <div class="tiny">
+          <a href="/privacy">Privacy</a>
+          <span style="opacity:.5;"> • </span>
+          <a href={"mailto:" + SITE.email}>Contact</a>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
