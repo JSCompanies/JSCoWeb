@@ -8,16 +8,15 @@ const title = "About";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} — {brand}</title>
-    <meta name="description" content="Founder-led infrastructure studio building governance, funding, and narrative systems for mission-driven work." />
+    <meta
+      name="description"
+      content="Founder-led infrastructure studio building governance, funding, and narrative systems for mission-driven work."
+    />
     <link rel="stylesheet" href="/site.css" />
   </head>
-<main>
-  <section class="section">
-    <div class="container">
-      <p class="kicker">About</p>
-      <h1>Founder-led. Systems-first.</h1>
-      
-     <body>
+
+  <body>
+    <!-- Top navigation -->
     <header class="topbar">
       <a class="logo" href="/">{brand}</a>
       <nav class="nav">
@@ -28,64 +27,64 @@ const title = "About";
         <a class="nav-cta" href="/contact">Contact</a>
       </nav>
     </header>
-  <img src="/images/AboutMe.png" alt="Photo of Joshua Jai Sellers" style="max-width: 300px; border-radius: 12px; margin-top: 20px;" />
 
-      <p style="margin-top:14px; max-width:76ch;">
-        JaiSellers Companies operates at the seam where creativity, strategy, and advocacy meet—honoring legacy while
-        building what’s next.
-      </p>
-    </div>
-  </section>
-    <main>
-      <section class="section">
-        <div class="container">
-          <p class="kicker">About</p>
-          <h1>Founder-led. Systems-first.</h1>
-          <p style="margin-top:14px; max-width:76ch;">
-            JaiSellers Companies operates at the seam where creativity, strategy, and advocacy meet—honoring legacy while
-            building what’s next. We turn vision into structure: governance, funding, and brand systems that hold.
-          </p>
-        </div>
-      </section>
+    <!-- Main content -->
+    <main class="section">
+      <div class="container">
+        <p class="kicker">About</p>
+        <h1>Founder-led. Systems-first.</h1>
 
-      <section class="section section-alt">
-        <div class="container">
-          <h2>What we believe</h2>
-          <div class="grid3" style="margin-top:18px;">
-            <article class="card">
-              <h3>Structure is care</h3>
-              <p>Clear governance and operating rhythms protect people and missions—especially under stress.</p>
-            </article>
-            <article class="card">
-              <h3>Story must match reality</h3>
-              <p>Messaging should reflect what you can actually deliver—and invite the right support.</p>
-            </article>
-            <article class="card">
-              <h3>Equity needs infrastructure</h3>
-              <p>Justice work collapses without systems. We build the foundation so power can last.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+        <!-- Your photo -->
+        <img
+          src="/images/AboutMe.png"
+          alt="Photo of Joshua Jai Sellers"
+          style="max-width: 300px; border-radius: 12px; margin-top: 20px;"
+        />
 
-      <section class="section">
-        <div class="container split">
-          <div>
-            <h2>How we work</h2>
-            <p style="margin-top:10px; max-width:70ch;">
-              We deliver templates, checklists, trackers, and a cadence your team can run without you. The goal is
-              durability—not dependency.
-            </p>
-          </div>
-          <div class="callout">
-            <h3>Next step</h3>
-            <p style="margin-top:10px;">If you’re ready to build something stable, book a consult.</p>
-            <a class="btn primary" href="/contact" style="margin-top:12px;">Contact</a>
-          </div>
-        </div>
-      </section>
+        <p style="margin-top:14px; max-width:76ch;">
+          JaiSellers Companies operates at the seam where creativity, strategy, and advocacy meet—
+          honoring legacy while building what’s next.
+        </p>
+
+        <!-- Contact form -->
+        <h2 style="margin-top:32px;">Get in touch</h2>
+        <form
+          action="mailto:joshuajaisellers@gmail.com"
+          method="POST"
+          enctype="text/plain"
+          style="display: grid; gap: 12px; max-width: 400px;"
+        >
+          <label>
+            Name:
+            <input type="text" name="name" required style="width:100%; padding:8px; border-radius:4px;" />
+          </label>
+          <label>
+            Email:
+            <input type="email" name="email" required style="width:100%; padding:8px; border-radius:4px;" />
+          </label>
+          <label>
+            Message:
+            <textarea
+              name="message"
+              rows="4"
+              required
+              style="width:100%; padding:8px; border-radius:4px;"
+            ></textarea>
+          </label>
+          <button
+            type="submit"
+            style="padding:10px 16px; background:#caa24a; color:#15110a; border:none; border-radius:24px; cursor:pointer;"
+          >
+            Send
+          </button>
+        </form>
+        <p class="small" style="margin-top:8px;">
+          This form opens your default mail client. Swap `action` for a service like Formspree or Netlify Forms if you need submissions processed automatically.
+        </p>
+      </div>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
       <div class="container footer-inner">
         <span>© {new Date().getFullYear()} {brand}</span>
