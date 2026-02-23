@@ -1,0 +1,107 @@
+---
+const brand = "JaiSellers Companies";
+const title = "Just Systems Initiative (JSI)";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — {brand}</title>
+    <meta
+      name="description"
+      content="A Cleveland County-focused nonprofit initiative providing justice navigation and housing-focused reentry stabilization."
+    />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <a class="logo" href="/">{brand}</a>
+      <nav class="nav">
+        <a href="/consulting">Consulting (JSC)</a>
+        <a href="/design">Design</a>
+        <a href="/jsi">JSI</a>
+        <a href="/about">About</a>
+        <a class="nav-cta" href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <p class="kicker">Nonprofit Initiative</p>
+          <h1>{title}</h1>
+          <p style="margin-top:14px; max-width:76ch;">
+            JSI is a Cleveland County-rooted initiative focused on <strong>justice navigation</strong> and
+            <strong>housing-focused reentry stabilization</strong> for people impacted by incarceration. This work is
+            separate from paid consulting and design services.
+          </p>
+
+          <div class="trust-row" style="margin-top:18px;">
+            <span class="pill">Cleveland County, NC</span>
+            <span class="pill">Justice navigation</span>
+            <span class="pill">Reentry stabilization</span>
+            <span class="pill">Family communication support</span>
+          </div>
+
+          <div class="cta-row" style="margin-top:20px;">
+            <a class="btn primary" href="/contact">Partner / Support</a>
+            <a class="btn ghost" href="/about">Learn the story</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <h2>What JSI does</h2>
+
+          <div class="grid3" style="margin-top:18px;">
+            <article class="card">
+              <h3>Justice navigation</h3>
+              <p>Plain-language guidance and coordination so people don’t get lost in the process.</p>
+              <ul class="bullets">
+                <li>Court literacy + next steps</li>
+                <li>Referrals + resource coordination</li>
+                <li>Family planning support</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Reentry stabilization (housing-first)</h3>
+              <p>Support that prioritizes stable housing access and early reentry planning.</p>
+              <ul class="bullets">
+                <li>Housing referral coordination</li>
+                <li>ID recovery + basic readiness</li>
+                <li>30/60/90-day check-ins</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Family communication</h3>
+              <p>Tools and guidance for families navigating incarceration and release.</p>
+              <ul class="bullets">
+                <li>Communication planning</li>
+                <li>Resource toolkits</li>
+                <li>Support guides</li>
+              </ul>
+            </article>
+          </div>
+
+          <p class="small" style="margin-top:14px;">
+            Note: JSI is building structure first. Direct financial assistance programs (if any) would be launched later
+            with appropriate safeguards.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© {new Date().getFullYear()} {brand}</span>
+        <span class="sep">•</span>
+        <a href="/contact">Contact</a>
+      </div>
+    </footer>
+  </body>
+</html>
