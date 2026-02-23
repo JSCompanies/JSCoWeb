@@ -1,16 +1,20 @@
 ---
 const title = "Consulting (JSC)";
+const brand = "JaiSellers Companies";
+const division = "JaiSellers Consulting";
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} — JaiSellers Companies</title>
+    <title>{title} — {brand}</title>
     <link rel="stylesheet" href="/styles/site.css" />
   </head>
+
   <body>
     <header class="topbar">
-      <a class="logo" href="/">JaiSellers Companies</a>
+      <a class="logo" href="/">{division}</a>
       <nav class="nav">
         <a href="/consulting">Consulting (JSC)</a>
         <a href="/design">Design</a>
@@ -22,7 +26,7 @@ const title = "Consulting (JSC)";
 
     <main class="section">
       <div class="container">
-        <h1>{title}</h1>
+        <h1>{division}</h1>
         <p style="margin-top:14px; max-width:70ch;">
           Page in progress. Next: offer stack, process, timeline, pricing ranges, and a booking CTA.
         </p>
@@ -31,7 +35,7 @@ const title = "Consulting (JSC)";
 
     <footer class="footer">
       <div class="container footer-inner">
-        <span>© {new Date().getFullYear()} JaiSellers Companies</span>
+        <span>© {new Date().getFullYear()} {brand}</span>
       </div>
     </footer>
   </body>
