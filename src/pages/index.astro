@@ -1,216 +1,148 @@
 ---
-const SITE = {
-  name: "JaiSellers",
-  tagline: "Honoring Stories. Building Systems. Driving Change.",
-  email: "joshuajaisellers@gmail.com",
+const brand = {
+  name: "JaiSellers Companies",
+  kicker: "Honoring Stories. Building Systems. Driving Change.",
+  headline: "Building systems that hold.",
+  subhead:
+    "We build governance, funding, and narrative infrastructure for mission-driven leaders—so impact survives pressure, transitions, and growth.",
+  primaryCta: { label: "Work with us", href: "/consulting" },
+  secondaryCta: { label: "See the framework", href: "/systems" },
 };
-
-// Update these if your actual page paths are different
-const LINKS = [
-  { label: "Blog", href: "/blog" },
-  { label: "Galleries", href: "/galleries" },
-  { label: "501c3 Machine", href: "/501c3-machine" },
-  { label: "About", href: "/about" },
-];
-
-const SERVICES = [
-  {
-    title: "Nonprofit Strategy + Compliance",
-    bullets: ["IRS 1023 + readiness", "Bylaws + governance systems", "Budgets + reporting", "Grant strategy + execution"],
-  },
-  {
-    title: "Design Systems",
-    bullets: ["Brand identity + templates", "One-sheets + pitch decks", "Campaign toolkits", "Print + digital systems"],
-  },
-  {
-    title: "Photography + Storytelling",
-    bullets: ["Community documentation", "Events + portraits", "Editorial storytelling", "Legacy-focused visuals"],
-  },
-];
-
-const PROOF = [
-  { label: "Fast, real deliverables", text: "Templates, packets, systems — not theory." },
-  { label: "Equity-aware + practical", text: "Clarity that respects culture and context." },
-  { label: "Built for reuse", text: "Tools your team can run without you." },
-];
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{SITE.name}</title>
-    <meta name="description" content="Nonprofit consulting, design systems, and photography—turning vision into structure and measurable impact." />
-    <style>
-      :root {
-        --bg: #0b0c10;
-        --panel: rgba(255,255,255,.06);
-        --text: rgba(255,255,255,.92);
-        --muted: rgba(255,255,255,.68);
-        --line: rgba(255,255,255,.14);
-        --accent: rgba(255,255,255,.92);
-        --shadow: 0 10px 30px rgba(0,0,0,.35);
-        --radius: 18px;
-        --max: 1080px;
-      }
-
-      * { box-sizing: border-box; }
-      html, body { margin: 0; padding: 0; background: radial-gradient(1200px 600px at 20% -10%, rgba(255,255,255,.09), transparent 60%), var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-      a { color: inherit; text-decoration: none; }
-      a:hover { text-decoration: underline; text-underline-offset: 4px; }
-      .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 18px 64px; }
-
-      .topbar {
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius);
-        background: rgba(0,0,0,.25); box-shadow: var(--shadow);
-        position: sticky; top: 12px; backdrop-filter: blur(10px); z-index: 20;
-      }
-      .brand { display: flex; gap: 10px; align-items: baseline; }
-      .brand b { letter-spacing: .2px; }
-      .brand span { color: var(--muted); font-size: 13px; }
-
-      .nav { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
-      .nav a { padding: 8px 10px; border-radius: 999px; border: 1px solid transparent; }
-      .nav a:hover { border-color: var(--line); text-decoration: none; background: rgba(255,255,255,.04); }
-
-      .hero { margin-top: 26px; padding: 34px 18px; border-radius: calc(var(--radius) + 6px); border: 1px solid var(--line); background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); box-shadow: var(--shadow); }
-      .kicker { color: var(--muted); font-size: 14px; letter-spacing: .14em; text-transform: uppercase; }
-      h1 { margin: 12px 0 10px; font-size: clamp(30px, 5vw, 52px); line-height: 1.05; }
-      .sub { margin: 0; color: var(--muted); font-size: 18px; max-width: 75ch; line-height: 1.55; }
-      .ctaRow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
-      .btn {
-        display: inline-flex; align-items: center; justify-content: center;
-        padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line);
-        background: rgba(0,0,0,.35); color: var(--text);
-      }
-      .btn.primary { background: rgba(255,255,255,.92); color: #0b0c10; border-color: transparent; }
-      .btn:hover { text-decoration: none; filter: brightness(1.08); }
-
-      .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; margin-top: 16px; }
-      .card {
-        grid-column: span 12;
-        border: 1px solid var(--line);
-        background: rgba(255,255,255,.04);
-        border-radius: var(--radius);
-        padding: 18px;
-        box-shadow: var(--shadow);
-      }
-      .card h2 { margin: 0 0 8px; font-size: 18px; }
-      .card p { margin: 0; color: var(--muted); line-height: 1.55; }
-      .card ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
-      .card li { margin: 6px 0; }
-
-      .span6 { grid-column: span 12; }
-      @media (min-width: 860px) {
-        .span6 { grid-column: span 6; }
-        .span4 { grid-column: span 4; }
-        .span8 { grid-column: span 8; }
-      }
-
-      .sectionTitle { margin: 26px 2px 10px; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-
-      .footer { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-      .tiny { font-size: 13px; }
-
-      .pillLinks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-      .pillLinks a { border: 1px solid var(--line); background: rgba(255,255,255,.03); padding: 10px 12px; border-radius: 999px; }
-      .pillLinks a:hover { text-decoration: none; background: rgba(255,255,255,.06); }
-    </style>
+    <title>{brand.name}</title>
+    <meta name="description" content={brand.subhead} />
+    <link rel="stylesheet" href="/styles/site.css" />
   </head>
 
   <body>
-    <div class="wrap">
-      <header class="topbar">
-        <div class="brand">
-          <b>{SITE.name}</b>
-          <span>{SITE.tagline}</span>
+    <header class="topbar">
+      <a class="logo" href="/">{brand.name}</a>
+      <nav class="nav">
+        <a href="/consulting">Consulting (JSC)</a>
+        <a href="/design">Design</a>
+        <a href="/jsi">JSI</a>
+        <a href="/about">About</a>
+        <a class="nav-cta" href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <video
+          class="hero-bg"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="/video/hero.jpg"
+        >
+          <source src="/video/hero.mp4" type="video/mp4" />
+        </video>
+
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+          <p class="kicker">{brand.kicker}</p>
+          <h1>{brand.headline}</h1>
+          <p class="subhead">{brand.subhead}</p>
+
+          <div class="cta-row">
+            <a class="btn primary" href={brand.primaryCta.href}>{brand.primaryCta.label}</a>
+            <a class="btn ghost" href={brand.secondaryCta.href}>{brand.secondaryCta.label}</a>
+          </div>
+
+          <div class="trust-row">
+            <span class="pill">Governance</span>
+            <span class="pill">Funding</span>
+            <span class="pill">Narrative Systems</span>
+            <span class="pill">Cleveland County-rooted</span>
+          </div>
         </div>
-        <nav class="nav" aria-label="Primary">
-          {LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
-          <a class="btn primary" href={"mailto:" + SITE.email}>Contact</a>
-        </nav>
-      </header>
+      </section>
 
-      <main>
-        <section class="hero">
-          <div class="kicker">Nonprofit strategy • design systems • photography</div>
-          <h1>Make your work legible, fundable, and built to last.</h1>
-          <p class="sub">
-            I help mission-driven teams turn vision into structure — brand storytelling, governance, budgets, and grant-ready systems.
-            If you need something that works in real life (not just a pretty deck), you’re in the right place.
-          </p>
-
-          <div class="ctaRow">
-            <a class="btn primary" href={"mailto:" + SITE.email}>Start a project</a>
-            <a class="btn" href="/about">About me</a>
-            <a class="btn" href="/501c3-machine">Use the 501c3 Machine</a>
-          </div>
-
-          <div class="pillLinks" aria-label="Quick links">
-            <a href="/blog">Read the blog</a>
-            <a href="/galleries">View galleries</a>
-            <a href="/work">See work</a>
-          </div>
-          <p class="tiny" style="margin-top:10px; color: var(--muted);">
-            If a link 404s, just update the path in the LINKS list at the top of this file.
-          </p>
-        </section>
-
-        <div class="sectionTitle">What I do</div>
-        <section class="grid">
-          {SERVICES.map((s) => (
-            <article class="card span4">
-              <h2>{s.title}</h2>
-              <ul>
-                {s.bullets.map((b) => <li>{b}</li>)}
-              </ul>
+      <section class="section">
+        <div class="container">
+          <h2>What we build</h2>
+          <div class="grid3">
+            <article class="card">
+              <h3>Governance systems</h3>
+              <p>Formation, bylaws, board ops, compliance rhythms—structure that stays intact under stress.</p>
+              <a class="link" href="/consulting">Explore Consulting →</a>
             </article>
-          ))}
-        </section>
 
-        <div class="sectionTitle">Why clients hire me</div>
-        <section class="grid">
-          {PROOF.map((p) => (
-            <article class="card span4">
-              <h2>{p.label}</h2>
-              <p>{p.text}</p>
+            <article class="card">
+              <h3>Revenue architecture</h3>
+              <p>Budgets, grant-readiness, pipelines, reporting systems—funding that’s sustainable, not random.</p>
+              <a class="link" href="/consulting">Build the revenue stack →</a>
             </article>
-          ))}
-        </section>
 
-        <div class="sectionTitle">About</div>
-        <section class="grid">
-          <article class="card span8">
-            <h2>Joshua Jai Sellers</h2>
+            <article class="card">
+              <h3>Narrative & brand systems</h3>
+              <p>Messaging, identity, and campaign assets that match the mission—and convert.</p>
+              <a class="link" href="/design">See Design work →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <h2>Divisions</h2>
+          <div class="grid3">
+            <article class="card">
+              <h3>JaiSellers Consulting (JSC)</h3>
+              <p>Strategy, compliance, governance, and growth systems for mission-driven organizations.</p>
+              <a class="link" href="/consulting">Work with JSC →</a>
+            </article>
+
+            <article class="card">
+              <h3>Design Studio</h3>
+              <p>Brand identities and communication systems built to scale—clean, consistent, real-world usable.</p>
+              <a class="link" href="/design">Enter the Studio →</a>
+            </article>
+
+            <article class="card">
+              <h3>Just Systems Initiative (JSI)</h3>
+              <p>Nonprofit justice navigation + housing-focused reentry stabilization for Cleveland County.</p>
+              <a class="link" href="/jsi">Learn about JSI →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split">
+          <div>
+            <h2>Quietly serious. Built for pressure.</h2>
             <p>
-              I work at the seam where creativity, strategy, and advocacy meet — honoring legacy while building what’s next.
-              Based in Kings Mountain, NC, I support nonprofits, artists, and community orgs with governance, grant systems,
-              and brand tools that people can actually use.
+              Most missions don’t fail from lack of passion—they fail from missing infrastructure.
+              We build the systems that let your work survive leadership transitions, funding gaps, and growth.
             </p>
-            <p style="margin-top:10px;">
-              My north star is simple: <b>Honoring Stories. Building Systems. Driving Change.</b>
-            </p>
-          </article>
-          <aside class="card span4">
-            <h2>Best next step</h2>
-            <p>Send 3 bullets: what you need, your deadline, and your budget range. I’ll reply with the cleanest path.</p>
-            <div class="ctaRow" style="margin-top:12px;">
-              <a class="btn primary" href={"mailto:" + SITE.email}>Email me</a>
-              <a class="btn" href="/blog">Blog</a>
-            </div>
-          </aside>
-        </section>
-      </main>
-
-      <footer class="footer">
-        <div class="tiny">© {new Date().getFullYear()} {SITE.name}</div>
-        <div class="tiny">
-          <a href="/privacy">Privacy</a>
-          <span style="opacity:.5;"> • </span>
-          <a href={"mailto:" + SITE.email}>Contact</a>
+          </div>
+          <div class="callout">
+            <h3>Fast start option</h3>
+            <p><strong>501(c)(3) Formation Machine</strong> — structure first, then funding.</p>
+            <a class="btn primary" href="/contact">Book a consult</a>
+            <p class="small">Or email: <a href="mailto:joshuajaisellers@gmail.com">joshuajaisellers@gmail.com</a></p>
+          </div>
         </div>
-      </footer>
-    </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© {new Date().getFullYear()} {brand.name}</span>
+        <span class="sep">•</span>
+        <a href="/contact">Contact</a>
+        <span class="sep">•</span>
+        <a href="/jsi">JSI</a>
+      </div>
+    </footer>
   </body>
 </html>
