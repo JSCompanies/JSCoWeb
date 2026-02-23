@@ -9,12 +9,16 @@ const division = "JaiSellers Consulting";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} — {brand}</title>
+    <meta
+      name="description"
+      content="Governance, funding, and operations systems for mission-driven organizations—built to hold under real pressure."
+    />
     <link rel="stylesheet" href="/styles/site.css" />
   </head>
 
   <body>
     <header class="topbar">
-      <a class="logo" href="/">{division}</a>
+      <a class="logo" href="/">{brand}</a>
       <nav class="nav">
         <a href="/consulting">Consulting (JSC)</a>
         <a href="/design">Design</a>
@@ -24,18 +28,170 @@ const division = "JaiSellers Consulting";
       </nav>
     </header>
 
-    <main class="section">
-      <div class="container">
-        <h1>{division}</h1>
-        <p style="margin-top:14px; max-width:70ch;">
-          Page in progress. Next: offer stack, process, timeline, pricing ranges, and a booking CTA.
-        </p>
-      </div>
+    <main>
+      <!-- Intro -->
+      <section class="section">
+        <div class="container">
+          <p class="kicker">Consulting</p>
+          <h1>{division}</h1>
+          <p style="margin-top:14px; max-width:70ch;">
+            We help mission-driven leaders turn conviction into governance, funding, and operating systems that hold up
+            under real pressure—so your work survives transitions, grant cycles, and growth.
+          </p>
+
+          <div class="cta-row" style="margin-top:20px;">
+            <a class="btn primary" href="/contact">Book a consult</a>
+            <a class="btn ghost" href="/systems">See how we work</a>
+          </div>
+
+          <div class="trust-row" style="margin-top:18px;">
+            <span class="pill">501(c)(3) formation</span>
+            <span class="pill">Bylaws + governance</span>
+            <span class="pill">Budgets + grant readiness</span>
+            <span class="pill">Reporting + operating rhythms</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Offer Stack -->
+      <section class="section section-alt">
+        <div class="container">
+          <h2>Offer stack</h2>
+          <p style="max-width:70ch;">
+            Choose the lane you need right now. We can start with a fast build, then deepen into ongoing support.
+          </p>
+
+          <div class="grid3" style="margin-top:18px;">
+            <!-- Offer 1 -->
+            <article class="card">
+              <h3>Formation Machine</h3>
+              <p>
+                For new or rebuilding nonprofits that need structure first—so funding and credibility can follow.
+              </p>
+              <ul class="bullets">
+                <li>EIN + incorporation review</li>
+                <li>Bylaws + core policies (COI, records, etc.)</li>
+                <li>Board roles + meeting rhythm</li>
+                <li>1023/1023-EZ readiness plan</li>
+                <li>Compliance checklist + 12-month calendar</li>
+              </ul>
+              <p class="small">Best for: 0–24 months old or reinstatement/rebuilds.</p>
+              <a class="btn ghost" href="/contact" style="margin-top:12px;">Ask about Formation →</a>
+            </article>
+
+            <!-- Offer 2 -->
+            <article class="card">
+              <h3>Grant Readiness + Revenue Stack</h3>
+              <p>
+                For orgs doing good work but bleeding time and money because revenue systems aren’t built.
+              </p>
+              <ul class="bullets">
+                <li>Budget architecture (program + admin)</li>
+                <li>Grant calendar + pipeline tracker</li>
+                <li>Case for support (funder-ready)</li>
+                <li>Outcomes + reporting framework</li>
+                <li>Submission workflow + file system</li>
+              </ul>
+              <p class="small">Best for: orgs with programs running but funding unstable.</p>
+              <a class="btn ghost" href="/contact" style="margin-top:12px;">Build the Revenue Stack →</a>
+            </article>
+
+            <!-- Offer 3 -->
+            <article class="card">
+              <h3>Board Ops + Operating Rhythm</h3>
+              <p>
+                For orgs that are growing—but governance, meetings, and accountability are messy or inconsistent.
+              </p>
+              <ul class="bullets">
+                <li>Board packet template + agenda system</li>
+                <li>Policies + approvals workflow</li>
+                <li>OKRs/KPIs (lightweight, usable)</li>
+                <li>Monthly reporting cadence</li>
+                <li>Role clarity + task ownership</li>
+              </ul>
+              <p class="small">Best for: orgs scaling programs or managing multiple grants.</p>
+              <a class="btn ghost" href="/contact" style="margin-top:12px;">Stabilize Ops →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Process -->
+      <section class="section">
+        <div class="container">
+          <h2>How it works</h2>
+          <div class="grid3" style="margin-top:18px;">
+            <article class="card">
+              <h3>1) Quick intake</h3>
+              <p>We clarify goals, urgency, constraints, and what “done” means. No vague projects.</p>
+            </article>
+            <article class="card">
+              <h3>2) Build the system</h3>
+              <p>Templates, checklists, policies, trackers, and a simple rhythm your team can actually maintain.</p>
+            </article>
+            <article class="card">
+              <h3>3) Hand-off + sustain</h3>
+              <p>We document it, train it, and set a maintenance cadence so it doesn’t decay after month one.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ / Fit -->
+      <section class="section section-alt">
+        <div class="container split">
+          <div>
+            <h2>Fit check</h2>
+            <p style="margin-top:10px; max-width:70ch;">
+              This is for mission-driven teams who want structure—not vibes. If you’re ready to do the work and keep the
+              rhythm, we’ll build something durable.
+            </p>
+
+            <div class="grid3" style="margin-top:18px;">
+              <article class="card">
+                <h3>Good fit</h3>
+                <ul class="bullets">
+                  <li>You’re serious about compliance and clarity</li>
+                  <li>You want templates + repeatable systems</li>
+                  <li>You need funding to stop being random</li>
+                </ul>
+              </article>
+              <article class="card">
+                <h3>Not a fit</h3>
+                <ul class="bullets">
+                  <li>You want shortcuts or “guaranteed grants”</li>
+                  <li>You won’t involve decision-makers</li>
+                  <li>You refuse basic documentation</li>
+                </ul>
+              </article>
+              <article class="card">
+                <h3>Typical outputs</h3>
+                <ul class="bullets">
+                  <li>Board packet + calendar</li>
+                  <li>Budget + pipeline tracker</li>
+                  <li>Policies + filing checklist</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+
+          <div class="callout">
+            <h3>Start here</h3>
+            <p style="margin-top:10px;">
+              Book a consult and we’ll decide the fastest path to stability.
+            </p>
+            <a class="btn primary" href="/contact" style="margin-top:12px;">Book a consult</a>
+            <p class="small">Email: <a href="mailto:joshuajaisellers@gmail.com">joshuajaisellers@gmail.com</a></p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
       <div class="container footer-inner">
         <span>© {new Date().getFullYear()} {brand}</span>
+        <span class="sep">•</span>
+        <a href="/contact">Contact</a>
       </div>
     </footer>
   </body>
