@@ -1,0 +1,80 @@
+---
+const brand = "JaiSellers Companies";
+const title = "Contact";
+const email = "joshuajaisellers@gmail.com";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — {brand}</title>
+    <meta name="description" content="Contact JaiSellers Companies. Book consulting, design, or partnership conversations." />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <a class="logo" href="/">{brand}</a>
+      <nav class="nav">
+        <a href="/consulting">Consulting (JSC)</a>
+        <a href="/design">Design</a>
+        <a href="/jsi">JSI</a>
+        <a href="/about">About</a>
+        <a class="nav-cta" href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container split">
+          <div>
+            <p class="kicker">Contact</p>
+            <h1>Let’s build something that holds.</h1>
+            <p style="margin-top:14px; max-width:70ch;">
+              Tell us what you’re building, what’s urgent, and what “done” looks like. We’ll reply with the fastest
+              path to stability.
+            </p>
+
+            <div class="trust-row" style="margin-top:18px;">
+              <span class="pill">Nonprofit formation</span>
+              <span class="pill">Grant systems</span>
+              <span class="pill">Brand + messaging</span>
+              <span class="pill">JSI partnerships</span>
+            </div>
+
+            <div class="cta-row" style="margin-top:20px;">
+              <a class="btn primary" href={"mailto:" + email + "?subject=JaiSellers%20Companies%20Inquiry"}>Email us</a>
+              <a class="btn ghost" href="/consulting">View Consulting</a>
+            </div>
+
+            <p class="small" style="margin-top:14px;">
+              Email: <a href={"mailto:" + email}>{email}</a><br />
+              Mailing: 912 S. Battleground Ave., Kings Mountain, NC 28086
+            </p>
+          </div>
+
+          <div class="callout">
+            <h3>What to include</h3>
+            <ul class="bullets" style="margin-top:10px;">
+              <li>[ORG] name + location</li>
+              <li>What you need (formation / grants / brand / ops)</li>
+              <li>Deadline (if any)</li>
+              <li>Current status (incorporated? EIN? board?)</li>
+              <li>Budget range (if known)</li>
+            </ul>
+            <p class="small" style="margin-top:12px;">
+              Want a form instead? Tell me and I’ll add a simple GitHub Pages-safe form option.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© {new Date().getFullYear()} {brand}</span>
+      </div>
+    </footer>
+  </body>
+</html>
