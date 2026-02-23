@@ -1,16 +1,23 @@
 ---
-const title = "Design (JSD&P)";
+const brand = "JaiSellers Companies";
+const title = "Design Studio";
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} — JaiSellers Companies</title>
+    <title>{title} — {brand}</title>
+    <meta
+      name="description"
+      content="Brand identity, messaging, and campaign assets built to scale—clean, consistent, real-world usable."
+    />
     <link rel="stylesheet" href="/site.css" />
   </head>
+
   <body>
     <header class="topbar">
-      <a class="logo" href="/">JaiSellers Companies</a>
+      <a class="logo" href="/">{brand}</a>
       <nav class="nav">
         <a href="/consulting">Consulting (JSC)</a>
         <a href="/design">Design</a>
@@ -20,18 +27,103 @@ const title = "Design (JSD&P)";
       </nav>
     </header>
 
-    <main class="section">
-      <div class="container">
-        <h1>JaiSellers Designs & Photographys</h1>
-        <p style="margin-top:14px; max-width:70ch;">
-          Page in progress. Next: offer stack, process, timeline, pricing ranges, and a booking CTA.
-        </p>
-      </div>
+    <main>
+      <section class="section">
+        <div class="container">
+          <p class="kicker">Design</p>
+          <h1>{title}</h1>
+          <p style="margin-top:14px; max-width:72ch;">
+            Design that isn’t just “pretty”—it’s aligned, usable, and consistent. We build identity and communication
+            systems that support trust, fundraising, and long-term clarity.
+          </p>
+
+          <div class="cta-row" style="margin-top:20px;">
+            <a class="btn primary" href="/contact">Request a quote</a>
+            <a class="btn ghost" href="/systems">See our system approach</a>
+          </div>
+
+          <div class="trust-row" style="margin-top:18px;">
+            <span class="pill">Brand systems</span>
+            <span class="pill">Messaging</span>
+            <span class="pill">Campaign assets</span>
+            <span class="pill">Templates your team can use</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <h2>Design offers</h2>
+          <p style="max-width:70ch;">
+            Built to support mission + operations. Choose what you need now—then we can scale it.
+          </p>
+
+          <div class="grid3" style="margin-top:18px;">
+            <article class="card">
+              <h3>Brand Identity System</h3>
+              <p>Logo suite, type + color system, usage rules, and brand kit assets for consistent execution.</p>
+              <ul class="bullets">
+                <li>Core + alternate marks</li>
+                <li>Color + type system</li>
+                <li>Brand guidelines (usable)</li>
+                <li>Basic social + document templates</li>
+              </ul>
+              <a class="btn ghost" href="/contact" style="margin-top:12px;">Start Identity →</a>
+            </article>
+
+            <article class="card">
+              <h3>Messaging + Case for Support</h3>
+              <p>Clarity that converts: positioning, key phrases, program framing, and donor-ready narrative.</p>
+              <ul class="bullets">
+                <li>Positioning + audience</li>
+                <li>Messaging spine</li>
+                <li>Case for support (2–6 pages)</li>
+                <li>Homepage copy blocks</li>
+              </ul>
+              <a class="btn ghost" href="/contact" style="margin-top:12px;">Build Messaging →</a>
+            </article>
+
+            <article class="card">
+              <h3>Campaign & Template Kit</h3>
+              <p>Ready-to-run assets: flyers, social, email blocks, and print templates for consistent outreach.</p>
+              <ul class="bullets">
+                <li>Campaign visual system</li>
+                <li>Social templates</li>
+                <li>Print + event assets</li>
+                <li>Editable files + handoff</li>
+              </ul>
+              <a class="btn ghost" href="/contact" style="margin-top:12px;">Launch a Campaign →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split">
+          <div>
+            <h2>How we keep it usable</h2>
+            <p style="margin-top:10px; max-width:70ch;">
+              If your team can’t execute it, it’s not a system. We deliver editable templates, naming conventions,
+              and a simple “how to use this” handoff so work stays consistent after launch.
+            </p>
+          </div>
+          <div class="callout">
+            <h3>Fast start</h3>
+            <p style="margin-top:10px;">
+              Need a clean identity + homepage + templates quickly? Book a consult.
+            </p>
+            <a class="btn primary" href="/contact" style="margin-top:12px;">Book</a>
+            <p class="small">Email: <a href="mailto:joshuajaisellers@gmail.com">joshuajaisellers@gmail.com</a></p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
       <div class="container footer-inner">
-        <span>© {new Date().getFullYear()} JaiSellers Companies</span>
+        <span>© {new Date().getFullYear()} {brand}</span>
+        <span class="sep">•</span>
+        <a href="/contact">Contact</a>
       </div>
     </footer>
   </body>
