@@ -177,3 +177,17 @@ h3{ font-size:18px; margin-bottom:10px; }
   .split{ grid-template-columns: 1fr; }
   .hero-content{ padding-top: 72px; }
 }
+.bullets{
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: rgba(244,242,238,.80);
+}
+.bullets li{
+  margin: 8px 0;
+  line-height: 1.4;
+}
+.small{
+  font-size: 12px;
+  color: rgba(244,242,238,.72);
+  margin-top: 10px;
+}
