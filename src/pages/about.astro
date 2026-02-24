@@ -1,6 +1,7 @@
 ---
 const brand = "JaiSellers Companies";
 const title = "About";
+const email = "joshuajaisellers@gmail.com";
 ---
 
 <html lang="en">
@@ -10,13 +11,155 @@ const title = "About";
     <title>{title} — {brand}</title>
     <meta
       name="description"
-      content="Founder-led infrastructure studio building governance, funding, and narrative systems for mission-driven work."
+      content="Meet Joshua Jai Sellers — founder of JaiSellers Companies, a Cleveland County-rooted consulting, design, and justice-systems studio."
     />
     <link rel="stylesheet" href="/site.css" />
+    <style>
+      /* ── About-page-specific styles ── */
+      .about-hero {
+        border-bottom: 1px solid var(--line);
+        padding: clamp(56px, 8vw, 100px) 0 clamp(48px, 6vw, 80px);
+      }
+      .about-photo {
+        width: 100%;
+        max-width: 340px;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        display: block;
+      }
+      .photo-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      .pull-quote {
+        border-left: 3px solid var(--gold);
+        padding: 18px 24px;
+        margin: 32px 0 0;
+        max-width: 72ch;
+        background: rgba(202,162,74,.07);
+        border-radius: 0 var(--radius) var(--radius) 0;
+      }
+      .pull-quote p {
+        font-size: clamp(17px, 2vw, 21px);
+        line-height: 1.55;
+        color: var(--text);
+        font-style: italic;
+      }
+      .stat-row {
+        display: flex;
+        gap: 32px;
+        flex-wrap: wrap;
+        margin-top: 36px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+      }
+      .stat {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .stat-num {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 700;
+        color: var(--gold);
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 12px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .expertise-card {
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(18,20,26,.55);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .expertise-card .icon {
+        font-size: 22px;
+        line-height: 1;
+      }
+      .expertise-card h3 { font-size: 16px; }
+      .expertise-card p { font-size: 14px; margin: 0; }
+      .divider {
+        border: none;
+        border-top: 1px solid var(--line);
+        margin: 0;
+      }
+      .values-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .values-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 15px;
+        color: var(--text);
+        line-height: 1.4;
+      }
+      .values-list li::before {
+        content: "→";
+        color: var(--gold);
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .division-card {
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(18,20,26,.55);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .division-card .tag {
+        display: inline-block;
+        font-size: 11px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--gold);
+        border: 1px solid rgba(202,162,74,.35);
+        padding: 4px 10px;
+        border-radius: 999px;
+        width: fit-content;
+      }
+      .division-card h3 { font-size: 18px; margin: 0; }
+      .cta-block {
+        text-align: center;
+        padding: clamp(56px, 8vw, 96px) 0;
+        border-top: 1px solid var(--line);
+      }
+      .cta-block h2 {
+        font-size: clamp(28px, 4vw, 46px);
+        max-width: 18ch;
+        margin-inline: auto;
+      }
+      .cta-block p {
+        max-width: 54ch;
+        margin: 16px auto 0;
+      }
+      .cta-block .cta-row {
+        justify-content: center;
+      }
+    </style>
   </head>
 
   <body>
-    <!-- Top navigation -->
     <header class="topbar">
       <a class="logo" href="/">{brand}</a>
       <nav class="nav">
@@ -28,68 +171,254 @@ const title = "About";
       </nav>
     </header>
 
-    <!-- Main content -->
-    <main class="section">
-      <div class="container">
-        <p class="kicker">About</p>
-        <h1>Founder-led. Systems-first.</h1>
+    <main>
 
-        <!-- Your photo -->
-        <img
-          src="/images/AboutMe.png"
-          alt="Photo of Joshua Jai Sellers"
-          style="max-width: 300px; border-radius: 12px; margin-top: 20px;"
-        />
+      <!-- ── Hero ── -->
+      <section class="about-hero">
+        <div class="container split">
+          <div>
+            <p class="kicker">Founder &amp; Principal</p>
+            <h1>Joshua Jai Sellers</h1>
+            <p style="margin-top:18px; max-width:64ch; font-size:clamp(16px,1.8vw,19px); color:var(--muted); line-height:1.65;">
+              Strategist. Designer. Advocate. I founded JaiSellers Companies to close the gap
+              between powerful missions and the infrastructure they need to survive — and scale.
+            </p>
 
-        <p style="margin-top:14px; max-width:76ch;">
-          JaiSellers Companies operates at the seam where creativity, strategy, and advocacy meet—
-          honoring legacy while building what’s next.
-        </p>
+            <div class="pull-quote">
+              <p>"Most missions don't fail from lack of passion — they fail from missing infrastructure. I build the systems that let purpose hold."</p>
+            </div>
 
-        <!-- Contact form -->
-        <h2 style="margin-top:32px;">Get in touch</h2>
-        <form
-          action="mailto:joshuajaisellers@gmail.com"
-          method="POST"
-          enctype="text/plain"
-          style="display: grid; gap: 12px; max-width: 400px;"
-        >
-          <label>
-            Name:
-            <input type="text" name="name" required style="width:100%; padding:8px; border-radius:4px;" />
-          </label>
-          <label>
-            Email:
-            <input type="email" name="email" required style="width:100%; padding:8px; border-radius:4px;" />
-          </label>
-          <label>
-            Message:
-            <textarea
-              name="message"
-              rows="4"
-              required
-              style="width:100%; padding:8px; border-radius:4px;"
-            ></textarea>
-          </label>
-          <button
-            type="submit"
-            style="padding:10px 16px; background:#caa24a; color:#15110a; border:none; border-radius:24px; cursor:pointer;"
-          >
-            Send
-          </button>
-        </form>
-        <p class="small" style="margin-top:8px;">
-          This form opens your default mail client. Swap `action` for a service like Formspree or Netlify Forms if you need submissions processed automatically.
-        </p>
-      </div>
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat-num">3</span>
+                <span class="stat-label">Divisions</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num">1</span>
+                <span class="stat-label">County. Deep roots.</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num">∞</span>
+                <span class="stat-label">Systems built to last</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-wrap">
+            <img
+              src="/images/AboutMe.png"
+              alt="Photo of Joshua Jai Sellers"
+              class="about-photo"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Story ── -->
+      <section class="section">
+        <div class="container">
+          <p class="kicker">The story</p>
+          <h2 style="max-width:24ch;">Cleveland County-rooted. Built for every stage.</h2>
+
+          <div class="split" style="margin-top:28px; gap:40px;">
+            <div>
+              <p style="max-width:68ch;">
+                I grew up in Cleveland County, North Carolina — a place where community, faith, and
+                hard work are non-negotiable values. That upbringing shaped everything about how I
+                build: with durability in mind, with the community at the center, and with an eye
+                toward the generations that come next.
+              </p>
+              <p style="margin-top:16px; max-width:68ch;">
+                My path has moved through nonprofit governance, justice-system advocacy, and
+                creative brand work — giving me an integrated perspective that most consultants
+                simply don't carry. I've seen what happens when organizations grow without
+                structure, when missions fade because the paperwork wasn't right, and when a story
+                goes untold because no one built the language for it.
+              </p>
+              <p style="margin-top:16px; max-width:68ch;">
+                JaiSellers Companies is my answer to all of that. A studio where governance,
+                design, and justice work don't live in separate silos — they reinforce each other.
+              </p>
+            </div>
+            <div class="callout" style="align-self:start;">
+              <h3 style="color:var(--gold);">What drives me</h3>
+              <ul class="values-list">
+                <li>Infrastructure over inspiration</li>
+                <li>Transparency in every engagement</li>
+                <li>Community-rooted, not extractive</li>
+                <li>Outcomes over activity</li>
+                <li>Honor legacy — build what's next</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ── Expertise ── -->
+      <section class="section section-alt">
+        <div class="container">
+          <p class="kicker">Expertise</p>
+          <h2>What I bring to every engagement</h2>
+
+          <div class="grid3" style="margin-top:24px;">
+            <div class="expertise-card">
+              <span class="icon">🏛</span>
+              <h3>Nonprofit governance &amp; formation</h3>
+              <p>
+                501(c)(3) formation, bylaws, board ops, EIN, compliance calendars — the structural
+                layer that lets organizations grow without breaking.
+              </p>
+            </div>
+            <div class="expertise-card">
+              <span class="icon">💰</span>
+              <h3>Grant readiness &amp; revenue systems</h3>
+              <p>
+                Budget architecture, grant pipelines, case-for-support documents, and reporting
+                frameworks that make funding sustainable — not random.
+              </p>
+            </div>
+            <div class="expertise-card">
+              <span class="icon">🎨</span>
+              <h3>Brand identity &amp; visual systems</h3>
+              <p>
+                Identity systems, messaging, and communication assets built to carry the weight of
+                the work they represent — durable, strategic, scalable.
+              </p>
+            </div>
+            <div class="expertise-card">
+              <span class="icon">⚖️</span>
+              <h3>Justice navigation &amp; reentry</h3>
+              <p>
+                On-the-ground experience with reentry, housing instability, and the navigational
+                gaps that keep justice-impacted people from moving forward.
+              </p>
+            </div>
+            <div class="expertise-card">
+              <span class="icon">📋</span>
+              <h3>Operational rhythms</h3>
+              <p>
+                Board packets, OKRs, reporting cadences, and task-ownership systems — operating
+                infrastructure your team can actually maintain.
+              </p>
+            </div>
+            <div class="expertise-card">
+              <span class="icon">🔗</span>
+              <h3>Strategic partnerships</h3>
+              <p>
+                Connecting mission-aligned organizations with the right partners, funders, and
+                community anchors to multiply impact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Three Divisions ── -->
+      <section class="section">
+        <div class="container">
+          <p class="kicker">The studio</p>
+          <h2 style="max-width:24ch;">Three divisions. One integrated approach.</h2>
+          <p style="max-width:68ch; margin-top:12px;">
+            Each division is distinct, but they're designed to work together — so a client can
+            get governance, brand, and advocacy support without ever losing the thread.
+          </p>
+
+          <div class="grid3" style="margin-top:28px;">
+            <div class="division-card">
+              <span class="tag">Consulting</span>
+              <h3>JaiSellers Consulting (JSC)</h3>
+              <p style="color:var(--muted); font-size:14px; line-height:1.6;">
+                Strategy, governance, funding systems, and operational architecture for
+                nonprofits and mission-driven organizations at any stage of growth.
+              </p>
+              <a class="link" href="/consulting">Explore JSC →</a>
+            </div>
+            <div class="division-card">
+              <span class="tag">Design</span>
+              <h3>Design Studio</h3>
+              <p style="color:var(--muted); font-size:14px; line-height:1.6;">
+                Brand identity, visual systems, and communication assets built to match the
+                weight and ambition of the work they represent.
+              </p>
+              <a class="link" href="/design">Enter the Studio →</a>
+            </div>
+            <div class="division-card">
+              <span class="tag">Nonprofit</span>
+              <h3>Just Systems Initiative (JSI)</h3>
+              <p style="color:var(--muted); font-size:14px; line-height:1.6;">
+                A Cleveland County-based nonprofit providing justice navigation support and
+                reentry housing stabilization to people returning from incarceration.
+              </p>
+              <a class="link" href="/jsi">Learn about JSI →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── How I Work ── -->
+      <section class="section section-alt">
+        <div class="container split">
+          <div>
+            <p class="kicker">How I work</p>
+            <h2 style="max-width:20ch;">Every engagement ends with something you own.</h2>
+            <p style="margin-top:16px; max-width:60ch;">
+              I don't believe in consulting that leaves organizations more dependent than when they
+              started. Every project concludes with a system, a document, or a rhythm your team
+              can maintain and build on — without me.
+            </p>
+            <p style="margin-top:14px; max-width:60ch;">
+              I work best with founders, executive directors, and small leadership teams who are
+              serious about structure but don't have time for bloated process. If you want clarity,
+              accountability, and results that hold under real-world pressure — we're probably
+              a strong fit.
+            </p>
+            <div class="trust-row" style="margin-top:22px;">
+              <span class="pill">Direct communication</span>
+              <span class="pill">No busywork</span>
+              <span class="pill">Documented hand-offs</span>
+              <span class="pill">Repeatable systems</span>
+            </div>
+          </div>
+          <div class="callout" style="align-self:start;">
+            <h3 style="color:var(--gold);">What to expect</h3>
+            <ul class="bullets" style="margin-top:12px;">
+              <li>A focused intake — goals, urgency, constraints</li>
+              <li>A clear scope, no scope creep</li>
+              <li>Templates + systems your team can use</li>
+              <li>Documented hand-off at every stage</li>
+              <li>A maintenance cadence so things don't decay</li>
+            </ul>
+            <a class="btn primary" href="/contact" style="margin-top:18px; display:inline-flex;">Start a conversation →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CTA ── -->
+      <section class="cta-block">
+        <div class="container">
+          <h2>Ready to build something that holds?</h2>
+          <p>
+            Whether you need governance infrastructure, a brand that matches your mission, or a
+            partner who understands justice-impacted communities — I want to hear from you.
+          </p>
+          <div class="cta-row" style="justify-content:center; margin-top:26px;">
+            <a class="btn primary" href="/contact">Get in touch</a>
+            <a class="btn ghost" href={"mailto:" + email}>{email}</a>
+          </div>
+        </div>
+      </section>
+
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container footer-inner">
         <span>© {new Date().getFullYear()} {brand}</span>
         <span class="sep">•</span>
         <a href="/contact">Contact</a>
+        <span class="sep">•</span>
+        <a href="/jsi">JSI</a>
       </div>
     </footer>
   </body>
