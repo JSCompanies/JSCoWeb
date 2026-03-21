@@ -1,0 +1,260 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const brand = "JaiSellers Companies";
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{post.data.title} — {brand}</title>
+    <meta name="description" content={post.data.description} />
+    <link rel="stylesheet" href="/site.css" />
+    <style>
+      .post-header {
+        padding: clamp(56px, 8vw, 96px) 0 clamp(40px, 5vw, 64px);
+        border-bottom: 1px solid var(--line);
+        max-width: 760px;
+      }
+      .post-header h1 {
+        font-size: clamp(28px, 4.5vw, 52px);
+        line-height: 1.1;
+        margin-top: 14px;
+      }
+      .post-header .post-desc {
+        font-size: clamp(16px, 1.8vw, 19px);
+        color: var(--muted);
+        line-height: 1.6;
+        max-width: 68ch;
+        margin-top: 16px;
+      }
+      .post-byline {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font-size: 13px;
+        color: rgba(244, 242, 238, 0.65);
+      }
+      .post-byline strong {
+        color: var(--text);
+      }
+      .post-byline .sep {
+        opacity: 0.4;
+      }
+      .post-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .post-tag {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+        border: 1px solid rgba(202, 162, 74, 0.35);
+        padding: 3px 8px;
+        border-radius: 999px;
+      }
+      .post-body {
+        padding: clamp(40px, 6vw, 72px) 0;
+        max-width: 760px;
+      }
+      .post-body :global(h2) {
+        font-size: clamp(20px, 2.5vw, 26px);
+        margin-top: 44px;
+        margin-bottom: 14px;
+        color: var(--text);
+      }
+      .post-body :global(h3) {
+        font-size: 18px;
+        margin-top: 32px;
+        margin-bottom: 10px;
+        color: var(--text);
+      }
+      .post-body :global(p) {
+        font-size: clamp(15px, 1.6vw, 17px);
+        line-height: 1.75;
+        color: var(--muted);
+        margin: 16px 0 0;
+      }
+      .post-body :global(p:first-child) {
+        margin-top: 0;
+      }
+      .post-body :global(ul),
+      .post-body :global(ol) {
+        padding-left: 22px;
+        margin: 16px 0 0;
+      }
+      .post-body :global(li) {
+        font-size: clamp(15px, 1.6vw, 17px);
+        line-height: 1.7;
+        color: var(--muted);
+        margin: 8px 0;
+      }
+      .post-body :global(strong) {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .post-body :global(em) {
+        font-style: italic;
+      }
+      .post-body :global(hr) {
+        border: none;
+        border-top: 1px solid var(--line);
+        margin: 40px 0;
+      }
+      .post-body :global(a) {
+        color: var(--gold);
+        border-bottom: 1px solid rgba(202, 162, 74, 0.4);
+        padding-bottom: 1px;
+      }
+      .post-body :global(a:hover) {
+        border-bottom-color: var(--gold);
+      }
+      .post-body :global(blockquote) {
+        border-left: 3px solid var(--gold);
+        padding: 14px 20px;
+        margin: 24px 0 0;
+        background: rgba(202, 162, 74, 0.07);
+        border-radius: 0 var(--radius) var(--radius) 0;
+      }
+      .post-body :global(blockquote p) {
+        font-size: clamp(15px, 1.6vw, 17px);
+        color: var(--text);
+        font-style: italic;
+        margin: 0;
+      }
+      .post-body :global(code) {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.875em;
+        background: rgba(244, 242, 238, 0.08);
+        border-radius: 4px;
+        padding: 2px 5px;
+        color: var(--text);
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 32px;
+      }
+      .back-link:hover {
+        color: var(--text);
+      }
+      .post-footer {
+        border-top: 1px solid var(--line);
+        padding: 40px 0;
+      }
+      .post-footer h3 {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+      .post-footer p {
+        font-size: 14px;
+        color: var(--muted);
+        max-width: 60ch;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <a class="logo" href="/">{brand}</a>
+      <nav class="nav">
+        <a href="/consulting">Consulting (JSC)</a>
+        <a href="/design">Design</a>
+        <a href="/jsi">JSI</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+        <a class="nav-cta" href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="section">
+        <div class="container">
+          <a class="back-link" href="/blog">← All posts</a>
+
+          <header class="post-header">
+            {post.data.tags.length > 0 && (
+              <div class="post-tags">
+                {post.data.tags.map((tag) => (
+                  <span class="post-tag">{tag}</span>
+                ))}
+              </div>
+            )}
+            <h1>{post.data.title}</h1>
+            <p class="post-desc">{post.data.description}</p>
+            <div class="post-byline">
+              <strong>{post.data.author}</strong>
+              <span class="sep">•</span>
+              <span>{formatDate(post.data.pubDate)}</span>
+            </div>
+          </header>
+
+          <article class="post-body">
+            <Content />
+          </article>
+        </div>
+      </div>
+
+      <section class="post-footer section-alt">
+        <div class="container">
+          <p class="kicker">Keep reading</p>
+          <h3>More from JaiSellers Companies</h3>
+          <p>
+            Insights on governance, funding, design, and justice work — delivered straight
+            from the field.
+          </p>
+          <div class="cta-row" style="margin-top: 20px;">
+            <a class="btn primary" href="/blog">Browse all posts</a>
+            <a class="btn ghost" href="/contact">Work with us</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© {new Date().getFullYear()} {brand}</span>
+        <span class="sep">•</span>
+        <a href="/contact">Contact</a>
+        <span class="sep">•</span>
+        <a href="/jsi">JSI</a>
+        <span class="sep">•</span>
+        <a href="/blog">Blog</a>
+      </div>
+    </footer>
+  </body>
+</html>
