@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Notes from the desk of Joshua Jaisellers — founder of JaiSellers Companies." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        font-family: Georgia, serif;
+        background: #faf9f6;
+        color: #111;
+        max-width: 740px;
+        margin: 4rem auto;
+        padding: 0 1.25rem;
+        line-height: 1.7;
+        font-size: 18px;
+      }
+      a { color: #8a7430; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      img { max-width: 100%; display: block; margin: 2.5rem 0; border-radius: 4px; }
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e0d9cc;
+        font-size: 13px;
+        color: #888;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+    <footer>
+      <span>&copy; {new Date().getFullYear()} JaiSellers Companies</span>
+      <a href="https://jaisellers.com">jaisellers.com</a>
+    </footer>
+  </body>
+</html>
