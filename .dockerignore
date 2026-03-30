@@ -1,0 +1,15 @@
+node_modules/
+npm-debug.log
+.DS_Store
+.git
+.gitignore
+.github/
+.vscode/
+.astro/
+dist/
+.env
+.env.local
+README.md
+CLAUDE.md
+CNAME
+*.md
