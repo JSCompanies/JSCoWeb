@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Build stage
 FROM node:20-alpine AS builder
 
@@ -35,3 +36,28 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 
 # Start the application
 CMD ["npm", "run", "preview"]
+=======
+# GCC support can be specified at major, minor, or micro version
+# (e.g. 8, 8.2 or 8.2.0).
+# See https://hub.docker.com/r/library/gcc/ for all supported GCC
+# tags from Docker Hub.
+# See https://docs.docker.com/samples/library/gcc/ for more on how to use this image
+FROM gcc:13
+
+# These commands copy your files into the specified directory in the image
+# and set that as the working location
+WORKDIR /usr/src/myapp
+
+# Copy only the source file(s) needed for compilation to improve build caching
+COPY main.cpp .
+
+# This command compiles your app using GCC, adjust for your source code
+RUN g++ -o myapp main.cpp
+
+# Copy the rest of the project files (if needed at runtime)
+COPY . .
+# This command runs your application, comment out this line to compile only
+CMD ["./myapp"]
+
+LABEL Name=jscoweb Version=0.0.1
+>>>>>>> Stashed changes

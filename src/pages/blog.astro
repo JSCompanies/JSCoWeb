@@ -1,0 +1,268 @@
+---
+const brand = "JaiSellers Companies";
+const title = "Blog";
+const blogUrl = "https://jaisellers.blog";
+const email = "joshuajaisellers@gmail.com";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — {brand}</title>
+    <meta
+      name="description"
+      content="Writing on nonprofit governance, justice systems, brand strategy, and building infrastructure that holds — from Joshua Jai Sellers."
+    />
+    <link rel="stylesheet" href="/site.css" />
+    <style>
+      .blog-hero {
+        padding: clamp(56px, 8vw, 100px) 0 clamp(48px, 6vw, 80px);
+        border-bottom: 1px solid var(--line);
+      }
+      .blog-hero h1 {
+        font-size: clamp(38px, 6vw, 72px);
+        max-width: 18ch;
+        line-height: 1.04;
+      }
+      .blog-cta-block {
+        margin-top: 32px;
+        padding: 32px;
+        border: 1px solid rgba(202,162,74,.35);
+        border-radius: var(--radius);
+        background: rgba(202,162,74,.06);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .blog-cta-block h3 {
+        font-size: clamp(18px, 2.5vw, 24px);
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+      .blog-cta-block p {
+        max-width: 52ch;
+        font-size: 15px;
+      }
+      .blog-url {
+        font-family: ui-monospace, monospace;
+        font-size: 13px;
+        color: var(--gold);
+        background: rgba(202,162,74,.1);
+        border: 1px solid rgba(202,162,74,.25);
+        padding: 4px 10px;
+        border-radius: 6px;
+        display: inline-block;
+        margin-top: 8px;
+      }
+      .topic-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 24px;
+      }
+      @media (max-width: 700px) {
+        .topic-grid { grid-template-columns: 1fr; }
+        .blog-cta-block { flex-direction: column; align-items: flex-start; }
+      }
+      .topic-card {
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(18,20,26,.55);
+        box-shadow: var(--shadow);
+      }
+      .topic-card .icon {
+        font-size: 24px;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .topic-card h3 {
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+      .topic-card p {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .divider {
+        border: none;
+        border-top: 1px solid var(--line);
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <a class="logo" href="/">
+        <img src="/images/logo.svg" alt="JaiSellers Companies" class="logo-img" />
+      </a>
+      <nav class="nav">
+        <a href="/consulting">Consulting (JSC)</a>
+        <a href="/design">Design</a>
+        <a href="/jsi">JSI</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/about">About</a>
+        <a class="nav-cta" href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- ── Hero ── -->
+      <section class="blog-hero">
+        <div class="container">
+          <p class="kicker">Writing</p>
+          <h1>The Blog</h1>
+          <p style="margin-top:18px; max-width:64ch; font-size:clamp(16px,1.8vw,19px); color:var(--muted); line-height:1.65;">
+            Process notes, frameworks, and thinking on nonprofit governance, justice systems,
+            brand strategy, and building infrastructure that actually holds.
+          </p>
+
+          <div class="trust-row" style="margin-top:22px;">
+            <span class="pill">Governance</span>
+            <span class="pill">Grant systems</span>
+            <span class="pill">Brand strategy</span>
+            <span class="pill">Justice navigation</span>
+            <span class="pill">Systems thinking</span>
+          </div>
+
+          <div class="blog-cta-block">
+            <div>
+              <h3>Read the full blog at jaisellers.blog</h3>
+              <p>
+                New posts, case notes, and behind-the-work thinking published regularly.
+                All content lives at the dedicated blog domain.
+              </p>
+              <span class="blog-url">{blogUrl}</span>
+            </div>
+            <a
+              class="btn primary"
+              href={blogUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style="flex-shrink:0; white-space:nowrap;"
+            >
+              Visit jaisellers.blog →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Topics ── -->
+      <section class="section section-alt">
+        <div class="container">
+          <p class="kicker">What I write about</p>
+          <h2>Topics covered</h2>
+
+          <div class="topic-grid">
+            <div class="topic-card">
+              <div class="icon">🏛</div>
+              <h3>Nonprofit governance</h3>
+              <p>
+                Formation, bylaws, board operations, compliance — the structural layer
+                that determines whether an organization holds under pressure.
+              </p>
+            </div>
+            <div class="topic-card">
+              <div class="icon">💰</div>
+              <h3>Grant systems & funding</h3>
+              <p>
+                Pipeline architecture, budget frameworks, funder relationships — how to
+                make revenue predictable instead of random.
+              </p>
+            </div>
+            <div class="topic-card">
+              <div class="icon">🎨</div>
+              <h3>Brand & narrative</h3>
+              <p>
+                Identity systems, messaging strategy, and communication assets that
+                match the weight of the mission they represent.
+              </p>
+            </div>
+            <div class="topic-card">
+              <div class="icon">⚖️</div>
+              <h3>Justice navigation</h3>
+              <p>
+                On-the-ground perspectives on reentry, housing instability, and the
+                systems gaps that keep justice-impacted people stuck.
+              </p>
+            </div>
+            <div class="topic-card">
+              <div class="icon">🔧</div>
+              <h3>Operations & systems</h3>
+              <p>
+                Tools, templates, rhythms, and infrastructure — the operating layer
+                that lets teams do consistent work without burning out.
+              </p>
+            </div>
+            <div class="topic-card">
+              <div class="icon">📍</div>
+              <h3>Cleveland County roots</h3>
+              <p>
+                Place-based perspective on community, accountability, and what it
+                means to build for the long run in a specific geography.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ── CTA ── -->
+      <section class="section">
+        <div class="container split">
+          <div>
+            <p class="kicker">Go deeper</p>
+            <h2 style="max-width:22ch;">Ready to put it into practice?</h2>
+            <p style="margin-top:14px; max-width:60ch;">
+              The blog is where the thinking lives. The work is where it gets built.
+              If something resonated and you want to apply it to your organization, let's talk.
+            </p>
+            <div class="cta-row" style="margin-top:22px;">
+              <a class="btn primary" href="/contact">Start a conversation</a>
+              <a
+                class="btn ghost"
+                href={blogUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Keep reading →
+              </a>
+            </div>
+          </div>
+          <div class="callout" style="align-self:start;">
+            <h3 style="color:var(--gold);">See the work</h3>
+            <p style="margin-top:8px;">
+              The portfolio shows real projects and outcomes — governance builds,
+              brand systems, and justice-focused initiatives.
+            </p>
+            <a class="btn ghost" href="/portfolio" style="margin-top:14px; display:inline-flex;">
+              View Portfolio →
+            </a>
+            <p class="small" style="margin-top:10px;">
+              Or email: <a href={"mailto:" + email}>{email}</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© {new Date().getFullYear()} {brand}</span>
+        <span class="sep">•</span>
+        <a href="/portfolio">Portfolio</a>
+        <span class="sep">•</span>
+        <a href={blogUrl} target="_blank" rel="noopener noreferrer">Blog</a>
+        <span class="sep">•</span>
+        <a href="/contact">Contact</a>
+      </div>
+    </footer>
+  </body>
+</html>
