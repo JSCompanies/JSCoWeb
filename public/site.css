@@ -32,10 +32,16 @@ h3{ font-size:18px; margin-bottom:10px; }
   backdrop-filter: blur(12px);
 }
 .topbar .logo{
-  display:inline-block;
-  padding: 16px var(--pad);
+  display:inline-flex;
+  align-items:center;
+  padding: 12px var(--pad);
   font-weight:700;
   letter-spacing:.01em;
+}
+.logo-img{
+  height:32px;
+  width:auto;
+  display:block;
 }
 .nav{
   display:flex; gap:18px; align-items:center;

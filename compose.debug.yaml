@@ -1,0 +1,6 @@
+services:
+  jscoweb:
+    image: jscoweb:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
