@@ -1,52 +1,26 @@
 ---
 const brand = {
-  name: "JaiSellers Companies",
   kicker: "Honoring Stories. Building Systems. Driving Change.",
-  headline: "Building systems that hold.",
+  headline: "Vision, turned into structure.",
   subhead:
-    "We build governance, funding, and narrative infrastructure for mission-driven leaders—so impact survives pressure, transitions, and growth.",
-  primaryCta: { label: "Work with us", href: "/consulting" },
-  secondaryCta: { label: "See the framework", href: "/systems" },
+    "I help mission-driven teams build governance, funding, and brand systems that hold up under real pressure.",
+  primaryCta: "Work with me",
+  secondaryCta: "See systems",
 };
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{brand.name}</title>
-    <meta name="description" content={brand.subhead} />
-    <link rel="stylesheet" href="/site.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JaiSellers Companies</title>
   </head>
 
   <body>
-    <header class="topbar">
-      <a class="logo" href="/">
-        <img src="/images/logo.svg" alt={brand.name} class="logo-img" />
-      </a>
-      <nav class="nav">
-        <a href="/consulting">Consulting (JSC)</a>
-        <a href="/design">Design</a>
-        <a href="/jsi">JSI</a>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-        <a href="/portfolio">Portfolio</a>
->>>>>>> Stashed changes
-=======
-        <a href="/portfolio">Portfolio</a>
-        <a href="/blog">Blog</a>
->>>>>>> 16fd4370d319a4ce918d2f9c616f9f602c0c53fd
-        <a href="/about">About</a>
-        <a href="/blog">Insights</a>
-        <a class="nav-cta" href="/contact">Contact</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero">
+    <main class="page">
+      <section class="hero" aria-label="Hero">
         <video
-          class="hero-bg"
+          class="bg"
           autoplay
           muted
           loop
@@ -57,104 +31,155 @@ const brand = {
           <source src="/video/hero.mp4" type="video/mp4" />
         </video>
 
-        <div class="hero-overlay"></div>
+        <div class="overlay" aria-hidden="true"></div>
 
-        <div class="container hero-content">
+        <div class="content">
           <p class="kicker">{brand.kicker}</p>
           <h1>{brand.headline}</h1>
           <p class="subhead">{brand.subhead}</p>
 
-          <div class="cta-row">
-            <a class="btn primary" href={brand.primaryCta.href}>{brand.primaryCta.label}</a>
-            <a class="btn ghost" href={brand.secondaryCta.href}>{brand.secondaryCta.label}</a>
-          </div>
-
-          <div class="trust-row">
-            <span class="pill">Governance</span>
-            <span class="pill">Funding</span>
-            <span class="pill">Narrative Systems</span>
-            <span class="pill">Cleveland County-rooted</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <h2>What we build</h2>
-          <div class="grid3">
-            <article class="card">
-              <h3>Governance systems</h3>
-              <p>Formation, bylaws, board ops, compliance rhythms—structure that stays intact under stress.</p>
-              <a class="link" href="/consulting">Explore Consulting →</a>
-            </article>
-
-            <article class="card">
-              <h3>Revenue architecture</h3>
-              <p>Budgets, grant-readiness, pipelines, reporting systems—funding that’s sustainable, not random.</p>
-              <a class="link" href="/consulting">Build the revenue stack →</a>
-            </article>
-
-            <article class="card">
-              <h3>Narrative & brand systems</h3>
-              <p>Messaging, identity, and campaign assets that match the mission—and convert.</p>
-              <a class="link" href="/design">See Design work →</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt">
-        <div class="container">
-          <h2>Divisions</h2>
-          <div class="grid3">
-            <article class="card">
-              <h3>JaiSellers Consulting (JSC)</h3>
-              <p>Strategy, compliance, governance, and growth systems for mission-driven organizations.</p>
-              <a class="link" href="/consulting">Work with JSC →</a>
-            </article>
-
-            <article class="card">
-              <h3>Design Studio</h3>
-              <p>Brand identities and communication systems built to scale—clean, consistent, real-world usable.</p>
-              <a class="link" href="/design">Enter the Studio →</a>
-            </article>
-
-            <article class="card">
-              <h3>Just Systems Initiative (JSI)</h3>
-              <p>Nonprofit justice navigation + housing-focused reentry stabilization for Cleveland County.</p>
-              <a class="link" href="/jsi">Learn about JSI →</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container split">
-          <div>
-            <h2>Quietly serious. Built for pressure.</h2>
-            <p>
-              Most missions don’t fail from lack of passion—they fail from missing infrastructure.
-              We build the systems that let your work survive leadership transitions, funding gaps, and growth.
-            </p>
-          </div>
-          <div class="callout">
-            <h3>Fast start option</h3>
-            <p><strong>501(c)(3) Formation Machine</strong> — structure first, then funding.</p>
-            <a class="btn primary" href="/contact">Book a consult</a>
-            <p class="small">Or email: <a href="mailto:joshuajaisellers@gmail.com">joshuajaisellers@gmail.com</a></p>
+          <div class="actions">
+            <a class="btn primary" href="/contact">{brand.primaryCta}</a>
+            <a class="btn" href="/systems">{brand.secondaryCta}</a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container footer-inner">
-        <span>© {new Date().getFullYear()} {brand.name}</span>
-        <span class="sep">•</span>
-        <a href="/contact">Contact</a>
-        <span class="sep">•</span>
-        <a href="/jsi">JSI</a>
-      </div>
-    </footer>
+    <style>
+:global(body) {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #0b0b0c;
+  color: rgba(243, 241, 236, 0.92);
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* Makes text readable no matter the footage */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px 500px at 20% 40%, rgba(0,0,0,.18), transparent 60%),
+    radial-gradient(900px 600px at 70% 55%, rgba(0,0,0,.45), transparent 60%),
+    linear-gradient(to bottom, rgba(11,11,12,.45), rgba(11,11,12,.75));
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: min(980px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.kicker {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(200, 162, 74, 0.95);
+  margin: 0 0 14px;
+}
+
+h1 {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1.03;
+  margin: 0 0 16px;
+  max-width: 16ch;
+}
+
+.subhead {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.5;
+  max-width: 62ch;
+  margin: 0 0 26px;
+  color: rgba(243, 241, 236, 0.78);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(243, 241, 236, 0.18);
+  background: rgba(11, 11, 12, 0.35);
+  backdrop-filter: blur(10px);
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn.primary {
+  border-color: rgba(200, 162, 74, 0.35);
+  box-shadow: 0 0 0 1px rgba(200, 162, 74, 0.15) inset;
+}
+
+/* Micro-motion polish (normal users) */
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.content > * {
+  animation: heroFade 0.8s ease-out both;
+}
+
+.content > *:nth-child(1) { animation-delay: 0.05s; }
+.content > *:nth-child(2) { animation-delay: 0.12s; }
+.content > *:nth-child(3) { animation-delay: 0.18s; }
+.content > *:nth-child(4) { animation-delay: 0.25s; }
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bg {
+    display: none;.bg {
+  filter: saturate(1.02) contrast(1.08) brightness(.92);
+}
+  .hero {
+    background: url("/video/hero.jpg") center / cover no-repeat;
+  }
+  .content > * {
+    animation: none;
+  }
+}
+
+    </style>
   </body>
 </html>
