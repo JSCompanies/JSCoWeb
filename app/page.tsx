@@ -126,22 +126,6 @@ export default function Home() {
             className="hero-card-image"
           />
         </div>
-        <div className="hero-statement" aria-label="JaiSellers Companies positioning">
-          <p>JSCo</p>
-          <h1>Structure where Art can thrive.</h1>
-          <span>
-            Strategy, compliance, design, photography, and operating systems for
-            mission-driven work that deserves more than improvisation.
-          </span>
-          <div className="hero-actions" aria-label="Primary actions">
-            <a className="button primary" href="#contact">
-              Start the conversation
-            </a>
-            <a className="button secondary" href="#house">
-              See the house
-            </a>
-          </div>
-        </div>
       </section>
 
       <section className="opening band" aria-label="JaiSellers Companies introduction">
