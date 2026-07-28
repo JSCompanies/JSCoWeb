@@ -1,50 +1,50 @@
 const portfolioItems = [
   {
-    title: "Institutional Readiness",
+    title: "The House",
     type: "Governance + operating model",
     description:
-      "Board structure, leadership cadence, decision paths, and internal clarity for organizations preparing for their next level.",
+      "A complete read on how authority, accountability, board practice, and leadership rhythm should be arranged for the next chapter.",
   },
   {
-    title: "Program Architecture",
-    type: "Mission portfolio",
+    title: "The Map",
+    type: "Program architecture",
     description:
-      "A sharper way to organize programs, budgets, stories, outcomes, and growth so the work becomes easier to run and easier to fund.",
+      "A sharper way to organize programs, budgets, outcomes, and language so the work becomes easier to run, fund, and explain.",
   },
   {
-    title: "Executive Support Systems",
-    type: "Stability + execution",
+    title: "The Cadence",
+    type: "Executive infrastructure",
     description:
-      "Planning rhythms, documentation, meeting systems, and operating support for leaders carrying complex missions.",
+      "Planning cycles, meeting systems, documentation, and follow-through that give leaders fewer loose threads and better decisions.",
   },
 ];
 
 const blogPosts = [
   {
-    title: "The Architecture Behind A Strong Mission",
-    kicker: "Field Note",
+    title: "When A Mission Outgrows Its Informal Systems",
+    kicker: "Briefing",
     excerpt:
-      "A mission does not become less creative because it has a strong house around it. It becomes more durable.",
+      "The moment when charisma, urgency, and improvisation need a more durable operating shape.",
   },
   {
-    title: "What A Board Is Really Holding",
+    title: "The Board As A Room, Not A Rubber Stamp",
     kicker: "Governance",
     excerpt:
-      "The best boards do more than approve documents. They hold trust, pressure, memory, and possibility.",
+      "A useful board creates the conditions for judgment, trust, candor, and real stewardship.",
   },
   {
-    title: "The Quiet Work Of Organizational Stability",
+    title: "Stability Is A Creative Advantage",
     kicker: "Practice",
     excerpt:
-      "Support should make the leader feel less alone, the team less scattered, and the work less fragile.",
+      "The right support makes leaders less alone, teams less scattered, and the work less fragile.",
   },
 ];
 
 const principles = [
-  "Governance that people can actually use.",
-  "Programs that can be explained, funded, and sustained.",
-  "Operations that create calm without slowing momentum.",
-  "Support that lets leaders return to the work only they can do.",
+  "Useful governance, not ornamental governance.",
+  "Programs with shape, proof, and a fundable story.",
+  "Operations that create calm without dulling ambition.",
+  "Executive support that protects attention and judgment.",
 ];
 
 export default function Home() {
@@ -57,9 +57,9 @@ export default function Home() {
             <span>JaiSellers Companies</span>
           </a>
           <div className="nav-links">
-            <a href="#philosophy">Philosophy</a>
-            <a href="#work">Portfolio</a>
-            <a href="#journal">Blog</a>
+            <a href="#philosophy">Approach</a>
+            <a href="#work">Engagements</a>
+            <a href="#journal">Notes</a>
             <a href="#contact">Contact</a>
           </div>
         </nav>
@@ -73,44 +73,47 @@ export default function Home() {
         </div>
 
         <div className="hero-copy" aria-label="JaiSellers Companies introduction">
-          <p className="eyebrow">Nonprofit structure for creative work</p>
+          <p className="eyebrow">Strategic advisory for nonprofit leaders</p>
           <h1>
             <span>JaiSellers</span>
             <span>Companies</span>
           </h1>
           <p className="tagline">Structure where Art can thrive</p>
           <p className="hero-lede">
-            Strategic structure, governance design, and executive support for
-            nonprofit leaders building meaningful work under real pressure.
+            Governance design, program architecture, and executive support for
+            mission-led organizations ready to become more durable without
+            becoming ordinary.
           </p>
           <div className="hero-actions" aria-label="Primary actions">
             <a className="button primary" href="#contact">
               Start the conversation
             </a>
             <a className="button secondary" href="#philosophy">
-              Read the idea
+              Explore the practice
             </a>
           </div>
         </div>
       </section>
 
       <section className="manifesto band" id="philosophy">
-        <div className="section-label">The Practice</div>
+        <div className="section-label">Approach</div>
         <div className="manifesto-grid">
           <div>
-            <h2>Elegant structure for organizations doing uncommon work.</h2>
+            <h2>A private advisory house for organizations at a threshold.</h2>
           </div>
           <div className="manifesto-copy">
             <p>
-              JaiSellers Companies works with nonprofit leaders who need more
-              than advice. They need a thinking partner who can translate vision
-              into a working shape: governance, programs, systems, language, and
-              the executive rhythm to keep it all moving.
+              JaiSellers Companies works with leaders carrying work that has
+              become too important to depend on informal systems. The practice
+              brings order to governance, programs, language, planning, and the
+              executive decisions that determine whether momentum becomes
+              institution.
             </p>
             <p>
-              The result is not a heavier organization. It is a steadier one.
-              Clear enough to trust. Flexible enough to grow. Beautiful enough
-              to still feel like the mission that started it.
+              The work is precise, but not sterile. Strategic, but not generic.
+              Built for nonprofits, cultural organizations, artist-led
+              institutions, and mission-driven teams that need a more elegant
+              way to hold complexity.
             </p>
           </div>
         </div>
@@ -134,8 +137,8 @@ export default function Home() {
             />
           </div>
           <div className="method-copy">
-            <p className="eyebrow">Advisory Work</p>
-            <h2>High-trust support for the invisible work that makes visible work possible.</h2>
+            <p className="eyebrow">Services</p>
+            <h2>Quiet systems. Strong rooms. Better decisions.</h2>
             <div className="method-list">
               <div>
                 <h3>Governance Design</h3>
@@ -147,9 +150,8 @@ export default function Home() {
               <div>
                 <h3>Program Strategy</h3>
                 <p>
-                  Service models, initiative maps, outcomes, budgets, and
-                  language that help a mission become legible without becoming
-                  generic.
+                  Service models, initiative maps, outcomes, budgets, and a
+                  narrative spine that lets funders and teams see the same work.
                 </p>
               </div>
               <div>
@@ -166,8 +168,8 @@ export default function Home() {
 
       <section className="portfolio band" id="work">
         <div className="section-heading">
-          <p className="eyebrow">Portfolio</p>
-          <h2>Selected ways the work takes shape.</h2>
+          <p className="eyebrow">Engagements</p>
+          <h2>Three rooms where the work becomes clearer.</h2>
         </div>
         <div className="card-grid">
           {portfolioItems.map((item) => (
@@ -182,8 +184,8 @@ export default function Home() {
 
       <section className="journal band" id="journal">
         <div className="section-heading">
-          <p className="eyebrow">Blog</p>
-          <h2>Notes on leadership, structure, trust, and institutional imagination.</h2>
+          <p className="eyebrow">The Index</p>
+          <h2>Briefings on leadership, structure, trust, and institutional imagination.</h2>
         </div>
         <div className="journal-list">
           {blogPosts.map((post) => (
@@ -192,7 +194,7 @@ export default function Home() {
               <h3>{post.title}</h3>
               <span>{post.excerpt}</span>
               <a href="#contact" aria-label={`Discuss ${post.title}`}>
-                Discuss this idea
+                Discuss this note
               </a>
             </article>
           ))}
@@ -209,12 +211,12 @@ export default function Home() {
           </div>
           <div className="about-copy">
             <p className="eyebrow">About JaiSellers Companies</p>
-            <h2>For leaders who need discernment, design, and dependable support.</h2>
+            <h2>For leaders who need discernment, design, and a steadier table.</h2>
             <p>
               The work is centered on nonprofit clients, especially leaders
-              carrying creative, cultural, or mission-driven complexity. The
-              promise is simple: build the structure around the work so the work
-              can keep becoming itself.
+              carrying cultural, creative, civic, or mission-driven complexity.
+              The promise is not more noise. It is a cleaner way to see the
+              organization, make the next decision, and carry the work forward.
             </p>
           </div>
         </div>
@@ -224,13 +226,13 @@ export default function Home() {
         <div className="contact-inner">
           <div>
             <p className="eyebrow">Begin</p>
-            <h2>Bring the beautiful, complicated thing. We will make it workable.</h2>
+            <h2>Bring the complicated thing. We will find the elegant shape.</h2>
           </div>
           <div className="contact-panel">
             <p>
               Best fit: nonprofit leaders, artist-led organizations, cultural
               programs, and mission-driven teams ready for structure that feels
-              precise, human, and alive.
+              precise, human, and made for the work in front of them.
             </p>
             <a className="button primary" href="mailto:?subject=JaiSellers%20Companies%20Inquiry">
               Draft an inquiry

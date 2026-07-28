@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase,
     title: "JaiSellers Companies",
     description:
-      "Nonprofit structure, support, and stability that allow creative work to thrive.",
+      "Strategic advisory, governance design, and executive infrastructure for mission-led organizations.",
     icons: {
       icon: "/favicon.svg",
       shortcut: "/favicon.svg",
