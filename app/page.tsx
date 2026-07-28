@@ -1,22 +1,31 @@
 const portfolioItems = [
   {
-    title: "The House",
-    type: "Governance + operating model",
+    title: "Graphic Design + Branding",
+    type: "Identity systems",
     description:
-      "A complete read on how authority, accountability, board practice, and leadership rhythm should be arranged for the next chapter.",
+      "Logos, visual systems, campaign language, print pieces, digital layouts, and brand worlds for people and organizations with something to say.",
   },
   {
-    title: "The Map",
-    type: "Program architecture",
+    title: "Brand Photography",
+    type: "Portrait + visual story",
     description:
-      "A sharper way to organize programs, budgets, outcomes, and language so the work becomes easier to run, fund, and explain.",
+      "Editorial portraits, founder imagery, atmospheric brand photography, and visual assets that make the person behind the work feel present.",
   },
   {
-    title: "The Cadence",
-    type: "Executive infrastructure",
+    title: "Nonprofit Case Work",
+    type: "Case studies + structure",
     description:
-      "Planning cycles, meeting systems, documentation, and follow-through that give leaders fewer loose threads and better decisions.",
+      "Governance, program framing, operating support, grant-ready narratives, and case-study documentation for mission-led organizations.",
   },
+];
+
+const caseStudySignals = [
+  "Identity",
+  "Story",
+  "Image",
+  "Governance",
+  "Programs",
+  "Evidence",
 ];
 
 const blogPosts = [
@@ -89,7 +98,7 @@ export default function Home() {
           </a>
           <div className="nav-links">
             <a href="#philosophy">Approach</a>
-            <a href="#work">Engagements</a>
+            <a href="#work">Portfolio</a>
             <a href="#journal">Notes</a>
             <a href="#contact">Contact</a>
           </div>
@@ -228,8 +237,13 @@ export default function Home() {
 
       <section className="portfolio band" id="work">
         <div className="section-heading">
-          <p className="eyebrow">Engagements</p>
-          <h2>Three rooms where the work becomes clearer.</h2>
+          <p className="eyebrow">Portfolio</p>
+          <h2>Case studies in identity, image, and nonprofit structure.</h2>
+          <div className="case-study-strip" aria-label="Case study signals">
+            {caseStudySignals.map((signal) => (
+              <span key={signal}>{signal}</span>
+            ))}
+          </div>
         </div>
         <div className="card-grid">
           {portfolioItems.map((item) => (
