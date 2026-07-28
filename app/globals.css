@@ -43,14 +43,14 @@ main {
 }
 
 .hero {
-  min-height: 94vh;
-  padding: 24px clamp(18px, 4vw, 58px) 44px;
-  background:
-    linear-gradient(90deg, rgba(17, 16, 13, 0.74), rgba(17, 16, 13, 0.2) 46%, rgba(17, 16, 13, 0.82)),
-    radial-gradient(circle at 4% 90%, rgba(14, 59, 51, 0.95) 0 15%, transparent 16%),
-    var(--ink);
+  min-height: 100vh;
+  padding: 22px clamp(16px, 3vw, 42px) clamp(18px, 3vw, 34px);
+  background: var(--ink);
   color: var(--white);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hero::before {
@@ -66,7 +66,7 @@ main {
 }
 
 .nav {
-  width: min(1180px, 100%);
+  width: min(1460px, 100%);
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -90,15 +90,12 @@ main {
   color: rgba(255, 250, 240, 0.84);
 }
 
-.brand-mark {
-  width: 48px;
-  height: 48px;
-  border: 1px solid rgba(255, 250, 240, 0.32);
-  display: grid;
-  place-items: center;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.86rem;
-  color: var(--gold);
+.brand-logo {
+  width: 38px;
+  height: 50px;
+  object-fit: contain;
+  filter: invert(1) sepia(0.6) saturate(1.8) hue-rotate(2deg) brightness(0.9);
+  opacity: 0.88;
 }
 
 .nav-links {
@@ -118,21 +115,37 @@ main {
   color: var(--white);
 }
 
-.hero-grid {
-  width: min(1180px, 100%);
-  min-height: calc(94vh - 112px);
-  margin: 28px auto 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1.04fr) minmax(300px, 0.96fr);
-  gap: clamp(26px, 5vw, 72px);
-  align-items: center;
+.hero-card-frame {
+  width: min(1460px, 100%);
+  margin: clamp(16px, 2vw, 24px) auto;
   position: relative;
   z-index: 1;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.36);
+}
+
+.hero-card-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(255, 250, 240, 0.16);
+}
+
+.hero-card-image {
+  width: 100%;
+  aspect-ratio: 16 / 8.35;
+  object-fit: cover;
 }
 
 .hero-copy {
-  max-width: 720px;
-  padding: 42px 0;
+  width: min(1460px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.88fr) auto;
+  align-items: end;
+  gap: clamp(18px, 3vw, 44px);
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow,
@@ -160,9 +173,7 @@ h2 {
 }
 
 h1 {
-  max-width: 780px;
-  margin-bottom: 24px;
-  font-size: clamp(4rem, 8.7vw, 8.8rem);
+  display: none;
 }
 
 h2 {
@@ -174,18 +185,27 @@ h3 {
   line-height: 1.16;
 }
 
+.tagline {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.2vw, 2.4rem);
+  color: var(--white);
+  font-weight: 300;
+}
+
 .hero-lede {
-  max-width: 640px;
+  margin: 0;
+  max-width: 620px;
   color: rgba(255, 250, 240, 0.82);
-  font-size: clamp(1.05rem, 1.7vw, 1.34rem);
-  line-height: 1.65;
+  font-size: clamp(0.96rem, 1.2vw, 1.15rem);
+  line-height: 1.55;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 34px;
+  margin: 0;
+  justify-content: flex-end;
 }
 
 .button {
@@ -208,37 +228,6 @@ h3 {
 .button.secondary {
   color: var(--white);
   background: rgba(255, 250, 240, 0.08);
-}
-
-.hero-image {
-  margin: 0;
-  align-self: stretch;
-  min-height: 520px;
-  display: grid;
-  align-content: end;
-  position: relative;
-}
-
-.hero-image img {
-  width: 100%;
-  height: min(72vh, 700px);
-  min-height: 440px;
-  object-fit: cover;
-  object-position: center;
-  border: 1px solid rgba(255, 250, 240, 0.16);
-  filter: contrast(1.04);
-}
-
-.hero-image figcaption {
-  position: absolute;
-  left: 18px;
-  bottom: 18px;
-  max-width: 280px;
-  padding: 12px 14px;
-  background: rgba(17, 16, 13, 0.72);
-  border-left: 4px solid var(--gold);
-  color: rgba(255, 250, 240, 0.86);
-  font-size: 0.85rem;
 }
 
 .band {
@@ -490,7 +479,6 @@ h3 {
     justify-content: flex-start;
   }
 
-  .hero-grid,
   .manifesto-grid,
   .method-inner,
   .about-inner,
@@ -498,23 +486,9 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .hero {
-    min-height: auto;
-  }
-
-  .hero-grid {
-    min-height: 0;
-  }
-
-  .hero-image {
-    min-height: 0;
-  }
-
-  .hero-image img {
-    height: auto;
-    min-height: 0;
-    aspect-ratio: 1 / 1;
-    object-position: center;
+  .hero-copy {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 
   .principles,
@@ -549,6 +523,11 @@ h3 {
   .hero-actions,
   .button {
     width: 100%;
+  }
+
+  .hero-card-image {
+    aspect-ratio: 1 / 1;
+    object-position: 57% center;
   }
 
   .principles,
