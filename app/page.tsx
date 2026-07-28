@@ -71,26 +71,31 @@ export default function Home() {
             className="hero-card-image"
           />
         </div>
+      </section>
 
-        <div className="hero-copy" aria-label="JaiSellers Companies introduction">
+      <section className="opening band" aria-label="JaiSellers Companies introduction">
+        <div className="opening-inner">
+          <div>
           <p className="eyebrow">Strategic advisory for nonprofit leaders</p>
-          <h1>
-            <span>JaiSellers</span>
-            <span>Companies</span>
-          </h1>
-          <p className="tagline">Structure where Art can thrive</p>
-          <p className="hero-lede">
-            Governance design, program architecture, and executive support for
-            mission-led organizations ready to become more durable without
-            becoming ordinary.
-          </p>
-          <div className="hero-actions" aria-label="Primary actions">
-            <a className="button primary" href="#contact">
-              Start the conversation
-            </a>
-            <a className="button secondary" href="#philosophy">
-              Explore the practice
-            </a>
+            <h1>
+              <span>Make the work</span>
+              <span>more durable.</span>
+            </h1>
+          </div>
+          <div className="opening-copy">
+            <p>
+              Governance design, program architecture, and executive support for
+              mission-led organizations ready to become more durable without
+              becoming ordinary.
+            </p>
+            <div className="hero-actions" aria-label="Primary actions">
+              <a className="button primary" href="#contact">
+                Start the conversation
+              </a>
+              <a className="button secondary dark" href="#philosophy">
+                Explore the practice
+              </a>
+            </div>
           </div>
         </div>
       </section>
