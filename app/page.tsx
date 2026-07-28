@@ -47,6 +47,37 @@ const principles = [
   "Executive support that protects attention and judgment.",
 ];
 
+const advisoryScore = [
+  {
+    number: "01",
+    verb: "Read",
+    title: "See the hidden architecture",
+    copy:
+      "A close diagnostic of roles, pressure points, decision habits, board function, programs, language, and the places where momentum leaks.",
+  },
+  {
+    number: "02",
+    verb: "Frame",
+    title: "Name the working shape",
+    copy:
+      "A clear model for what the organization is becoming: its rooms, rhythms, authority, program logic, and fundable story.",
+  },
+  {
+    number: "03",
+    verb: "Tune",
+    title: "Build the operating cadence",
+    copy:
+      "Practical systems for meetings, documentation, planning, board work, follow-through, and leadership attention.",
+  },
+  {
+    number: "04",
+    verb: "Hold",
+    title: "Support the next passage",
+    copy:
+      "Ongoing advisory presence for leaders carrying decisions that need judgment, steadiness, and a more elegant table.",
+  },
+];
+
 export default function Home() {
   return (
     <main>
@@ -76,10 +107,10 @@ export default function Home() {
       <section className="opening band" aria-label="JaiSellers Companies introduction">
         <div className="opening-inner">
           <div>
-          <p className="eyebrow">Strategic advisory for nonprofit leaders</p>
-            <h1>
-              <span>Make the work</span>
-              <span>more durable.</span>
+            <p className="eyebrow">Strategic advisory for nonprofit leaders</p>
+            <h1 className="brand-type-heading">
+              <span>A private advisory house</span>
+              <span>for uncommon work.</span>
             </h1>
           </div>
           <div className="opening-copy">
@@ -96,6 +127,30 @@ export default function Home() {
                 Explore the practice
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="score band" aria-label="Advisory score">
+        <div className="score-inner">
+          <div className="score-intro">
+            <p className="eyebrow">The Advisory Score</p>
+            <h2>
+              <span>Four movements.</span>
+              <span>One steadier institution.</span>
+            </h2>
+          </div>
+          <div className="score-grid">
+            {advisoryScore.map((item) => (
+              <article className="score-card" key={item.number}>
+                <div className="score-card-top">
+                  <span>{item.number}</span>
+                  <p>{item.verb}</p>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
