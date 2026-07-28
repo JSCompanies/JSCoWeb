@@ -1,21 +1,21 @@
 const portfolioItems = [
   {
-    title: "Graphic Design + Branding",
-    type: "Identity systems",
+    title: "Nonprofit Strategy + Compliance",
+    type: "Governance systems",
+    description:
+      "IRS 1023 readiness, bylaws, board structure, budgets, grant narratives, and the practical documents that let mission work stand up straight.",
+  },
+  {
+    title: "Design + Brand Systems",
+    type: "Identity and language",
     description:
       "Logos, visual systems, campaign language, print pieces, digital layouts, and brand worlds for people and organizations with something to say.",
   },
   {
-    title: "Brand Photography",
-    type: "Portrait + visual story",
+    title: "Photography + Visual Story",
+    type: "Portrait and atmosphere",
     description:
       "Editorial portraits, founder imagery, atmospheric brand photography, and visual assets that make the person behind the work feel present.",
-  },
-  {
-    title: "Nonprofit Case Work",
-    type: "Case studies + structure",
-    description:
-      "Governance, program framing, operating support, grant-ready narratives, and case-study documentation for mission-led organizations.",
   },
 ];
 
@@ -26,6 +26,21 @@ const caseStudySignals = [
   "Governance",
   "Programs",
   "Evidence",
+];
+
+const housePillars = [
+  {
+    name: "JaiSellers Consulting",
+    line: "Governance, compliance, planning, grants, budgets, and executive infrastructure for mission-led organizations.",
+  },
+  {
+    name: "JaiSellers Designs and Photography",
+    line: "Brand systems, logos, campaign worlds, portraits, and visual assets with a clear point of view.",
+  },
+  {
+    name: "Just Systems Initiatives",
+    line: "Operational frameworks, civic projects, and practical systems that help good work become durable.",
+  },
 ];
 
 const blogPosts = [
@@ -111,22 +126,40 @@ export default function Home() {
             className="hero-card-image"
           />
         </div>
+        <div className="hero-statement" aria-label="JaiSellers Companies positioning">
+          <p>JSCo</p>
+          <h1>Structure where Art can thrive.</h1>
+          <span>
+            Strategy, compliance, design, photography, and operating systems for
+            mission-driven work that deserves more than improvisation.
+          </span>
+          <div className="hero-actions" aria-label="Primary actions">
+            <a className="button primary" href="#contact">
+              Start the conversation
+            </a>
+            <a className="button secondary" href="#house">
+              See the house
+            </a>
+          </div>
+        </div>
       </section>
 
       <section className="opening band" aria-label="JaiSellers Companies introduction">
         <div className="opening-inner">
           <div>
-            <p className="eyebrow">Strategic advisory for nonprofit leaders</p>
-            <h1 className="brand-type-heading">
+            <p className="eyebrow">JaiSellers Companies</p>
+            <h2 className="brand-type-heading">
               <span>A private advisory house</span>
               <span>for uncommon work.</span>
-            </h1>
+            </h2>
           </div>
           <div className="opening-copy">
             <p>
               Governance design, program architecture, and executive support for
               mission-led organizations ready to become more durable without
-              becoming ordinary.
+              becoming ordinary. JSCo holds the unglamorous essentials and the
+              expressive work in the same room, because that is where the magic
+              stops being fragile.
             </p>
             <div className="hero-actions" aria-label="Primary actions">
               <a className="button primary" href="#contact">
@@ -135,6 +168,26 @@ export default function Home() {
               <a className="button secondary dark" href="#philosophy">
                 Explore the practice
               </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="house band" id="house" aria-label="JaiSellers Companies house">
+        <div className="house-inner">
+          <div className="house-mark">
+            <img src="/jsco-logo-full.png" alt="JSCo JaiSellers Companies logo" />
+          </div>
+          <div className="house-copy">
+            <p className="eyebrow">The House</p>
+            <h2>One company. Three rooms. One sharper standard.</h2>
+            <div className="house-grid">
+              {housePillars.map((pillar) => (
+                <article className="house-card" key={pillar.name}>
+                  <h3>{pillar.name}</h3>
+                  <p>{pillar.line}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
@@ -174,9 +227,9 @@ export default function Home() {
             <p>
               JaiSellers Companies works with leaders carrying work that has
               become too important to depend on informal systems. The practice
-              brings order to governance, programs, language, planning, and the
-              executive decisions that determine whether momentum becomes
-              institution.
+              brings order to governance, compliance, grants, budgets, brand
+              systems, photography, language, planning, and the executive
+              decisions that determine whether momentum becomes institution.
             </p>
             <p>
               The work is precise, but not sterile. Strategic, but not generic.
