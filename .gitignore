@@ -2,6 +2,9 @@
 
 # dependencies
 /node_modules
+# this project uses pnpm; npm/yarn lockfiles are local artifacts
+/package-lock.json
+/yarn.lock
 /.pnp
 .pnp.*
 .yarn/*

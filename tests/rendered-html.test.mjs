@@ -33,7 +33,10 @@ test("server-renders the JSCo homepage", async () => {
   assert.match(html, /JaiSellers Consulting/);
   assert.match(html, /JaiSellers Designs and Photography/);
   assert.match(html, /Just Systems Initiatives/);
-  assert.match(html, /Nonprofit Strategy \+ Compliance/);
+  assert.match(html, /Nonprofit Strategy and Compliance/);
   assert.match(html, /IRS 1023 readiness/);
+  assert.match(html, /Governance Reset/);
+  assert.match(html, /Funding Readiness/);
+  assert.match(html, /Advisory Retainer/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/i);
 });
