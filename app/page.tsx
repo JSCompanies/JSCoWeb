@@ -1,74 +1,157 @@
-const portfolioItems = [
-  {
-    title: "Nonprofit Strategy + Compliance",
-    type: "Governance systems",
-    description:
-      "IRS 1023 readiness, bylaws, board structure, budgets, grant narratives, and the practical documents that let mission work stand up straight.",
-  },
-  {
-    title: "Design + Brand Systems",
-    type: "Identity and language",
-    description:
-      "Logos, visual systems, campaign language, print pieces, digital layouts, and brand worlds for people and organizations with something to say.",
-  },
-  {
-    title: "Photography + Visual Story",
-    type: "Portrait and atmosphere",
-    description:
-      "Editorial portraits, founder imagery, atmospheric brand photography, and visual assets that make the person behind the work feel present.",
-  },
-];
+// ---------------------------------------------------------------------------
+// EDIT ME FIRST
+//
+// CONTACT_EMAIL  — the address every "Book" / "Start" button opens.
+// PRICING        — placeholder figures. Replace "$X,XXX" with real numbers
+//                  before this goes live. Nothing else needs to change to
+//                  set prices; every package reads from this one object.
+// ---------------------------------------------------------------------------
 
-const caseStudySignals = [
-  "Identity",
-  "Story",
-  "Image",
-  "Governance",
-  "Programs",
-  "Evidence",
-];
+const CONTACT_EMAIL = "joshuajaisellers@gmail.com";
 
-const housePillars = [
+const PRICING = {
+  formation: "Starting at $X,XXX",
+  governance: "Starting at $X,XXX",
+  funding: "Starting at $X,XXX",
+  identity: "Starting at $X,XXX",
+  retainer: "$X,XXX / month",
+};
+
+function inquiry(subject: string) {
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+}
+
+const practices = [
   {
+    id: "consulting",
     name: "JaiSellers Consulting",
-    line: "Governance, compliance, planning, grants, budgets, and executive infrastructure for mission-led organizations.",
+    role: "The core practice",
+    line: "Governance, compliance, and funding readiness for nonprofit organizations.",
+    detail:
+      "Formation and IRS filings, bylaws and policy sets, board structure and decision rights, program design, budgets, and the grant narratives that carry it all to funders. This is the work most executives and boards come here for.",
+    serves: "Executive directors, founding boards, and organizations approaching an audit, a filing, or a growth year.",
   },
   {
+    id: "designs",
     name: "JaiSellers Designs and Photography",
-    line: "Brand systems, logos, campaign worlds, portraits, and visual assets with a clear point of view.",
+    role: "Identity and image",
+    line: "Brand systems, campaign language, and portraiture with a point of view.",
+    detail:
+      "Logos and full identity systems, print and digital layouts, campaign worlds, editorial portraits, and founder imagery. Built so that a small organization looks as serious as the work it actually does.",
+    serves: "Organizations rebuilding their public face, and leaders who need to be seen clearly.",
   },
   {
+    id: "initiatives",
     name: "Just Systems Initiatives",
-    line: "Operational frameworks, civic projects, and practical systems that help good work become durable.",
+    role: "Civic and operational",
+    line: "Operating frameworks and civic projects that outlast the people who start them.",
+    detail:
+      "Process design, documentation standards, planning cycles, and the practical systems that turn a good instinct into something a successor can run without a translator.",
+    serves: "Coalitions, civic programs, and teams whose work has outgrown improvisation.",
   },
 ];
 
-const blogPosts = [
+const packages = [
   {
-    title: "When A Mission Outgrows Its Informal Systems",
-    kicker: "Briefing",
-    excerpt:
-      "The moment when charisma, urgency, and improvisation need a more durable operating shape.",
+    id: "formation",
+    kicker: "For new organizations",
+    name: "Formation",
+    price: PRICING.formation,
+    summary:
+      "Everything required to become a real, filed, governable nonprofit — assembled in one engagement instead of five scattered ones.",
+    includes: [
+      "Articles of incorporation and state filing support",
+      "Bylaws drafted to your actual structure",
+      "IRS 1023 or 1023-EZ readiness and application package",
+      "Conflict-of-interest, records retention, and financial policies",
+      "Founding board slate, roles, and first-year meeting calendar",
+      "EIN, registered agent, and post-approval checklist",
+    ],
+    timeline: "6–10 weeks",
   },
   {
-    title: "The Board As A Room, Not A Rubber Stamp",
-    kicker: "Governance",
-    excerpt:
-      "A useful board creates the conditions for judgment, trust, candor, and real stewardship.",
+    id: "governance",
+    kicker: "For existing organizations",
+    name: "Governance Reset",
+    price: PRICING.governance,
+    summary:
+      "For the organization that grew on charisma and urgency, and now needs a structure a board can actually govern through.",
+    includes: [
+      "Bylaws and policy review against current practice",
+      "Board roles, decision rights, and committee structure",
+      "Meeting, agenda, and minutes system that holds up under review",
+      "Board onboarding packet and annual governance calendar",
+      "Executive–board boundary and reporting cadence",
+      "Adopted-by-resolution document set",
+    ],
+    timeline: "8–12 weeks",
   },
   {
-    title: "Stability Is A Creative Advantage",
-    kicker: "Practice",
-    excerpt:
-      "The right support makes leaders less alone, teams less scattered, and the work less fragile.",
+    id: "funding",
+    kicker: "For organizations seeking funding",
+    name: "Funding Readiness",
+    price: PRICING.funding,
+    summary:
+      "The documents funders ask for, written so your programs and your numbers tell the same story.",
+    includes: [
+      "Program logic model and outcomes framework",
+      "Organizational and program budgets",
+      "Case for support and funder-facing one-pager",
+      "Reusable grant narrative library",
+      "Evaluation plan and reporting templates",
+      "Prospect research and submission calendar",
+    ],
+    timeline: "6–8 weeks",
+  },
+  {
+    id: "identity",
+    kicker: "For organizations being seen",
+    name: "Identity and Presence",
+    price: PRICING.identity,
+    summary:
+      "A visual system and set of images that make a small organization legible, credible, and unmistakably itself.",
+    includes: [
+      "Logo and full identity system",
+      "Brand guide: type, color, usage, voice",
+      "Editorial portraits and organizational imagery",
+      "Templates for decks, letterhead, and reports",
+      "Campaign or program collateral",
+      "Web-ready asset package",
+    ],
+    timeline: "5–8 weeks",
   },
 ];
 
-const principles = [
-  "Useful governance, not ornamental governance.",
-  "Programs with shape, proof, and a fundable story.",
-  "Operations that create calm without dulling ambition.",
-  "Executive support that protects attention and judgment.",
+const retainer = {
+  name: "Advisory Retainer",
+  price: PRICING.retainer,
+  summary:
+    "Ongoing counsel for executives carrying decisions that need judgment rather than a deliverable.",
+  includes: [
+    "Standing monthly working session",
+    "Board meeting preparation and debrief",
+    "Document and correspondence review",
+    "On-call judgment between sessions",
+  ],
+};
+
+const engagementTerms = [
+  {
+    title: "Fixed scope, fixed fee",
+    copy: "Every package is quoted in writing before work begins. No hourly drift, no surprise invoices for a board to explain.",
+  },
+  {
+    title: "Documents, not advice alone",
+    copy: "Each engagement ends in artifacts your board can adopt, your auditor can read, and your successor can use.",
+  },
+  {
+    title: "Board-ready language",
+    copy: "Policies, minutes, and filings are drafted to withstand review by counsel, funders, and the IRS.",
+  },
+  {
+    title: "A named counterpart",
+    copy: "You work directly with Joshua Sellers throughout. Nothing is handed to a junior team you have not met.",
+  },
 ];
 
 const advisoryScore = [
@@ -76,281 +159,394 @@ const advisoryScore = [
     number: "01",
     verb: "Read",
     title: "See the hidden architecture",
-    copy:
-      "A close diagnostic of roles, pressure points, decision habits, board function, programs, language, and the places where momentum leaks.",
+    copy: "A close diagnostic of roles, pressure points, decision habits, board function, programs, and the places where momentum leaks.",
   },
   {
     number: "02",
     verb: "Frame",
     title: "Name the working shape",
-    copy:
-      "A clear model for what the organization is becoming: its rooms, rhythms, authority, program logic, and fundable story.",
+    copy: "A clear model for what the organization is becoming: its rooms, rhythms, authority, program logic, and fundable story.",
   },
   {
     number: "03",
-    verb: "Tune",
-    title: "Build the operating cadence",
-    copy:
-      "Practical systems for meetings, documentation, planning, board work, follow-through, and leadership attention.",
+    verb: "Build",
+    title: "Produce the documents",
+    copy: "Bylaws, policies, filings, budgets, narratives, and systems — drafted, reviewed with you, and prepared for adoption.",
   },
   {
     number: "04",
     verb: "Hold",
     title: "Support the next passage",
-    copy:
-      "Ongoing advisory presence for leaders carrying decisions that need judgment, steadiness, and a more elegant table.",
+    copy: "Ongoing advisory presence for leaders carrying decisions that need judgment, steadiness, and a more elegant table.",
+  },
+];
+
+const workItems = [
+  {
+    practice: "Consulting",
+    title: "Nonprofit Strategy and Compliance",
+    description:
+      "IRS 1023 readiness, bylaws, board structure, budgets, and grant narratives — the practical documents that let mission work stand up straight.",
+  },
+  {
+    practice: "Designs",
+    title: "Brand and Identity Systems",
+    description:
+      "Logos, visual systems, campaign language, print pieces, and digital layouts for organizations with something to say.",
+  },
+  {
+    practice: "Photography",
+    title: "Portrait and Organizational Image",
+    description:
+      "Editorial portraits, founder imagery, and atmospheric photography that make the people behind the work feel present.",
+  },
+];
+
+const notes = [
+  {
+    kicker: "Governance",
+    title: "When a mission outgrows its informal systems",
+    excerpt: "The moment when charisma, urgency, and improvisation need a more durable operating shape.",
+  },
+  {
+    kicker: "Boards",
+    title: "The board as a room, not a rubber stamp",
+    excerpt: "A useful board creates the conditions for judgment, trust, candor, and real stewardship.",
+  },
+  {
+    kicker: "Practice",
+    title: "Stability is a creative advantage",
+    excerpt: "The right support makes leaders less alone, teams less scattered, and the work less fragile.",
   },
 ];
 
 export default function Home() {
   return (
-    <main>
-      <section className="hero" id="top" aria-label="JaiSellers Companies">
-        <nav className="nav" aria-label="Main navigation">
-          <a className="brand" href="#top" aria-label="JaiSellers Companies home">
+    <>
+      <header className="site-header">
+        <div className="site-header-inner">
+          <a className="brand" href="#top">
             <img src="/jsco-brand-mark.png" alt="" className="brand-logo" />
-            <span>JaiSellers Companies</span>
+            <span className="brand-name">JaiSellers Companies</span>
           </a>
-          <div className="nav-links">
-            <a href="#philosophy">Approach</a>
-            <a href="#work">Portfolio</a>
-            <a href="#journal">Notes</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </nav>
-
-        <div className="hero-card-frame">
-          <img
-            src="/jaisellers-hero-card.png"
-            alt="JaiSellers Companies. Structure where Art can thrive. Joshua Sellers in profile."
-            className="hero-card-image"
-          />
+          <nav className="nav-links" aria-label="Main navigation">
+            <a href="#practices">Practices</a>
+            <a href="#packages">Packages</a>
+            <a href="#process">Process</a>
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+          </nav>
+          <a className="button gold compact" href={inquiry("Consultation request")}>
+            Book a consult
+          </a>
         </div>
-      </section>
+      </header>
 
-      <section className="opening band" aria-label="JaiSellers Companies introduction">
-        <div className="opening-inner">
-          <div>
-            <p className="eyebrow">JaiSellers Companies</p>
-            <h2 className="brand-type-heading">
-              <span>A private advisory house</span>
-              <span>for uncommon work.</span>
-            </h2>
-          </div>
-          <div className="opening-copy">
-            <p>
-              Governance design, program architecture, and executive support for
-              mission-led organizations ready to become more durable without
-              becoming ordinary. JSCo holds the unglamorous essentials and the
-              expressive work in the same room, because that is where the magic
-              stops being fragile.
-            </p>
-            <div className="hero-actions" aria-label="Primary actions">
-              <a className="button primary" href="#contact">
-                Start the conversation
-              </a>
-              <a className="button secondary dark" href="#philosophy">
-                Explore the practice
-              </a>
+      <main id="top">
+        <section className="hero" aria-label="JaiSellers Companies">
+          <div className="hero-inner">
+            <div className="hero-copy">
+              <p className="eyebrow gold">JaiSellers Companies</p>
+              <h1>
+                Structure where <em>Art</em> can thrive.
+              </h1>
+              <p className="hero-lede">
+                Governance, compliance, and funding readiness for nonprofit
+                organizations — delivered as fixed-scope packages, with the
+                documents your board can adopt at the end of it.
+              </p>
+              <div className="hero-actions">
+                <a className="button gold" href="#packages">
+                  See the packages
+                </a>
+                <a className="button ghost" href={inquiry("Consultation request")}>
+                  Book a consult
+                </a>
+              </div>
+              <ul className="hero-proof">
+                <li>Fixed scope, quoted in writing</li>
+                <li>Board-ready documents</li>
+                <li>Direct work with Joshua Sellers</li>
+              </ul>
+            </div>
+            <div className="hero-portrait">
+              <img
+                src="/joshua-portrait-wide.jpg"
+                alt="Joshua Sellers, founder of JaiSellers Companies"
+                fetchPriority="high"
+              />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="house band" id="house" aria-label="JaiSellers Companies house">
-        <div className="house-inner">
-          <div className="house-mark">
-            <img src="/jsco-logo-full.png" alt="JSCo JaiSellers Companies logo" />
-          </div>
-          <div className="house-copy">
-            <p className="eyebrow">The House</p>
-            <h2>One company. Three rooms. One sharper standard.</h2>
-            <div className="house-grid">
-              {housePillars.map((pillar) => (
-                <article className="house-card" key={pillar.name}>
-                  <h3>{pillar.name}</h3>
-                  <p>{pillar.line}</p>
+        <section className="practices" id="practices">
+          <div className="container">
+            <div className="section-head">
+              <p className="eyebrow gold">The House</p>
+              <h2>One house. Three practices.</h2>
+              <p className="section-lede">
+                Most organizations arrive for the first. Many stay for the other
+                two, because structure and image are the same problem seen from
+                two directions.
+              </p>
+            </div>
+            <div className="practice-list">
+              {practices.map((practice, index) => (
+                <article className="practice" id={practice.id} key={practice.id}>
+                  <div className="practice-index">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <p>{practice.role}</p>
+                  </div>
+                  <div className="practice-body">
+                    <h3>{practice.name}</h3>
+                    <p className="practice-line">{practice.line}</p>
+                    <p className="practice-detail">{practice.detail}</p>
+                    <p className="practice-serves">
+                      <span>Serves</span>
+                      {practice.serves}
+                    </p>
+                  </div>
                 </article>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="score band" aria-label="Advisory score">
-        <div className="score-inner">
-          <div className="score-intro">
-            <p className="eyebrow">The Advisory Score</p>
-            <h2>
-              <span>Four movements.</span>
-              <span>One steadier institution.</span>
-            </h2>
-          </div>
-          <div className="score-grid">
-            {advisoryScore.map((item) => (
-              <article className="score-card" key={item.number}>
-                <div className="score-card-top">
-                  <span>{item.number}</span>
-                  <p>{item.verb}</p>
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.copy}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+        <section className="packages" id="packages">
+          <div className="container">
+            <div className="section-head">
+              <p className="eyebrow gold">Packages</p>
+              <h2>Buy the engagement, not the hour.</h2>
+              <p className="section-lede">
+                Each package is a defined body of work with a written scope, a
+                schedule, and a set of documents you keep. Built for
+                organizations that need to know the number before they begin.
+              </p>
+            </div>
 
-      <section className="manifesto band" id="philosophy">
-        <div className="section-label">Approach</div>
-        <div className="manifesto-grid">
-          <div>
-            <h2>A private advisory house for organizations at a threshold.</h2>
-          </div>
-          <div className="manifesto-copy">
-            <p>
-              JaiSellers Companies works with leaders carrying work that has
-              become too important to depend on informal systems. The practice
-              brings order to governance, compliance, grants, budgets, brand
-              systems, photography, language, planning, and the executive
-              decisions that determine whether momentum becomes institution.
+            <div className="package-grid">
+              {packages.map((pkg) => (
+                <article className="package" key={pkg.id}>
+                  <div className="package-head">
+                    <p className="package-kicker">{pkg.kicker}</p>
+                    <h3>{pkg.name}</h3>
+                    <p className="package-price">{pkg.price}</p>
+                    <p className="package-summary">{pkg.summary}</p>
+                  </div>
+                  <ul className="package-includes">
+                    {pkg.includes.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <div className="package-foot">
+                    <p className="package-timeline">
+                      <span>Typical timeline</span>
+                      {pkg.timeline}
+                    </p>
+                    <a className="button gold wide" href={inquiry(`${pkg.name} package inquiry`)}>
+                      Start {pkg.name}
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <article className="retainer">
+              <div className="retainer-copy">
+                <p className="eyebrow gold">Ongoing</p>
+                <h3>{retainer.name}</h3>
+                <p>{retainer.summary}</p>
+                <ul>
+                  {retainer.includes.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="retainer-action">
+                <p className="package-price">{retainer.price}</p>
+                <a className="button gold wide" href={inquiry("Advisory retainer inquiry")}>
+                  Enquire about the retainer
+                </a>
+                <p className="retainer-note">
+                  Retainers begin after an initial engagement or a scoping
+                  conversation.
+                </p>
+              </div>
+            </article>
+
+            <p className="packages-footnote">
+              Need something between two packages, or none of them? Scope is
+              written to the organization.{" "}
+              <a href={inquiry("Custom engagement inquiry")}>Describe the situation</a>.
             </p>
-            <p>
-              The work is precise, but not sterile. Strategic, but not generic.
-              Built for nonprofits, cultural organizations, artist-led
-              institutions, and mission-driven teams that need a more elegant
-              way to hold complexity.
-            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="principles band" aria-label="Core principles">
-        {principles.map((principle, index) => (
-          <article className="principle" key={principle}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <p>{principle}</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="method band" aria-label="How JaiSellers Companies works">
-        <div className="method-inner">
-          <div className="method-visual">
-            <img
-              src="/jaisellers-office.png"
-              alt="Joshua Sellers seated in an office with planning documents and books"
-            />
-          </div>
-          <div className="method-copy">
-            <p className="eyebrow">Services</p>
-            <h2>Quiet systems. Strong rooms. Better decisions.</h2>
-            <div className="method-list">
-              <div>
-                <h3>Governance Design</h3>
-                <p>
-                  Board roles, decision rights, bylaws, committees, and
-                  leadership practices that make responsibility easier to see.
-                </p>
-              </div>
-              <div>
-                <h3>Program Strategy</h3>
-                <p>
-                  Service models, initiative maps, outcomes, budgets, and a
-                  narrative spine that lets funders and teams see the same work.
-                </p>
-              </div>
-              <div>
-                <h3>Executive Infrastructure</h3>
-                <p>
-                  Planning cycles, documentation, meeting systems, and follow-up
-                  structures that give leaders more room to lead.
-                </p>
-              </div>
+        <section className="terms" aria-label="How engagements work">
+          <div className="container">
+            <div className="section-head">
+              <p className="eyebrow gold">For executives and boards</p>
+              <h2>How an engagement is run.</h2>
+              <p className="section-lede">
+                What a board can expect before it approves a contract, and what
+                it holds when the work is finished.
+              </p>
+            </div>
+            <div className="terms-grid">
+              {engagementTerms.map((term) => (
+                <article className="term" key={term.title}>
+                  <h3>{term.title}</h3>
+                  <p>{term.copy}</p>
+                </article>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="portfolio band" id="work">
-        <div className="section-heading">
-          <p className="eyebrow">Portfolio</p>
-          <h2>Case studies in identity, image, and nonprofit structure.</h2>
-          <div className="case-study-strip" aria-label="Case study signals">
-            {caseStudySignals.map((signal) => (
-              <span key={signal}>{signal}</span>
-            ))}
+        <section className="score" id="process">
+          <div className="container score-inner">
+            <div className="score-intro">
+              <p className="eyebrow gold">The Advisory Score</p>
+              <h2>
+                <span>Four movements.</span>
+                <span className="accent">One steadier institution.</span>
+              </h2>
+              <p className="section-lede">
+                Every package moves through the same four passages, whether the
+                engagement lasts six weeks or a year.
+              </p>
+            </div>
+            <ol className="score-grid">
+              {advisoryScore.map((item) => (
+                <li className="score-card" key={item.number}>
+                  <div className="score-card-top">
+                    <span>{item.number}</span>
+                    <p>{item.verb}</p>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </li>
+              ))}
+            </ol>
           </div>
-        </div>
-        <div className="card-grid">
-          {portfolioItems.map((item) => (
-            <article className="portfolio-card" key={item.title}>
-              <p>{item.type}</p>
-              <h3>{item.title}</h3>
-              <span>{item.description}</span>
-            </article>
-          ))}
-        </div>
-      </section>
+        </section>
 
-      <section className="journal band" id="journal">
-        <div className="section-heading">
-          <p className="eyebrow">The Index</p>
-          <h2>Briefings on leadership, structure, trust, and institutional imagination.</h2>
-        </div>
-        <div className="journal-list">
-          {blogPosts.map((post) => (
-            <article className="journal-card" key={post.title}>
-              <p>{post.kicker}</p>
-              <h3>{post.title}</h3>
-              <span>{post.excerpt}</span>
-              <a href="#contact" aria-label={`Discuss ${post.title}`}>
-                Discuss this note
+        <section className="work" id="work">
+          <div className="container">
+            <div className="section-head">
+              <p className="eyebrow gold">Selected work</p>
+              <h2>Identity, image, and nonprofit structure.</h2>
+            </div>
+            <div className="work-grid">
+              {workItems.map((item) => (
+                <article className="work-card" key={item.title}>
+                  <p className="work-practice">{item.practice}</p>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="about" id="about">
+          <div className="container about-inner">
+            <div className="about-image">
+              <img
+                src="/jaisellers-hero.jpg"
+                alt="Joshua Sellers in profile, with the JaiSellers Companies monogram"
+                loading="lazy"
+              />
+            </div>
+            <div className="about-copy">
+              <p className="eyebrow gold">About</p>
+              <h2>Joshua Sellers</h2>
+              <p>
+                JaiSellers Companies works with leaders carrying work that has
+                become too important to depend on informal systems — nonprofit
+                executives, founding boards, artist-led institutions, and civic
+                programs at the point where momentum has to become
+                infrastructure.
+              </p>
+              <p>
+                The practice holds the unglamorous essentials and the expressive
+                work in the same room: filings and bylaws alongside brand
+                systems and portraiture. That combination is deliberate. An
+                organization is believed when its structure and its image agree.
+              </p>
+              <p className="about-cta">
+                <a href={inquiry("Consultation request")}>Book a consult</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="notes" id="notes">
+          <div className="container">
+            <div className="section-head">
+              <p className="eyebrow gold">The Index</p>
+              <h2>Notes on leadership, structure, and trust.</h2>
+            </div>
+            <div className="notes-grid">
+              {notes.map((note) => (
+                <article className="note-card" key={note.title}>
+                  <p className="note-kicker">{note.kicker}</p>
+                  <h3>{note.title}</h3>
+                  <p>{note.excerpt}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="contact" id="contact">
+          <div className="container contact-inner">
+            <div>
+              <p className="eyebrow gold">Begin</p>
+              <h2>Bring the complicated thing.</h2>
+              <p className="contact-lede">
+                A first conversation costs nothing and ends with a
+                recommendation, whether or not it points here.
+              </p>
+            </div>
+            <div className="contact-panel">
+              <p>
+                Tell me the organization, where it is stuck, and what has to be
+                true in six months. You will get a written scope and a fixed
+                quote.
+              </p>
+              <a className="button gold wide" href={inquiry("Consultation request")}>
+                Book a consult
               </a>
-            </article>
-          ))}
-        </div>
-      </section>
+              <p className="contact-email">
+                or write directly:{" "}
+                <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
 
-      <section className="about band">
-        <div className="about-inner">
-          <div className="about-image">
-            <img
-              src="/joshua-portrait-wide.png"
-              alt="Joshua Sellers looking toward the camera in a studio portrait"
-            />
+      <footer className="site-footer">
+        <div className="container footer-inner">
+          <div className="footer-brand">
+            <img src="/jsco-brand-mark.png" alt="" className="brand-logo" />
+            <div>
+              <p className="footer-name">JaiSellers Companies</p>
+              <p className="footer-tag">Structure where Art can thrive.</p>
+            </div>
           </div>
-          <div className="about-copy">
-            <p className="eyebrow">About JaiSellers Companies</p>
-            <h2>For leaders who need discernment, design, and a steadier table.</h2>
-            <p>
-              The work is centered on nonprofit clients, especially leaders
-              carrying cultural, creative, civic, or mission-driven complexity.
-              The promise is not more noise. It is a cleaner way to see the
-              organization, make the next decision, and carry the work forward.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="contact band" id="contact">
-        <div className="contact-inner">
-          <div>
-            <p className="eyebrow">Begin</p>
-            <h2>Bring the complicated thing. We will find the elegant shape.</h2>
-          </div>
-          <div className="contact-panel">
-            <p>
-              Best fit: nonprofit leaders, artist-led organizations, cultural
-              programs, and mission-driven teams ready for structure that feels
-              precise, human, and made for the work in front of them.
-            </p>
-            <a className="button primary" href="mailto:?subject=JaiSellers%20Companies%20Inquiry">
-              Draft an inquiry
-            </a>
+          <nav className="footer-nav" aria-label="Footer navigation">
+            <a href="#consulting">JaiSellers Consulting</a>
+            <a href="#designs">JaiSellers Designs and Photography</a>
+            <a href="#initiatives">Just Systems Initiatives</a>
+          </nav>
+          <div className="footer-contact">
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            <p>&copy; {new Date().getFullYear()} JaiSellers Companies</p>
           </div>
         </div>
-      </section>
-    </main>
+      </footer>
+    </>
   );
 }

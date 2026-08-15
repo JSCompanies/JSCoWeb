@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase,
     title: "JaiSellers Companies",
     description:
-      "Strategic advisory, governance design, and executive infrastructure for mission-led organizations.",
+      "Governance, compliance, and funding readiness for nonprofit organizations — delivered as fixed-scope packages with board-ready documents.",
     icons: {
       icon: "/favicon.svg",
       shortcut: "/favicon.svg",
@@ -46,6 +46,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&display=swap"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
