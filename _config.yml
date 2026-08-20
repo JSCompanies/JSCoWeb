@@ -1,0 +1,9 @@
+exclude:
+  - app/
+  - build/
+  - db/
+  - drizzle/
+  - examples/
+  - src/
+  - tests/
+  - worker/
