@@ -10,11 +10,11 @@
 const CONTACT_EMAIL = "joshuajaisellers@gmail.com";
 
 const PRICING = {
-  formation: "Starting at $X,XXX",
+  formation: "Starting at $2,",
   governance: "Starting at $X,XXX",
-  funding: "Starting at $X,XXX",
-  identity: "Starting at $X,XXX",
-  retainer: "$X,XXX / month",
+  funding: "Starting at $2,000",
+  identity: "Starting at $3,000",
+  retainer: "$400 / month",
 };
 
 function inquiry(subject: string) {
