@@ -27,7 +27,11 @@ function getExcludeEntries(config) {
 
 test("GitHub Pages Jekyll config excludes application source directories", async () => {
   const config = await readFile(new URL("../_config.yml", import.meta.url), "utf8");
-  const excludeEntries = getExcludeEntries(config);
+  const excludeMatch = config.match(/^exclude:\n((?:^[ \t]+-.*\n?)*)/m);
+
+  assert.ok(excludeMatch, "Expected _config.yml to define an exclude block");
+
+  const excludeBlock = excludeMatch[1];
 
   for (const entry of [
     "app/",
