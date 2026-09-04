@@ -34,13 +34,15 @@ h3{ font-size:18px; margin-bottom:10px; }
 .topbar .logo{
   display:inline-flex;
   align-items:center;
-  padding: 12px var(--pad);
+  padding: 10px var(--pad);
   font-weight:700;
   letter-spacing:.01em;
 }
 .logo-img{
-  height:32px;
-  width:auto;
+  width:min(230px, 58vw);
+  height:auto;
+  max-height:48px;
+  object-fit:contain;
   display:block;
 }
 .nav{
@@ -179,6 +181,11 @@ h3{ font-size:18px; margin-bottom:10px; }
 .sep{ opacity:.5; }
 
 @media (max-width: 900px){
+  .logo-img{
+    width:min(190px, 62vw);
+    max-height:42px;
+  }
+
   .grid3{ grid-template-columns: 1fr; }
   .split{ grid-template-columns: 1fr; }
   .hero-content{ padding-top: 72px; }

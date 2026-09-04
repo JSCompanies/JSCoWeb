@@ -29,6 +29,19 @@ const { title, description = "Insights from the desk of Joshua Jaisellers — fo
         line-height: 1.7;
         font-size: 18px;
       }
+      .site-logo {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 2.25rem;
+      }
+      .site-logo img {
+        width: min(230px, 58vw);
+        height: auto;
+        max-height: 48px;
+        object-fit: contain;
+        margin: 0;
+        border-radius: 0;
+      }
       a { color: #8a7430; text-decoration: none; }
       a:hover { text-decoration: underline; }
       img { max-width: 100%; display: block; margin: 2.5rem 0; border-radius: 4px; }
@@ -47,6 +60,9 @@ const { title, description = "Insights from the desk of Joshua Jaisellers — fo
     </style>
   </head>
   <body>
+    <a class="site-logo" href="/" aria-label="JaiSellers Companies home">
+      <img src="/images/jsco-wordbrand-2026.png" alt="JaiSellers Companies" />
+    </a>
     <slot />
     <footer>
       <span>&copy; {new Date().getFullYear()} JaiSellers Companies</span>

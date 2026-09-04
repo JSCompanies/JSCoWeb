@@ -22,6 +22,18 @@ const title = "The 501(c)(3) Partnership";
         padding: 48px 20px;
         text-align: center;
       }
+      .site-logo {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 28px;
+      }
+      .site-logo img {
+        width: min(230px, 58vw);
+        height: auto;
+        max-height: 48px;
+        object-fit: contain;
+        display: block;
+      }
       header h1 {
         margin-bottom: 8px;
         font-size: 2.1rem;
@@ -58,6 +70,9 @@ const title = "The 501(c)(3) Partnership";
 
   <body>
     <header>
+      <a class="site-logo" href="/" aria-label="JaiSellers Companies home">
+        <img src="/images/jsco-wordbrand-2026.png" alt="JaiSellers Companies" />
+      </a>
       <h1>{title}</h1>
       <p>
         A guided, collaborative partnership to build your nonprofit the right way —
