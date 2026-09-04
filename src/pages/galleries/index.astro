@@ -1,0 +1,38 @@
+---
+const brand = "JaiSellers Companies";
+const title = "Client Gallery Access";
+const galleryLink = "https://drive.google.com/drive/folders/1BdfZ60kcpVZXyesnULvF3cIn4Ss6JFHo?usp=sharing";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — {brand}</title>
+    <meta
+      name="description"
+      content="Client gallery access page for event photo delivery."
+    />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+
+  <body>
+    <main class="section">
+      <div class="container" style="max-width: 760px; text-align: center;">
+        <p class="kicker">Jai Galleries</p>
+        <h1>Client Event Gallery</h1>
+        <p style="margin-top: 14px; color: var(--muted);">
+          There are no photos posted yet. Images will be uploaded after the event.
+        </p>
+        <p style="margin-top: 8px; color: var(--muted);">
+          You can still open the gallery folder now and refresh later for new uploads.
+        </p>
+        <div style="margin-top: 24px;">
+          <a class="btn primary" href={galleryLink} target="_blank" rel="noopener noreferrer">
+            Open Client Gallery Folder
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
