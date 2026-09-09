@@ -10,10 +10,10 @@
 const CONTACT_EMAIL = "joshuajaisellers@gmail.com";
 
 const PRICING = {
-  formation: "Starting at $2,",
-  governance: "Starting at $X,XXX",
-  funding: "Starting at $2,000",
-  identity: "Starting at $3,000",
+  formation: "Starting at $1,000",
+  governance: "Starting at $1,200",
+  funding: "Starting at $1,800",
+  identity: "Starting at $2,500",
   retainer: "$400 / month",
 };
 
