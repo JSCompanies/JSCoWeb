@@ -8,6 +8,7 @@
 // ---------------------------------------------------------------------------
 
 const CONTACT_EMAIL = "joshuajaisellers@gmail.com";
+const BLOG_URL = "https://jaisellers.com/blog";
 
 const PRICING = {
   formation: "Starting at $1,000",
@@ -235,6 +236,7 @@ export default function Home() {
             <a href="#process">Process</a>
             <a href="#work">Work</a>
             <a href="#about">About</a>
+            <a href={BLOG_URL}>Blog</a>
           </nav>
           <a className="button gold compact" href={inquiry("Consultation request")}>
             Book a consult
@@ -540,6 +542,7 @@ export default function Home() {
             <a href="#consulting">JaiSellers Consulting</a>
             <a href="#designs">JaiSellers Designs and Photography</a>
             <a href="#initiatives">Just Systems Initiatives</a>
+            <a href={BLOG_URL}>Blog</a>
           </nav>
           <div className="footer-contact">
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
