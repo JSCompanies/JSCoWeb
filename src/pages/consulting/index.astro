@@ -1,202 +1,102 @@
 ---
-const title = "Consulting (JSC)";
-const brand = "JaiSellers Companies";
-const division = "JaiSellers Consulting";
+import Brand from "../../layouts/Brand.astro";
+import { services } from "../../data/services";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} — {brand}</title>
-    <meta
-      name="description"
-      content="Governance, funding, and operations systems for mission-driven organizations—built to hold under real pressure."
-    />
-   <link rel="stylesheet" href="/site.css" />
-  </head>
+<Brand
+  title="Services — JaiSellers Consulting"
+  description="Fixed-fee nonprofit formation, 501(c)(3) reinstatement, 990 compliance, grant readiness, grant writing, and brand engagements."
+  current="/consulting"
+>
+  <style>
+    .intro { padding: clamp(64px, 9vw, 120px) 0 clamp(48px, 6vw, 80px); border-bottom: 1px solid var(--line-dark); background: radial-gradient(50% 80% at 90% 0%, rgba(201,168,76,.14), transparent 70%); }
+    .intro h1 { margin-top: 22px; max-width: 14ch; }
+    .intro .lede { margin-top: 24px; }
+    .intro .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .svc-card { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 72px); padding: clamp(40px, 6vw, 72px) 0; border-bottom: 1px solid var(--line-light); scroll-margin-top: 90px; }
+    .svc-card .num { font-family: var(--serif); font-size: 18px; letter-spacing: .2em; color: var(--gold-deep); }
+    .svc-card h2 { font-size: clamp(32px, 3.6vw, 46px); margin-top: 10px; }
+    .svc-card .hook { margin-top: 16px; font-size: 19px; color: var(--text-dark) !important; }
+    .svc-card .best { margin-top: 16px; }
+    .svc-card .best b { font-weight: 500; color: var(--text-dark); }
+    .svc-card h4 { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-deep); font-weight: 500; margin-bottom: 16px; }
+    .svc-card ul { list-style: none; padding: 0; display: grid; gap: 12px; }
+    .svc-card li { position: relative; padding-left: 26px; color: var(--muted-dark); }
+    .svc-card li::before { content: ""; position: absolute; left: 0; top: .78em; width: 14px; height: 1px; background: var(--gold-deep); }
+    .svc-card .btn { margin-top: 28px; }
+    .fit { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); margin-top: 40px; }
+    .fit div { background: var(--ink); padding: clamp(28px, 4vw, 44px); }
+    .fit h3 { font-size: 30px; }
+    .fit ul { margin-top: 18px; padding-left: 18px; color: var(--muted-light); display: grid; gap: 10px; }
+    .closing { text-align: center; }
+    .closing h2 { max-width: 18ch; margin: 18px auto 0; }
+    .closing .btn { margin-top: 34px; }
+    @media (max-width: 860px) { .svc-card, .fit { grid-template-columns: 1fr; } }
+  </style>
 
-  <body>
-    <header class="topbar">
-      <a class="logo" href="/">
-        <img src="/images/jsco-wordbrand-2026.png" alt={brand} class="logo-img" />
-      </a>
-      <nav class="nav">
-        <a href="/consulting">Consulting (JSC)</a>
-        <a href="/design">Design</a>
-        <a href="/jsi">JSI</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/about">About</a>
-        <a href="/blog">Insights</a>
-        <a class="nav-cta" href="/contact">Contact</a>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Intro -->
-      <section class="section">
-        <div class="container">
-          <p class="kicker">Consulting</p>
-          <h1>{division}</h1>
-          <p style="margin-top:14px; max-width:70ch;">
-            We help mission-driven leaders turn conviction into governance, funding, and operating systems that hold up
-            under real pressure—so your work survives transitions, grant cycles, and growth.
-          </p>
-
-          <div class="cta-row" style="margin-top:20px;">
-            <a class="btn primary" href="/contact">Book a consult</a>
-            <a class="btn ghost" href="/systems">See how we work</a>
-          </div>
-
-          <div class="trust-row" style="margin-top:18px;">
-            <span class="pill">501(c)(3) formation</span>
-            <span class="pill">Bylaws + governance</span>
-            <span class="pill">Budgets + grant readiness</span>
-            <span class="pill">Reporting + operating rhythms</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Offer Stack -->
-      <section class="section section-alt">
-        <div class="container">
-          <h2>Offer stack</h2>
-          <p style="max-width:70ch;">
-            Choose the lane you need right now. We can start with a fast build, then deepen into ongoing support.
-          </p>
-
-          <div class="grid3" style="margin-top:18px;">
-            <!-- Offer 1 -->
-            <article class="card">
-              <h3>Formation Machine</h3>
-              <p>
-                For new or rebuilding nonprofits that need structure first—so funding and credibility can follow.
-              </p>
-              <ul class="bullets">
-                <li>EIN + incorporation review</li>
-                <li>Bylaws + core policies (COI, records, etc.)</li>
-                <li>Board roles + meeting rhythm</li>
-                <li>1023/1023-EZ readiness plan</li>
-                <li>Compliance checklist + 12-month calendar</li>
-              </ul>
-              <p class="small">Best for: 0–24 months old or reinstatement/rebuilds.</p>
-              <a class="btn ghost" href="/contact" style="margin-top:12px;">Ask about Formation →</a>
-            </article>
-
-            <!-- Offer 2 -->
-            <article class="card">
-              <h3>Grant Readiness + Revenue Stack</h3>
-              <p>
-                For orgs doing good work but bleeding time and money because revenue systems aren’t built.
-              </p>
-              <ul class="bullets">
-                <li>Budget architecture (program + admin)</li>
-                <li>Grant calendar + pipeline tracker</li>
-                <li>Case for support (funder-ready)</li>
-                <li>Outcomes + reporting framework</li>
-                <li>Submission workflow + file system</li>
-              </ul>
-              <p class="small">Best for: orgs with programs running but funding unstable.</p>
-              <a class="btn ghost" href="/contact" style="margin-top:12px;">Build the Revenue Stack →</a>
-            </article>
-
-            <!-- Offer 3 -->
-            <article class="card">
-              <h3>Board Ops + Operating Rhythm</h3>
-              <p>
-                For orgs that are growing—but governance, meetings, and accountability are messy or inconsistent.
-              </p>
-              <ul class="bullets">
-                <li>Board packet template + agenda system</li>
-                <li>Policies + approvals workflow</li>
-                <li>OKRs/KPIs (lightweight, usable)</li>
-                <li>Monthly reporting cadence</li>
-                <li>Role clarity + task ownership</li>
-              </ul>
-              <p class="small">Best for: orgs scaling programs or managing multiple grants.</p>
-              <a class="btn ghost" href="/contact" style="margin-top:12px;">Stabilize Ops →</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Process -->
-      <section class="section">
-        <div class="container">
-          <h2>How it works</h2>
-          <div class="grid3" style="margin-top:18px;">
-            <article class="card">
-              <h3>1) Quick intake</h3>
-              <p>We clarify goals, urgency, constraints, and what “done” means. No vague projects.</p>
-            </article>
-            <article class="card">
-              <h3>2) Build the system</h3>
-              <p>Templates, checklists, policies, trackers, and a simple rhythm your team can actually maintain.</p>
-            </article>
-            <article class="card">
-              <h3>3) Hand-off + sustain</h3>
-              <p>We document it, train it, and set a maintenance cadence so it doesn’t decay after month one.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ / Fit -->
-      <section class="section section-alt">
-        <div class="container split">
-          <div>
-            <h2>Fit check</h2>
-            <p style="margin-top:10px; max-width:70ch;">
-              This is for mission-driven teams who want structure—not vibes. If you’re ready to do the work and keep the
-              rhythm, we’ll build something durable.
-            </p>
-
-            <div class="grid3" style="margin-top:18px;">
-              <article class="card">
-                <h3>Good fit</h3>
-                <ul class="bullets">
-                  <li>You’re serious about compliance and clarity</li>
-                  <li>You want templates + repeatable systems</li>
-                  <li>You need funding to stop being random</li>
-                </ul>
-              </article>
-              <article class="card">
-                <h3>Not a fit</h3>
-                <ul class="bullets">
-                  <li>You want shortcuts or “guaranteed grants”</li>
-                  <li>You won’t involve decision-makers</li>
-                  <li>You refuse basic documentation</li>
-                </ul>
-              </article>
-              <article class="card">
-                <h3>Typical outputs</h3>
-                <ul class="bullets">
-                  <li>Board packet + calendar</li>
-                  <li>Budget + pipeline tracker</li>
-                  <li>Policies + filing checklist</li>
-                </ul>
-              </article>
-            </div>
-          </div>
-
-          <div class="callout">
-            <h3>Start here</h3>
-            <p style="margin-top:10px;">
-              Book a consult and we’ll decide the fastest path to stability.
-            </p>
-            <a class="btn primary" href="/contact" style="margin-top:12px;">Book a consult</a>
-            <p class="small">Email: <a href="mailto:joshuajaisellers@gmail.com">joshuajaisellers@gmail.com</a></p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer-inner">
-        <span>© {new Date().getFullYear()} {brand}</span>
-        <span class="sep">•</span>
-        <a href="/contact">Contact</a>
+  <section class="intro">
+    <div class="wrap">
+      <span class="eyebrow">JaiSellers Consulting</span>
+      <h1>Structure that makes you <em>fundable.</em></h1>
+      <p class="lede">Fixed-fee engagements for nonprofits, churches, and mission-driven organizations. Each one is scoped in writing and ends with documents you own and understand.</p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="/contact">Book a free clarity call <span class="arrow">&rarr;</span></a>
+        <a class="btn btn-line" href="/#approach">About Joshua</a>
       </div>
-    </footer>
-  </body>
-</html>
+    </div>
+  </section>
+
+  <section class="section-ivory">
+    <div class="wrap">
+      {services.map((s) => (
+        <article class="svc-card" id={s.id}>
+          <div>
+            <div class="num">{s.num}</div>
+            <h2>{s.name}</h2>
+            <p class="hook">{s.hook}</p>
+            <p class="best"><b>Best for:</b> {s.bestFor}</p>
+            <a class="btn btn-ink" href="/contact">Ask about this <span class="arrow">&rarr;</span></a>
+          </div>
+          <div>
+            <h4>What you receive</h4>
+            <ul>{s.deliverables.map((d) => <li>{d}</li>)}</ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Fit check</span>
+      <h2 style="margin-top:18px">Structure, <em>not vibes.</em></h2>
+      <div class="fit">
+        <div>
+          <h3 class="gold-text">A strong fit</h3>
+          <ul>
+            <li>You're serious about compliance and clarity</li>
+            <li>You want systems your team can maintain</li>
+            <li>Decision-makers will be at the table</li>
+            <li>You need funding to stop being random</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Not a fit</h3>
+          <ul>
+            <li>You want shortcuts or &ldquo;guaranteed grants&rdquo;</li>
+            <li>You need a nonprofit built overnight for a deadline</li>
+            <li>Leadership won't engage with the documents</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-ink2 closing">
+    <div class="wrap">
+      <span class="eyebrow">Next step</span>
+      <h2>Thirty minutes to a <em>clear plan.</em></h2>
+      <a class="btn btn-gold" href="/contact">Book a free clarity call <span class="arrow">&rarr;</span></a>
+    </div>
+  </section>
+</Brand>
