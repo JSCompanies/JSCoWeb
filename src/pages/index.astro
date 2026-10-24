@@ -1,401 +1,404 @@
 ---
-const brand = "JaiSellers Companies";
-const divisions = [
-  {
-    label: "JSC",
-    title: "JaiSellers Consulting",
-    text: "Governance, 501(c)(3) formation, funding systems, board infrastructure, and operating rhythms for mission-driven organizations.",
-    href: "/consulting",
-  },
-  {
-    label: "JSD",
-    title: "Design & Photography",
-    text: "Brand identity, practical collateral, visual systems, photography, and digital presence work with clean structure and symbolic depth.",
-    href: "/design",
-  },
-  {
-    label: "JSI",
-    title: "Just Systems Initiative",
-    text: "A nonprofit organization in formation focused on education, reentry preparation, family connection, and justice-centered civic literacy.",
-    href: "/jsi",
-  },
+import Brand from "../layouts/Brand.astro";
+import { services, EMAIL } from "../data/services";
+
+const pains = [
+  { q: "You're doing the work, but you're not a 501(c)(3) yet.", a: "Donors can't deduct. Funders can't fund. We fix the foundation first.", href: "#formation" },
+  { q: "Your exemption was revoked, or your 990s are behind.", a: "It's recoverable. We map what's missing and file in the right order.", href: "#compliance" },
+  { q: "A grant deadline is coming and the documents aren't ready.", a: "Budget, case for support, board list, outcomes — assembled and funder-ready.", href: "#grants" },
+  { q: "Your brand looks smaller than your impact.", a: "Identity, messaging, and photography that carry the weight of the mission.", href: "#brand" },
+];
+
+const pillars = [
+  { t: "Clear governance", icon: "M7 3h7l4 4v6M7 3v18h6M14 3v4h4M10 11h5M10 15h3M17 15l3 1.5v2.5c0 1.6-1.4 2.7-3 3-1.6-.3-3-1.4-3-3v-2.5z" },
+  { t: "Useful budgets", icon: "M5 20V13M10 20V9M15 20V11M20 20V5M3 20h19" },
+  { t: "Strong bylaws", icon: "M3 9l9-5 9 5M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 20h18" },
+  { t: "Grant language", icon: "M7 3h7l4 4v8M7 3v18h7M14 3v4h4M10 10h5M10 14h3M18 17a2 2 0 1 0 0 .1M16.5 19l-.5 3 2-1 2 1-.5-3" },
+  { t: "Brand messaging that holds steady", icon: "M4 6h16v10H9l-5 4zM9 11h.01M12 11h.01M15 11h.01" },
+];
+
+const steps = [
+  { n: "01", t: "Clarity call", d: "Thirty minutes, no charge. We look at where you are, what's urgent, and what's actually in the way." },
+  { n: "02", t: "Written scope", d: "You get a plain-language scope and a fixed quote. No hourly meter, no surprise invoices." },
+  { n: "03", t: "Build", d: "Documents, filings, budgets, and brand assets — drafted, reviewed with you, and finalized." },
+  { n: "04", t: "Handoff", d: "Everything delivered in a clean file system with a calendar so the work doesn't decay after month one." },
+];
+
+const faqs = [
+  { q: "Do you guarantee grants or IRS approval?", a: "No one honest can. What I guarantee is that your application, filings, and documents will be complete, accurate, and built to the standard funders and the IRS expect — which is what moves the odds." },
+  { q: "Do you work with organizations outside North Carolina?", a: "Yes. I'm based in Kings Mountain, NC, and work with clients remotely by phone and video. Federal filings are the same everywhere; I'll flag anything state-specific." },
+  { q: "How is pricing structured?", a: "Fixed-fee engagements, quoted in writing after the clarity call. You'll know the full cost before any work begins." },
+  { q: "We're a church or ministry. Is this for us?", a: "Very much so. Many of my clients are faith-based. Churches have different filing rules than other nonprofits, and outreach ministries often benefit from their own entity. We'll sort out which applies to you." },
+  { q: "Can you just file the paperwork for us?", a: "I prepare everything and walk you through it. Your officers sign, because they're the ones legally accountable — and they should understand what they're signing." },
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{brand}</title>
-    <meta
-      name="description"
-      content="JaiSellers Companies builds governance, funding, brand, and justice-centered systems for organizations doing public-benefit work."
-    />
-    <link rel="stylesheet" href="/site.css" />
-    <style>
-      :root {
-        --paper: #f5f0e7;
-        --ink: #101823;
-        --soft-ink: #354151;
-        --gold: #caa24a;
-        --gold-deep: #9f7b27;
-        --green: #2f4f46;
-        --line-light: rgba(16, 24, 35, 0.13);
-      }
+<Brand
+  title="JaiSellers Companies — Nonprofit Strategy, Compliance & Brand"
+  description="Joshua Jai Sellers builds the governance, 501(c)(3) compliance, grant readiness, and brand systems that make nonprofits and faith-based organizations credible, fundable, and built to last."
+>
+  <style>
+    /* ---------- Hero ---------- */
+    .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line-dark); }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(60% 70% at 85% 10%, rgba(201,168,76,.16), transparent 60%),
+        radial-gradient(40% 50% at 0% 100%, rgba(201,168,76,.07), transparent 70%);
+    }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(32px, 5vw, 72px); align-items: center; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 8vw, 110px); }
+    .hero h1 { margin: 26px 0 0; }
+    .hero h1 .sub { display: block; font-size: .5em; line-height: 1.15; margin-top: 18px; color: var(--silver); font-style: italic; font-weight: 400; }
+    .hero .lede { margin-top: 26px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+    .hero-proof { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 40px; padding-top: 26px; border-top: 1px solid var(--line-dark); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted-light); }
+    .hero-proof span::before { content: "◆"; color: var(--gold); font-size: 8px; margin-right: 10px; vertical-align: 2px; }
 
-      body {
-        background: var(--paper);
-        color: var(--ink);
-      }
+.portrait { position: relative; justify-self: end; width: min(100%, 540px); }
+    .portrait .ph { position: relative; }
+    .portrait .ph::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(90deg, var(--ink) 0%, transparent 28%), linear-gradient(0deg, var(--ink) 0%, transparent 22%), linear-gradient(180deg, var(--ink) 0%, transparent 10%), linear-gradient(270deg, var(--ink) 0%, transparent 14%); }
+    .portrait img { width: 100%; aspect-ratio: 1000 / 1202; object-fit: cover; filter: contrast(1.06); }
+    .portrait figcaption { position: relative; margin-top: -8px; padding-top: 16px; border-top: 1px solid rgba(201,168,76,.45); display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .portrait figcaption strong { font-family: var(--serif); font-size: 24px; font-weight: 500; }
+    .portrait figcaption span { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
 
-      .topbar {
-        background: rgba(245, 240, 231, 0.9);
-        border-bottom-color: var(--line-light);
-      }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .portrait { justify-self: center; width: min(100%, 440px); margin-top: 8px; }
+      .portrait figcaption { flex-wrap: wrap; }
+    }
 
-      .nav a {
-        color: rgba(16, 24, 35, 0.74);
-      }
+    /* ---------- Tagline band ---------- */
+    .band { background: var(--ink-2); border-bottom: 1px solid var(--line-dark); }
+    .band-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .band-item { padding: 44px clamp(16px, 3vw, 40px); border-left: 1px solid var(--line-dark); }
+    .band-item:first-child { border-left: 0; padding-left: 0; }
+    .band-item h3 { font-size: 30px; }
+    .band-item p { margin-top: 10px; color: var(--muted-light); font-size: 16px; }
+    @media (max-width: 760px) {
+      .band-grid { grid-template-columns: 1fr; }
+      .band-item { border-left: 0; border-top: 1px solid var(--line-dark); padding: 32px 0; }
+      .band-item:first-child { border-top: 0; }
+    }
 
-      .nav a:hover,
-      .nav-cta {
-        color: var(--ink);
-      }
+    /* ---------- Pains ---------- */
+    .pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); }
+    .pain { display: block; background: var(--ink); padding: clamp(28px, 4vw, 44px); text-decoration: none; transition: background .3s; }
+    .pain:hover { background: var(--ink-3); }
+    .pain h3 { font-size: clamp(24px, 2.4vw, 30px); font-weight: 500; }
+    .pain p { margin-top: 14px; color: var(--muted-light); }
+    .pain .go { display: inline-block; margin-top: 20px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+    @media (max-width: 760px) { .pain-grid { grid-template-columns: 1fr; } }
 
-      .nav-cta {
-        border-color: rgba(159, 123, 39, 0.38);
-        background: rgba(255, 255, 255, 0.48);
-      }
+    /* ---------- Services ---------- */
+    .svc { display: grid; grid-template-columns: 110px 1fr 1.1fr; gap: clamp(20px, 4vw, 56px); padding: clamp(36px, 5vw, 56px) 0; border-top: 1px solid var(--line-light); scroll-margin-top: 90px; }
+    .svc:last-of-type { border-bottom: 1px solid var(--line-light); }
+    .svc .num { font-family: var(--serif); font-size: 64px; line-height: 1; color: var(--gold-deep); }
+    .svc h3 { font-size: clamp(28px, 3vw, 38px); }
+    .svc .hook { margin-top: 14px; font-size: 18px; color: var(--text-dark) !important; }
+    .svc .best { margin-top: 16px; font-size: 15px; }
+    .svc .best b { font-weight: 500; color: var(--text-dark); }
+    .svc ul { list-style: none; padding: 0; display: grid; gap: 12px; }
+    .svc li { position: relative; padding-left: 26px; color: var(--muted-dark); }
+    .svc li::before { content: ""; position: absolute; left: 0; top: .78em; width: 14px; height: 1px; background: var(--gold-deep); }
+    .svc-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; margin-top: 48px; }
+    .svc-foot p { max-width: 58ch; }
+    @media (max-width: 900px) { .svc { grid-template-columns: 1fr; gap: 16px; } .svc .num { font-size: 48px; } }
 
-      .home-hero {
-        position: relative;
-        min-height: calc(100svh - 92px);
-        display: grid;
-        align-items: center;
-        overflow: hidden;
-        border-bottom: 1px solid var(--line-light);
-        background:
-          linear-gradient(90deg, rgba(245, 240, 231, 0.94) 0%, rgba(245, 240, 231, 0.78) 48%, rgba(16, 24, 35, 0.28) 100%),
-          url("/images/AboutMe.png") right center / min(52vw, 720px) auto no-repeat,
-          var(--paper);
-      }
+    /* ---------- Systems panel ---------- */
+    .systems { display: grid; grid-template-columns: .85fr 1.15fr; min-height: 640px; border-bottom: 1px solid var(--line-dark); }
+    .systems-art { background: url("/images/brand-wall.jpg") center / cover no-repeat; position: relative; }
+    .systems-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 60%, var(--ink)); }
+    .systems-copy { padding: clamp(56px, 8vw, 110px) clamp(16px, 6vw, 96px); align-self: center; }
+    .systems-copy h2 { margin-top: 18px; max-width: 15ch; }
+    .pillar-list { list-style: none; padding: 0; margin-top: 40px; }
+    .pillar-list li { display: flex; align-items: center; gap: 22px; padding: 14px 0; border-bottom: 1px solid var(--line-dark); font-family: var(--serif); font-size: 24px; }
+    .pillar-list svg { flex: none; width: 52px; height: 52px; padding: 12px; border: 1px solid rgba(201,168,76,.45); stroke: var(--gold); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 900px) { .systems { grid-template-columns: 1fr; } .systems-art { min-height: 320px; } .systems-art::after { background: linear-gradient(180deg, transparent 55%, var(--ink)); } }
 
-      .home-hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background:
-          linear-gradient(to bottom, transparent 82%, rgba(245, 240, 231, 0.96)),
-          repeating-linear-gradient(90deg, rgba(16, 24, 35, 0.045) 0 1px, transparent 1px 120px);
-      }
+    /* ---------- Founder ---------- */
+    .founder { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+    .founder-photo { position: relative; }
+    .founder-photo img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    .founder-photo::after { content: ""; position: absolute; left: 24px; right: -24px; bottom: -24px; top: 24px; border: 1px solid rgba(201,168,76,.45); z-index: -1; }
+    .founder-copy h2 { margin-top: 18px; }
+    .founder-copy p { margin-top: 20px; color: var(--muted-light); }
+    .founder-copy blockquote { margin: 32px 0 0; padding-left: 24px; border-left: 2px solid var(--gold); font-family: var(--serif); font-size: clamp(24px, 2.4vw, 30px); line-height: 1.3; font-style: italic; color: var(--text-light); }
+    .sig { margin-top: 18px; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+    @media (max-width: 900px) { .founder { grid-template-columns: 1fr; } .founder-photo { margin-right: 24px; } }
 
-      .hero-inner {
-        position: relative;
-        width: min(1160px, calc(100% - 40px));
-        margin: 0 auto;
-        padding: clamp(58px, 8vw, 104px) 0;
-      }
+    /* ---------- Formula ---------- */
+    .formula { text-align: center; }
+    .formula h2 { max-width: 18ch; margin: 18px auto 0; }
+    .eq { margin: 44px auto 0; max-width: 640px; }
+    .eq div { padding: 18px 0; border-top: 1px solid var(--line-dark); font-family: var(--serif); font-size: clamp(32px, 5vw, 54px); line-height: 1.1; }
+    .eq div:last-child { border-bottom: 1px solid var(--line-dark); }
+    .eq .p { color: var(--gold); padding: 0 .4em; font-weight: 300; }
+    .eq .r { color: var(--silver); }
 
-      .kicker {
-        color: var(--gold-deep);
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        margin-bottom: 16px;
-      }
+    /* ---------- Process ---------- */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-light); border: 1px solid var(--line-light); }
+    .step { background: var(--ivory); padding: 34px 28px 38px; }
+    .step .n { font-family: var(--serif); font-size: 44px; color: var(--gold-deep); line-height: 1; }
+    .step h3 { margin-top: 18px; font-size: 26px; }
+    .step p { margin-top: 10px; font-size: 16px; }
+    @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
 
-      h1 {
-        max-width: 12ch;
-        color: var(--ink);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: clamp(52px, 8vw, 112px);
-        line-height: 0.91;
-        letter-spacing: 0;
-      }
+    /* ---------- Principles ---------- */
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 4vw, 48px); }
+    .principles div { padding-top: 22px; border-top: 1px solid var(--gold); }
+    .principles h3 { font-size: clamp(30px, 3vw, 40px); font-weight: 500; line-height: 1.05; }
+    .principles h3 span { display: block; color: var(--silver); font-weight: 400; }
+    .principles-close { margin-top: 48px; font-family: var(--serif); font-size: clamp(28px, 3vw, 38px); }
+    @media (max-width: 760px) { .principles { grid-template-columns: 1fr; } }
 
-      .lead {
-        max-width: 64ch;
-        margin-top: 24px;
-        color: var(--soft-ink);
-        font-size: clamp(17px, 2vw, 21px);
-        line-height: 1.55;
-      }
+    /* ---------- FAQ ---------- */
+    .faq { max-width: 860px; }
+    .faq details { border-top: 1px solid var(--line-dark); }
+    .faq details:last-child { border-bottom: 1px solid var(--line-dark); }
+    .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 24px; padding: 24px 0; font-family: var(--serif); font-size: clamp(22px, 2.2vw, 27px); }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--gold); font-family: var(--sans); font-weight: 300; font-size: 28px; line-height: 1; transition: transform .25s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { padding: 0 0 26px; color: var(--muted-light); max-width: 70ch; }
 
-      .cta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 28px;
-      }
+    /* ---------- Final CTA ---------- */
+    .final { position: relative; text-align: center; overflow: hidden; border-top: 1px solid var(--line-dark); }
+    .final::before { content: ""; position: absolute; inset: 0; background: radial-gradient(50% 80% at 50% 0%, rgba(201,168,76,.18), transparent 70%); pointer-events: none; }
+    .final .wrap { position: relative; }
+    .final img.mono { width: 92px; margin: 0 auto 30px; }
+    .final h2 { max-width: 16ch; margin: 18px auto 0; font-size: clamp(40px, 5.6vw, 72px); }
+    .final .lede { margin: 24px auto 0; }
+    .final .hero-ctas { justify-content: center; }
+    .final .mail { margin-top: 26px; font-size: 15px; color: var(--muted-light); }
+    .final .mail a { color: var(--gold-soft); }
+    .tagline { margin-top: 64px; font-size: 13px; letter-spacing: .32em; text-transform: uppercase; color: var(--muted-light); }
+  </style>
 
-      .home-btn {
-        display: inline-flex;
-        min-height: 48px;
-        align-items: center;
-        justify-content: center;
-        padding: 12px 18px;
-        border: 1px solid var(--line-light);
-        border-radius: 2px;
-        font-weight: 750;
-        text-decoration: none;
-      }
-
-      .home-btn.primary {
-        background: var(--ink);
-        color: #fffaf0;
-        border-color: var(--ink);
-      }
-
-      .home-btn.secondary {
-        background: rgba(255, 255, 255, 0.56);
-        color: var(--ink);
-      }
-
-      .section-light {
-        padding: clamp(54px, 7vw, 86px) 0;
-        background: #fffaf0;
-        border-bottom: 1px solid var(--line-light);
-      }
-
-      .section-muted {
-        padding: clamp(54px, 7vw, 86px) 0;
-        background: #ebe4d6;
-        border-bottom: 1px solid var(--line-light);
-      }
-
-      .home-container {
-        width: min(1160px, calc(100% - 40px));
-        margin: 0 auto;
-      }
-
-      .section-head {
-        display: grid;
-        grid-template-columns: 0.7fr 1.3fr;
-        gap: 28px;
-        align-items: end;
-        margin-bottom: 28px;
-      }
-
-      h2 {
-        color: var(--ink);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: clamp(34px, 5vw, 64px);
-        line-height: 0.98;
-        letter-spacing: 0;
-      }
-
-      .section-head p {
-        max-width: 62ch;
-        color: var(--soft-ink);
-        font-size: 17px;
-      }
-
-      .division-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-      }
-
-      .division-card {
-        min-height: 280px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        border: 1px solid var(--line-light);
-        background: rgba(255, 255, 255, 0.66);
-        padding: 24px;
-        box-shadow: 0 24px 70px rgba(16, 24, 35, 0.07);
-      }
-
-      .division-card .label {
-        width: fit-content;
-        border-bottom: 2px solid var(--gold);
-        color: var(--gold-deep);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 28px;
-        font-weight: 700;
-        line-height: 1;
-        padding-bottom: 6px;
-      }
-
-      .division-card h3 {
-        margin-top: 24px;
-        color: var(--ink);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 28px;
-        line-height: 1.06;
-      }
-
-      .division-card p {
-        margin-top: 12px;
-        color: var(--soft-ink);
-      }
-
-      .text-link {
-        margin-top: 22px;
-        color: var(--ink);
-        font-weight: 750;
-        border-bottom: 1px solid rgba(159, 123, 39, 0.62);
-      }
-
-      .split-proof {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 26px;
-        align-items: stretch;
-      }
-
-      .proof-panel {
-        border-left: 4px solid var(--gold);
-        background: rgba(255, 250, 240, 0.72);
-        padding: clamp(24px, 4vw, 42px);
-      }
-
-      .proof-panel p {
-        color: var(--soft-ink);
-        font-size: 17px;
-      }
-
-      .proof-list {
-        display: grid;
-        gap: 12px;
-      }
-
-      .proof-list div {
-        border: 1px solid var(--line-light);
-        background: rgba(255, 250, 240, 0.7);
-        padding: 16px;
-        color: var(--soft-ink);
-      }
-
-      .home-footer {
-        padding: 26px 0;
-        background: var(--ink);
-        color: rgba(255, 250, 240, 0.72);
-      }
-
-      .home-footer-inner {
-        width: min(1160px, calc(100% - 40px));
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        gap: 14px;
-        flex-wrap: wrap;
-        font-size: 14px;
-      }
-
-      @media (max-width: 900px) {
-        .home-hero {
-          min-height: auto;
-          background:
-            linear-gradient(to bottom, rgba(245, 240, 231, 0.94), rgba(245, 240, 231, 0.94)),
-            url("/images/AboutMe.png") center top / cover no-repeat,
-            var(--paper);
-        }
-
-        h1 {
-          max-width: 9ch;
-        }
-
-        .section-head,
-        .division-grid,
-        .split-proof {
-          grid-template-columns: 1fr;
-        }
-
-        .division-card {
-          min-height: 0;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <header class="topbar">
-      <a class="logo" href="/">
-        <img src="/images/jsco-wordbrand-2026.png" alt={brand} class="logo-img" />
-      </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="/consulting">Consulting</a>
-        <a href="/design">Design</a>
-        <a href="/jsi">JSI</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/about">About</a>
-        <a href="/blog">Insights</a>
-        <a class="nav-cta" href="/contact">Contact</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="home-hero" aria-label="JaiSellers Companies">
-        <div class="hero-inner">
-          <p class="kicker">Governance. Design. Justice systems.</p>
-          <h1>Structure for work that has to hold.</h1>
-          <p class="lead">
-            JaiSellers Companies helps mission-driven leaders turn urgent ideas into usable systems: nonprofit governance, funding infrastructure, brand identity, public-benefit programs, and the documents that keep the work moving.
-          </p>
-          <div class="cta-row">
-            <a class="home-btn primary" href="/contact">Start a conversation</a>
-            <a class="home-btn secondary" href="/jsi">View Just Systems Initiative</a>
-          </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Nonprofit strategy &middot; Compliance &middot; Brand</span>
+        <h1>
+          A mission cannot survive on <em>urgency alone.</em>
+          <span class="sub">It needs structure.</span>
+        </h1>
+        <p class="lede">
+          I build the governance, IRS compliance, funding, and brand systems that make nonprofits and faith-based organizations credible, fundable, and built to last &mdash; so the people doing the work are protected by it.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-gold" href="/contact">Book a free clarity call <span class="arrow">&rarr;</span></a>
+          <a class="btn btn-line" href="#services">See services</a>
         </div>
-      </section>
-
-      <section class="section-light">
-        <div class="home-container">
-          <div class="section-head">
-            <p class="kicker">The work</p>
-            <div>
-              <h2>One company, three operating lanes.</h2>
-              <p>
-                The common thread is structure: making important work legible, fundable, governed, designed, and ready to survive real pressure.
-              </p>
-            </div>
-          </div>
-
-          <div class="division-grid">
-            {divisions.map((division) => (
-              <article class="division-card">
-                <div>
-                  <span class="label">{division.label}</span>
-                  <h3>{division.title}</h3>
-                  <p>{division.text}</p>
-                </div>
-                <a class="text-link" href={division.href}>Go to {division.label}</a>
-              </article>
-            ))}
-          </div>
+        <div class="hero-proof">
+          <span>501(c)(3) formation</span>
+          <span>Reinstatement &amp; 990s</span>
+          <span>Grant readiness</span>
+          <span>Brand systems</span>
         </div>
-      </section>
-
-      <section class="section-muted">
-        <div class="home-container split-proof">
-          <div class="proof-panel">
-            <p class="kicker">Point of view</p>
-            <h2>Clean enough to trust. Strong enough to use.</h2>
-            <p>
-              This is not decorative consulting. It is the practical work of putting names, roles, policies, budgets, timelines, messaging, and accountability into forms people can actually use.
-            </p>
-          </div>
-
-          <div class="proof-list" aria-label="Representative work">
-            <div>501(c)(3) formation packets, bylaws, board calendars, and grant-readiness systems.</div>
-            <div>Brand systems, editorial collateral, portfolios, galleries, and campaign-ready visuals.</div>
-            <div>Justice-centered program architecture for reentry, public records, civic literacy, and family connection.</div>
-            <div>Plain-language tools that respect people’s intelligence and do not waste their time.</div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="home-footer">
-      <div class="home-footer-inner">
-        <span>© {new Date().getFullYear()} JaiSellers Companies</span>
-        <span>Kings Mountain, North Carolina</span>
       </div>
-    </footer>
-  </body>
-</html>
+      <figure class="portrait">
+        <div class="ph"><img src="/images/josh-sellers-headshot.jpg" alt="Black-and-white portrait of Joshua Jai Sellers, founder and principal of JaiSellers Companies" width="1000" height="1202" fetchpriority="high" /></div>
+        <figcaption><strong>Joshua Jai Sellers</strong><span>Founder &amp; Principal</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- TAGLINE BAND -->
+  <section class="band">
+    <div class="wrap band-grid">
+      <div class="band-item">
+        <h3 class="gold-text">Honoring stories.</h3>
+        <p>Listening before designing. Your history is the archive and the strategy.</p>
+      </div>
+      <div class="band-item">
+        <h3 class="gold-text">Building systems.</h3>
+        <p>Governance, budgets, bylaws, and language that give the story something durable to stand on.</p>
+      </div>
+      <div class="band-item">
+        <h3 class="gold-text">Driving change.</h3>
+        <p>More trust. More capacity. More resources in the right hands.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Where you are</span>
+          <h2>Good work stalls in <em>predictable</em> places.</h2>
+        </div>
+        <p class="lede">Most organizations don't fail for lack of heart. They fail because the paperwork, the structure, and the story never caught up to the mission. If one of these sounds familiar, you're in the right place.</p>
+      </div>
+      <div class="pain-grid reveal">
+        {pains.map((p) => (
+          <a class="pain" href={p.href}>
+            <h3>{p.q}</h3>
+            <p>{p.a}</p>
+            <span class="go">See how we fix it &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section-ivory" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Services</span>
+          <h2>Four engagements. <em>One standard.</em></h2>
+        </div>
+        <p class="lede">Every engagement is fixed-fee, scoped in writing, and ends with documents you own and understand. Start with the one that's urgent; build from there.</p>
+      </div>
+
+      {services.map((s) => (
+        <article class="svc reveal" id={s.id}>
+          <div class="num">{s.num}</div>
+          <div>
+            <h3>{s.name}</h3>
+            <p class="hook">{s.hook}</p>
+            <p class="best"><b>Best for:</b> {s.bestFor}</p>
+          </div>
+          <ul>
+            {s.deliverables.map((d) => <li>{d}</li>)}
+          </ul>
+        </article>
+      ))}
+
+      <div class="svc-foot">
+        <p>Not sure which you need? That's what the clarity call is for. Thirty minutes, no charge, and you'll leave with a clear next step whether we work together or not.</p>
+        <a class="btn btn-ink" href="/contact">Book a clarity call <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEMS -->
+  <section class="systems">
+    <div class="systems-art" role="img" aria-label="The JaiSellers Companies monogram in gold and black on a stone wall"></div>
+    <div class="systems-copy reveal">
+      <span class="eyebrow">What we build</span>
+      <h2>Giving the story something <em>durable</em> to stand on.</h2>
+      <ul class="pillar-list">
+        {pillars.map((p) => (
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d={p.icon} /></svg>
+            {p.t}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="section" id="approach">
+    <div class="wrap founder">
+      <div class="founder-photo reveal">
+        <img src="/images/josh-sellers-office.jpg" alt="Joshua Jai Sellers at his desk with plans and bound documents" width="1344" height="768" loading="lazy" />
+      </div>
+      <div class="founder-copy reveal">
+        <span class="eyebrow">Work directly with the principal</span>
+        <h2>No junior staff. <em>No hand-offs.</em></h2>
+        <p>
+          I'm Joshua Jai Sellers. I've spent my career at the intersection of nonprofit compliance, grant strategy, and design &mdash; forming <span style="white-space:nowrap">501(c)(3)s</span>, rebuilding organizations after revocation, writing grants for arts and faith-based groups, and building the brands that carry them.
+        </p>
+        <p>
+          Before consulting, I trained and performed professionally as a classical vocalist. That discipline still runs the practice: preparation, precision, and respect for the people in the room. When you hire JaiSellers Companies, you get me &mdash; on every call, in every document.
+        </p>
+        <blockquote>&ldquo;Not bureaucracy for its own sake &mdash; systems that protect the people doing the work.&rdquo;</blockquote>
+        <p class="sig">Joshua Jai Sellers &middot; Kings Mountain, NC</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- FORMULA -->
+  <section class="section formula">
+    <div class="wrap reveal">
+      <span class="eyebrow">Point of view</span>
+      <h2>The strongest organizations are built where both meet.</h2>
+      <div class="eq">
+        <div><span class="gold-text">memory</span><span class="p">+</span><span class="r">method</span></div>
+        <div><span class="gold-text">soul</span><span class="p">+</span><span class="r">structure</span></div>
+        <div><span class="gold-text">vision</span><span class="p">+</span><span class="r">tools</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section section-ivory">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">How it works</span>
+          <h2>Clear from the <em>first call.</em></h2>
+        </div>
+        <p class="lede">You'll always know what's being built, what it costs, and when it's done.</p>
+      </div>
+      <div class="steps reveal">
+        {steps.map((s) => (
+          <div class="step">
+            <div class="n">{s.n}</div>
+            <h3>{s.t}</h3>
+            <p>{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="section section-ink2">
+    <div class="wrap reveal">
+      <span class="eyebrow">The standard</span>
+      <div class="principles" style="margin-top:40px">
+        <div><h3 class="gold-text">Not design</h3><h3><span>for decoration.</span></h3></div>
+        <div><h3 class="gold-text">Not strategy</h3><h3><span>for performance.</span></h3></div>
+        <div><h3 class="gold-text">Not storytelling</h3><h3><span>as nostalgia.</span></h3></div>
+      </div>
+      <p class="principles-close">This work is built for <em class="gold-text" style="font-style:italic">legacy.</em></p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Questions</span>
+          <h2>Before you <em>call.</em></h2>
+        </div>
+      </div>
+      <div class="faq reveal">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section final">
+    <div class="wrap reveal">
+      <img class="mono" src="/images/jsco-monogram.png" alt="" width="240" height="305" />
+      <span class="eyebrow">Now booking November &ndash; December</span>
+      <h2>Close the year with a <em>foundation</em> that holds.</h2>
+      <p class="lede">Year-end is when boards approve budgets and funders set next year's cycles. Organizations that walk into January with clean filings and a ready case for support get funded first.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-gold" href="/contact">Book a free clarity call <span class="arrow">&rarr;</span></a>
+      </div>
+      <p class="mail">Prefer email? <a href={`mailto:${EMAIL}?subject=Clarity%20call%20request`}>{EMAIL}</a></p>
+      <p class="tagline">Honoring Stories &middot; Building Systems &middot; Driving Change</p>
+    </div>
+  </section>
+</Brand>
