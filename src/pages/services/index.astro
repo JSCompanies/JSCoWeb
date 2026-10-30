@@ -1,0 +1,574 @@
+---
+const title = "Services & Pricing";
+const brand = "JaiSellers Companies";
+const division = "JaiSellers Consulting";
+
+const compliance = [
+  {
+    name: "990-N (e-Postcard)",
+    desc: "Annual filing for orgs with receipts of $50K or less.",
+    price: "$100",
+  },
+  {
+    name: "990 Review & Filing Assist",
+    desc: "You supply clean numbers; I review, complete, and prep for filing.",
+    price: "$350",
+  },
+  {
+    name: "990-EZ Preparation",
+    desc: "Full prep for receipts under $200K and assets under $500K.",
+    price: "$650",
+  },
+  {
+    name: "Full Form 990 Preparation",
+    desc: "Complete return with schedules, prepared from your records.",
+    price: "$1,200",
+  },
+  {
+    name: "Records Cleanup",
+    desc: "Organizing books before filing. Quoted up front.",
+    price: "$60/hr",
+  },
+];
+
+const giving = [
+  {
+    name: "Year-End Appeal Sprint",
+    desc: "Campaign plan, 4 emails, 6 social graphics, appeal letter.",
+    price: "$900",
+  },
+  {
+    name: "Sprint Lite",
+    desc: "Campaign plan plus a 3-email series.",
+    price: "$500",
+  },
+];
+
+const funding = [
+  {
+    name: "2027 Grant Calendar",
+    desc: "20 vetted funders with deadlines, fit notes, and a tracker.",
+    price: "$750",
+  },
+  {
+    name: "Grant Calendar Lite",
+    desc: "10 vetted funders plus a tracker.",
+    price: "$400",
+  },
+  {
+    name: "Grant Proposal Writing",
+    desc: "One complete application, start to submission-ready.",
+    price: "$750",
+  },
+];
+
+const ai = [
+  {
+    name: "AI Readiness Package",
+    desc: "90-minute workshop, AI use policy, and tool setup.",
+    price: "$600",
+  },
+  {
+    name: "AI Use Policy Only",
+    desc: "A custom one-page policy your board can adopt.",
+    price: "$250",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — {brand}</title>
+    <meta
+      name="description"
+      content="Compliance, funding, and systems support for small and mid-sized nonprofits. Flat fees, plain language, no surprises."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #1c2b45;
+        --navy-dark: #0f1a2d;
+        --gold: #c9a84c;
+        --ink: #2c2c2c;
+        --ink-strong: #1f1f1f;
+        --ink-muted: #4a4a4a;
+        --ink-light: #e6e9ef;
+        --rule: #e4e1d8;
+        --sheet-pad: 56px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #ebe9e3;
+        color: var(--ink);
+        font-family: "Jost", ui-sans-serif, system-ui, Segoe UI, Roboto, Arial,
+          sans-serif;
+      }
+
+      a {
+        color: var(--navy);
+      }
+      a:hover {
+        color: var(--navy-dark);
+      }
+
+      /* Back link to the rest of the site; not part of the printed sheet. */
+      .sheet-nav {
+        max-width: 816px;
+        margin: 0 auto;
+        padding: 20px 4px 0;
+        font-size: 15px;
+      }
+      .sheet-nav a {
+        color: var(--navy);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .sheet-nav a:hover {
+        text-decoration: underline;
+      }
+
+      .sheets {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        padding: 20px 4px 48px;
+      }
+
+      /* One letter-size page of the one-sheet. */
+      .sheet {
+        width: 100%;
+        max-width: 816px;
+        background: #fff;
+        box-shadow: 0 18px 50px rgba(28, 43, 69, 0.14);
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Navy masthead on the front page. */
+      .masthead {
+        background: var(--navy);
+        padding: 40px var(--sheet-pad) 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .masthead .kicker {
+        font-size: 16px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 500;
+      }
+      .masthead h1 {
+        margin: 0;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 600;
+        font-size: 50px;
+        line-height: 1.05;
+        color: #fff;
+      }
+      .masthead .rule {
+        width: 72px;
+        height: 3px;
+        background: var(--gold);
+        margin-top: 8px;
+      }
+      .masthead p {
+        margin: 8px 0 0;
+        font-size: 21px;
+        line-height: 1.4;
+        color: var(--ink-light);
+      }
+
+      .sheet-body {
+        padding: 28px var(--sheet-pad) 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        flex-grow: 1;
+      }
+      .sheet-body.no-masthead {
+        padding-top: 40px;
+      }
+
+      /* Section head: serif heading on the left, a note on the right. */
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 24px;
+        border-bottom: 2px solid var(--gold);
+        padding-bottom: 6px;
+      }
+      .section-head + .section-head,
+      .rows + .section-head {
+        margin-top: 14px;
+      }
+      .section-head h2 {
+        margin: 0;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 700;
+        font-size: 34px;
+        line-height: 1.1;
+        color: var(--navy);
+      }
+      .section-head .meta {
+        font-size: 17px;
+        color: var(--ink-muted);
+      }
+
+      /* Priced line items. */
+      .rows {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .rows li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 24px;
+        padding: 4px 0 8px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .rows .item {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .rows h3 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 1.2;
+        color: var(--ink-strong);
+      }
+      .rows p {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.35;
+        color: var(--ink-muted);
+      }
+      .rows .price {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--navy);
+        white-space: nowrap;
+      }
+
+      /* Retainer band. */
+      .retainer {
+        margin-top: 14px;
+        background: var(--navy);
+        padding: 22px 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+      }
+      .retainer .retainer-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .retainer h2 {
+        margin: 0;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.1;
+        color: #fff;
+      }
+      .retainer p {
+        margin: 0;
+        font-size: 19px;
+        line-height: 1.35;
+        color: var(--ink-light);
+      }
+      .retainer .price {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 34px;
+        font-weight: 700;
+        color: var(--gold);
+        white-space: nowrap;
+      }
+
+      /* Seasonal rate note. */
+      .rate-note {
+        border: 2px solid var(--gold);
+        padding: 14px 22px;
+        font-size: 20px;
+        line-height: 1.4;
+        color: var(--ink-strong);
+      }
+      .rate-note strong {
+        color: var(--navy);
+      }
+
+      /* Front page foot. */
+      .sheet-foot {
+        padding: 18px var(--sheet-pad) 26px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        font-size: 17px;
+        color: var(--ink-muted);
+      }
+      .sheet-foot .turn {
+        color: var(--navy);
+        font-weight: 500;
+      }
+
+      /* Back page contact block. */
+      .contact {
+        padding: 20px var(--sheet-pad) 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .contact h2 {
+        margin: 0;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--navy);
+      }
+      .contact p {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.4;
+        color: var(--ink);
+      }
+
+      .site-foot {
+        padding: 0 4px 40px;
+        text-align: center;
+        font-size: 13px;
+        color: var(--ink-muted);
+      }
+      .site-foot .sep {
+        opacity: 0.5;
+        margin: 0 8px;
+      }
+
+      @media (max-width: 760px) {
+        :root {
+          --sheet-pad: 24px;
+        }
+        .masthead h1 {
+          font-size: 38px;
+        }
+        .masthead p {
+          font-size: 18px;
+        }
+        .section-head {
+          flex-direction: column;
+          gap: 2px;
+        }
+        .section-head h2 {
+          font-size: 28px;
+        }
+        .rows li,
+        .retainer {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+        }
+        .rows h3 {
+          font-size: 20px;
+        }
+        .rows p {
+          font-size: 17px;
+        }
+        .sheet-foot {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+        }
+      }
+
+      /* Prints as the two-page letter one-sheet it was designed as. */
+      @media print {
+        html,
+        body {
+          background: #fff;
+        }
+        .sheet-nav,
+        .site-foot {
+          display: none;
+        }
+        .sheets {
+          gap: 0;
+          padding: 0;
+        }
+        .sheet {
+          max-width: none;
+          width: 8.5in;
+          min-height: 11in;
+          box-shadow: none;
+          break-after: page;
+        }
+        .sheet:last-child {
+          break-after: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="sheet-nav" aria-label="Breadcrumb">
+      <a href="/consulting">← {division}</a>
+    </nav>
+
+    <main class="sheets">
+      <!-- Front: Compliance & Year-End -->
+      <article class="sheet" aria-label="Services and pricing, front">
+        <div class="masthead">
+          <p class="kicker">{division} · Services &amp; Pricing</p>
+          <h1>Structure for work that has to hold.</h1>
+          <div class="rule"></div>
+          <p>
+            Compliance, funding, and systems support for small and mid-sized
+            nonprofits. Flat fees, plain language, no surprises.
+          </p>
+        </div>
+
+        <div class="sheet-body">
+          <div class="section-head">
+            <h2>Form 990 Compliance</h2>
+            <p class="meta">Extended deadline: Nov 16</p>
+          </div>
+          <ul class="rows">
+            {
+              compliance.map((item) => (
+                <li>
+                  <div class="item">
+                    <h3>{item.name}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                  <div class="price">{item.price}</div>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="section-head">
+            <h2>Year-End Giving</h2>
+            <p class="meta">Giving Tuesday: Dec 1</p>
+          </div>
+          <ul class="rows">
+            {
+              giving.map((item) => (
+                <li>
+                  <div class="item">
+                    <h3>{item.name}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                  <div class="price">{item.price}</div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="sheet-foot">
+          <span>Kings Mountain, North Carolina</span>
+          <span class="turn">More on the back →</span>
+        </div>
+      </article>
+
+      <!-- Back: Funding, AI & Retainer -->
+      <article class="sheet" aria-label="Services and pricing, back">
+        <div class="sheet-body no-masthead">
+          <div class="section-head">
+            <h2>Funding &amp; Grants</h2>
+            <p class="meta">Flat fees, never a percentage</p>
+          </div>
+          <ul class="rows">
+            {
+              funding.map((item) => (
+                <li>
+                  <div class="item">
+                    <h3>{item.name}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                  <div class="price">{item.price}</div>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="section-head">
+            <h2>AI Readiness</h2>
+            <p class="meta">Practical, not hype</p>
+          </div>
+          <ul class="rows">
+            {
+              ai.map((item) => (
+                <li>
+                  <div class="item">
+                    <h3>{item.name}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                  <div class="price">{item.price}</div>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="retainer">
+            <div class="retainer-copy">
+              <h2>Monthly Retainer</h2>
+              <p>
+                Grant tracking, light writing, and a monthly check-in. Cancel
+                anytime.
+              </p>
+            </div>
+            <div class="price">$300/mo</div>
+          </div>
+
+          <p class="rate-note">
+            <strong>Fall rate:</strong> 10% off any package for returning and
+            referred clients through December 31, 2026.
+          </p>
+        </div>
+
+        <div class="contact">
+          <h2>Start with a free 20-minute call.</h2>
+          <p>
+            Josh Sellers · <a href="mailto:joshuajaisellers@gmail.com"
+              >joshuajaisellers@gmail.com</a
+            > · <a href="tel:+17047184209">704-718-4209</a>
+          </p>
+          <p>jaisellers.com · Kings Mountain, NC</p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-foot">
+      <span>© {new Date().getFullYear()} {brand}</span>
+      <span class="sep">•</span>
+      <a href="/contact">Contact</a>
+    </footer>
+  </body>
+</html>
