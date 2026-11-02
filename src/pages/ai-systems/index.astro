@@ -1,0 +1,672 @@
+---
+import Brand from "../../layouts/Brand.astro";
+---
+
+<Brand
+  title="AI Systems Portfolio — Joshua Jai Sellers"
+  description="Selected case studies in AI systems, workflow design, nonprofit technology, governance documentation, and human-reviewed operations by Joshua Jai Sellers."
+  current="/ai-systems"
+>
+  <style>
+    /* Portfolio palette, scoped to this page so the shared header and footer
+       keep the brand.css tokens. */
+    .ai-portfolio {
+      --bone: #f3eee4;
+      --ink: #f3eee4;
+      --ink-soft: #b9b3a7;
+      --moss-dark: #111113;
+      --gold: #c9a84c;
+      --clay: #a7563e;
+      --rule: rgba(201, 168, 76, 0.22);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Jost", "Aptos", "Segoe UI", sans-serif;
+      --content: min(1180px, calc(100vw - 40px));
+      color: var(--ink);
+    }
+
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+
+    section[id], article[id] { scroll-margin-top: 110px; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      min-height: 760px;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      isolation: isolate;
+      color: var(--bone);
+      background: #0a0a0b;
+    }
+    .hero-image, .hero-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-image { z-index: -2; inset: 0 0 0 auto; width: 43%; object-fit: cover; object-position: 50% 28%; opacity: .8; }
+    .hero-shade {
+      z-index: -1;
+      background:
+        linear-gradient(90deg, #0a0a0b 42%, rgba(10, 10, 11, .45) 70%, rgba(10, 10, 11, .05)),
+        linear-gradient(0deg, #0a0a0b, transparent 30%);
+    }
+    .hero-inner { width: var(--content); margin: 0 auto; padding: 80px 0 60px; }
+    .hero h1 {
+      max-width: 760px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 6.8vw, 6rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -.01em;
+    }
+    .hero h1 em { color: #e0c787; font-style: italic; font-weight: 500; }
+    .hero-copy { max-width: 630px; margin: 26px 0 0; color: #b9b3a7; font-size: 21px; line-height: 1.6; }
+
+    .intro-line, .section-kicker {
+      margin: 0 0 12px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: .2em;
+      font-weight: 500;
+    }
+
+    .hero-actions, .contact-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 0;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: linear-gradient(180deg, #f6e3a8, #d9b45f 45%, #a8812f); color: #141006; }
+    .button.ghost { background: transparent; border-color: #847044; color: var(--bone); }
+
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      width: min(880px, 100%);
+      margin: 48px 0 0;
+      border: 1px solid var(--rule);
+      background: var(--rule);
+    }
+    .hero-facts div { min-height: 118px; padding: 18px; background: #111113; }
+    .hero-facts dt { margin: 0 0 8px; color: var(--gold); font-size: .86rem; font-weight: 700; }
+    .hero-facts dd { margin: 0; color: rgba(255, 248, 236, .88); line-height: 1.35; }
+
+    /* ---------- Shared section frame ---------- */
+    .section { width: var(--content); margin: 0 auto; padding: 96px 0; }
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+      gap: 56px;
+      align-items: start;
+      margin-bottom: 42px;
+    }
+    .section h2, .contact h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.35rem, 4.5vw, 4rem);
+      font-weight: 500;
+      line-height: 1.06;
+    }
+    .section p { max-width: 780px; }
+
+    .proof-strip {
+      display: grid;
+      grid-template-columns: 0.55fr 1.45fr;
+      gap: 44px;
+      align-items: start;
+      padding-top: 56px;
+      padding-bottom: 70px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .proof-strip h2, .proof-strip p { grid-column: 2; }
+    .proof-strip p { margin: 0; font-family: var(--serif); font-size: clamp(1.55rem, 3vw, 2.4rem); line-height: 1.12; }
+
+    /* ---------- Case studies ---------- */
+    .case-layout { display: grid; grid-template-columns: minmax(230px, 0.36fr) minmax(0, 1fr); gap: 46px; }
+    .case-rail { position: sticky; top: 104px; align-self: start; padding-top: 4px; }
+    .case-rail p { margin: 0 0 22px; color: var(--ink-soft); font-size: .98rem; }
+    .case-rail ol { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; counter-reset: case-index; }
+    .case-rail li { counter-increment: case-index; }
+    .case-rail a {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      padding: 10px 0;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+    }
+    .case-rail a::before {
+      content: counter(case-index, decimal-leading-zero);
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .cases { display: grid; gap: 22px; }
+    .case-study {
+      padding: clamp(24px, 4vw, 44px);
+      background: #111113;
+      border: 1px solid var(--rule);
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+    .case-study:hover { border-color: rgba(185, 149, 67, .72); transform: translateY(-2px); }
+    .case-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .case-meta span, .skills-matrix span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 10px;
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      background: rgba(201, 168, 76, .08);
+      color: #e0c787;
+      font-size: .88rem;
+      font-weight: 500;
+    }
+    .case-study h3 {
+      max-width: 780px;
+      margin: 0 0 26px;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 500;
+      line-height: 1.06;
+    }
+    .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 30px; }
+    .case-grid .wide { grid-column: 1 / -1; }
+    .case-study h4, .method-grid h3, .fit-list h3 { margin: 0 0 8px; font-size: 1.02rem; }
+    .case-study h4, .fit-list h3 { color: #e0c787; }
+    .case-study p, .case-study ul, .method-grid p, .fit-list p { margin: 0; color: var(--ink-soft); }
+    .case-study ul { padding-left: 1.1rem; }
+    .case-study li + li { margin-top: 7px; }
+
+    .detail-toggle {
+      margin-top: 26px;
+      padding: 0 0 4px;
+      border: 0;
+      border-bottom: 2px solid var(--gold);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .case-detail { margin-top: 18px; padding: 18px 20px; background: rgba(185, 149, 67, .12); border-left: 4px solid var(--gold); }
+
+    /* ---------- Method band (ivory) ---------- */
+    .method-band {
+      width: 100%;
+      max-width: none;
+      padding: 94px max(20px, calc((100vw - 1180px) / 2));
+      background: #f6f1e7;
+      color: #1a2230;
+    }
+    .method-band .section-heading, .method-grid { width: min(1180px, 100%); margin-left: auto; margin-right: auto; }
+    .method-band h2, .method-band h3 { color: #1a2230; }
+    .method-band .section-kicker { color: #80621f; }
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: #d8ccb6;
+      border: 1px solid #d8ccb6;
+    }
+    .method-grid div { min-height: 210px; padding: 26px; background: #f6f1e7; }
+    .method-grid p { color: #4a5466; }
+
+    /* ---------- Role fit + skills ---------- */
+    .fit-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .fit-list article { min-height: 178px; padding: 26px; background: #111113; }
+
+    .skills-matrix { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .skills-matrix div {
+      display: flex;
+      align-content: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      min-height: 154px;
+      padding: 20px;
+      border: 1px solid var(--rule);
+      background: #111113;
+    }
+
+    .proof-boundary {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 46px;
+      align-items: start;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .proof-boundary p { margin: 0; font-size: 1.2rem; }
+
+    /* ---------- Contact ---------- */
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) max-content;
+      gap: 30px;
+      align-items: center;
+      width: min(1180px, calc(100vw - 40px));
+      margin: 70px auto 30px;
+      padding: clamp(28px, 5vw, 58px);
+      color: var(--bone);
+      background: #111113;
+      border: 1px solid var(--rule);
+    }
+    .contact p { max-width: 640px; margin: 18px 0 0; color: rgba(255, 248, 236, .82); }
+    .copy-status { flex-basis: 100%; min-height: 1.4em; font-size: .95rem; }
+
+    @media (max-width: 920px) {
+      .hero-inner { padding-top: 60px; }
+      .hero-image { width: 65%; opacity: .35; }
+      .hero-shade {
+        background:
+          linear-gradient(90deg, #0a0a0b 15%, rgba(10, 10, 11, .5)),
+          linear-gradient(0deg, #0a0a0b, transparent);
+      }
+      .hero h1 { font-size: clamp(3rem, 9vw, 5rem); }
+      .hero-facts, .section-heading, .proof-strip, .case-layout, .proof-boundary, .contact { grid-template-columns: 1fr; }
+      .proof-strip h2, .proof-strip p { grid-column: auto; }
+      .case-rail { position: static; }
+      .case-rail ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .method-grid, .fit-list, .skills-matrix { grid-template-columns: 1fr; }
+      .contact-actions { justify-content: flex-start; }
+    }
+
+    @media (max-width: 620px) {
+      .ai-portfolio { --content: min(100vw - 28px, 1180px); }
+      .hero { min-height: auto; }
+      .hero-image { width: 100%; }
+      .hero-copy { font-size: 18px; }
+      .hero-facts { margin-top: 32px; }
+      .hero-facts div { min-height: auto; }
+      .hero-facts, .case-grid, .case-rail ol { grid-template-columns: 1fr; }
+      .section { padding: 70px 0; }
+      .case-study { padding: 22px; }
+      .button { width: 100%; }
+      .contact-actions { min-width: 0; }
+      .contact-actions .button { overflow-wrap: anywhere; font-size: 12px; letter-spacing: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+
+  <div class="ai-portfolio">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <img
+        class="hero-image"
+        src="/images/josh-sellers-headshot.jpg"
+        alt="Black-and-white portrait of Joshua Jai Sellers, founder of JaiSellers Companies."
+      />
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="intro-line">JaiSellers Companies · AI systems &amp; operations</p>
+        <h1 id="hero-title">I turn messy work into <em>usable systems.</em></h1>
+        <p class="hero-copy">
+          I design practical AI-assisted workflows, operational systems, and lightweight tools for organizations that need better structure without adding unnecessary complexity.
+        </p>
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button primary" href="mailto:joshuajaisellers@gmail.com">Contact Joshua</a>
+          <a class="button ghost" href="#case-studies">Review the work</a>
+        </div>
+        <dl class="hero-facts" aria-label="Portfolio summary">
+          <div>
+            <dt>Base</dt>
+            <dd>Kings Mountain, NC</dd>
+          </div>
+          <div>
+            <dt>Lane</dt>
+            <dd>Implementation, not model research</dd>
+          </div>
+          <div>
+            <dt>Focus</dt>
+            <dd>Human-reviewed AI, workflow design, source discipline</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section proof-strip" aria-labelledby="proof-title">
+      <div class="section-kicker">Positioning</div>
+      <h2 id="proof-title">The throughline is implementation.</h2>
+      <p>
+        My work sits at the intersection of AI implementation, operations, nonprofit systems, governance, documentation, research, and human judgment. I find repeatable work, organize scattered information, design the workflow around it, and make the resulting system understandable enough for real people to use.
+      </p>
+    </section>
+
+    <section class="section split" id="case-studies" aria-labelledby="cases-title">
+      <div class="section-heading">
+        <div class="section-kicker">Selected work</div>
+        <h2 id="cases-title">Case studies for application review</h2>
+      </div>
+      <div class="case-layout">
+        <aside class="case-rail" aria-label="Case study index">
+          <p>Built for roles where AI meets imperfect organizational reality: documents, deadlines, source evidence, adoption, and judgment.</p>
+          <ol>
+            <li><a href="#case-jsi">Governance operations</a></li>
+            <li><a href="#case-mailbridge">Local-first backup</a></li>
+            <li><a href="#case-ai-ops">AI operations system</a></li>
+            <li><a href="#case-public-records">Evidence-bound research</a></li>
+          </ol>
+        </aside>
+
+        <div class="cases">
+          <article class="case-study reveal" id="case-jsi">
+            <div class="case-meta">
+              <span>Nonprofit operations</span>
+              <span>Governance documentation</span>
+            </div>
+            <h3>JSI Governance &amp; Organizational Operations System</h3>
+            <div class="case-grid">
+              <div>
+                <h4>Challenge</h4>
+                <p>
+                  A developing nonprofit needed to transform mission, programs, organizational decisions, governance requirements, and public communications into a coherent operating structure.
+                </p>
+              </div>
+              <div>
+                <h4>Role</h4>
+                <p>AI systems designer, nonprofit operations strategist, and documentation lead.</p>
+              </div>
+              <div class="wide">
+                <h4>Work completed</h4>
+                <ul>
+                  <li>Developed board-facing and public-facing organizational materials.</li>
+                  <li>Structured governance drafts and prospective board documentation.</li>
+                  <li>Created systems for distinguishing formation status, proposed programs, completed actions, and items still requiring approval.</li>
+                  <li>Organized complex operational information into materials that could be reviewed by directors and stakeholders.</li>
+                  <li>Applied document QA and human review to AI-assisted drafting.</li>
+                </ul>
+              </div>
+            </div>
+            <button class="detail-toggle" type="button" aria-expanded="false" aria-controls="detail-jsi">
+              Show project skills
+            </button>
+            <div class="case-detail" id="detail-jsi" hidden>
+              <p>Governance workflows, nonprofit operations, knowledge organization, AI-assisted drafting, document QA, stakeholder communications.</p>
+            </div>
+          </article>
+
+          <article class="case-study reveal" id="case-mailbridge">
+            <div class="case-meta">
+              <span>Local-first tools</span>
+              <span>Data portability</span>
+            </div>
+            <h3>MailBridge Local-First Backup Workflow</h3>
+            <div class="case-grid">
+              <div>
+                <h4>Challenge</h4>
+                <p>
+                  A standalone browser-based tracker needed a practical method for protecting and preserving information without depending on a traditional cloud application.
+                </p>
+              </div>
+              <div>
+                <h4>Role</h4>
+                <p>Workflow designer and local-first systems builder.</p>
+              </div>
+              <div class="wide">
+                <h4>Solution</h4>
+                <p>
+                  Designed a browser-based backup approach combining local storage concepts, IndexedDB file handling, manual JSON backup, and realistic save/export procedures. The workflow accounts for browser limits around automatic saving and close-time actions instead of pretending those constraints do not exist.
+                </p>
+              </div>
+            </div>
+            <button class="detail-toggle" type="button" aria-expanded="false" aria-controls="detail-mailbridge">
+              Show project skills
+            </button>
+            <div class="case-detail" id="detail-mailbridge" hidden>
+              <p>IndexedDB, File System Access concepts, browser workflows, local-first architecture, data portability, practical systems design.</p>
+            </div>
+          </article>
+
+          <article class="case-study reveal" id="case-ai-ops">
+            <div class="case-meta">
+              <span>AI implementation</span>
+              <span>Small-organization systems</span>
+            </div>
+            <h3>AI Operations System for Small Organizations</h3>
+            <div class="case-grid">
+              <div>
+                <h4>Challenge</h4>
+                <p>
+                  Small organizations often operate across disconnected documents, email, spreadsheets, notes, deadlines, stakeholder relationships, and institutional knowledge.
+                </p>
+              </div>
+              <div>
+                <h4>Role</h4>
+                <p>Systems architect and AI workflow strategist.</p>
+              </div>
+              <div class="wide">
+                <h4>Solution</h4>
+                <ul>
+                  <li>Organizational memory and searchable knowledge.</li>
+                  <li>Task and deadline visibility.</li>
+                  <li>Grant intelligence and stakeholder tracking.</li>
+                  <li>Risk awareness, documentation, and human-reviewed AI workflows.</li>
+                </ul>
+                <p>
+                  The model uses AI for drafting, classification, synthesis, retrieval, and workflow acceleration while retaining human responsibility for consequential decisions.
+                </p>
+              </div>
+            </div>
+            <button class="detail-toggle" type="button" aria-expanded="false" aria-controls="detail-ai-ops">
+              Show project skills
+            </button>
+            <div class="case-detail" id="detail-ai-ops" hidden>
+              <p>Workflow mapping, prompt strategy, knowledge-base design, process architecture, AI adoption, human-in-the-loop systems.</p>
+            </div>
+          </article>
+
+          <article class="case-study reveal" id="case-public-records">
+            <div class="case-meta">
+              <span>Civic technology</span>
+              <span>Source discipline</span>
+            </div>
+            <h3>Public-Records &amp; Technology Governance Briefing System</h3>
+            <div class="case-grid">
+              <div>
+                <h4>Challenge</h4>
+                <p>
+                  Public-records research involving surveillance technology can quickly mix verified evidence, legal context, assumptions, advocacy concerns, and unanswered questions.
+                </p>
+              </div>
+              <div>
+                <h4>Role</h4>
+                <p>Research systems designer and risk/governance analyst.</p>
+              </div>
+              <div class="wide">
+                <h4>Solution</h4>
+                <p>
+                  Created an evidence-bounded review process that separates confirmed facts, source evidence, policy questions, legal context, unresolved issues, and next records requests.
+                </p>
+                <p>
+                  The structure makes complex research usable for boards, advocates, partners, and public-facing communications without allowing AI-generated assumptions to become presented as fact.
+                </p>
+              </div>
+            </div>
+            <button class="detail-toggle" type="button" aria-expanded="false" aria-controls="detail-public-records">
+              Show project skills
+            </button>
+            <div class="case-detail" id="detail-public-records" hidden>
+              <p>Research synthesis, public-records analysis, risk scanning, evidence classification, governance communication, human review.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section method-band" aria-labelledby="method-title">
+      <div class="section-heading">
+        <div class="section-kicker">How I work</div>
+        <h2 id="method-title">Strongest where technology meets imperfect reality.</h2>
+      </div>
+      <div class="method-grid">
+        <div>
+          <h3>Find the shape</h3>
+          <p>What belongs together? What can be automated? What needs human judgment?</p>
+        </div>
+        <div>
+          <h3>Preserve the record</h3>
+          <p>What information needs to survive inboxes, staff transitions, and scattered files?</p>
+        </div>
+        <div>
+          <h3>Make it usable</h3>
+          <p>What should the workflow actually look like, and how do we make it simple enough that people will use it?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section role-fit" id="role-fit" aria-labelledby="role-title">
+      <div class="section-heading">
+        <div class="section-kicker">Role fit</div>
+        <h2 id="role-title">The best-fit lanes are practical, operational, and source-aware.</h2>
+      </div>
+      <div class="fit-list">
+        <article>
+          <h3>AI Operations / AI Implementation</h3>
+          <p>Prompt strategy, AI workflow design, knowledge systems, human review, process automation.</p>
+        </article>
+        <article>
+          <h3>Product &amp; Program Operations</h3>
+          <p>Requirements gathering, workflow mapping, documentation, QA, adoption planning.</p>
+        </article>
+        <article>
+          <h3>Nonprofit Technology &amp; Operations</h3>
+          <p>Governance, grant workflows, CRM structures, compliance records, board systems.</p>
+        </article>
+        <article>
+          <h3>Knowledge Management</h3>
+          <p>Information architecture, searchable organizational memory, source-aware research.</p>
+        </article>
+        <article>
+          <h3>Civic / Public-Interest Technology</h3>
+          <p>Public records, surveillance governance, research systems, evidence review.</p>
+        </article>
+        <article>
+          <h3>Local-First &amp; Lightweight Tools</h3>
+          <p>Browser workflows, privacy-aware storage, import/export systems, low-overhead tooling.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section skills" id="skills" aria-labelledby="skills-title">
+      <div class="section-heading">
+        <div class="section-kicker">Capabilities</div>
+        <h2 id="skills-title">A working skill set for organizations with real constraints.</h2>
+      </div>
+      <div class="skills-matrix" role="list" aria-label="Skills matrix">
+        <div role="listitem">
+          <span>AI workflow design</span>
+          <span>Human-in-the-loop review</span>
+          <span>Prompt strategy</span>
+        </div>
+        <div role="listitem">
+          <span>Documentation systems</span>
+          <span>Board materials</span>
+          <span>Stakeholder communications</span>
+        </div>
+        <div role="listitem">
+          <span>Knowledge architecture</span>
+          <span>Source-aware research</span>
+          <span>Evidence classification</span>
+        </div>
+        <div role="listitem">
+          <span>Local-first workflows</span>
+          <span>Import/export planning</span>
+          <span>Data portability</span>
+        </div>
+        <div role="listitem">
+          <span>Nonprofit operations</span>
+          <span>Governance workflows</span>
+          <span>Compliance records</span>
+        </div>
+        <div role="listitem">
+          <span>QA and adoption</span>
+          <span>Process mapping</span>
+          <span>Usability over complexity</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section proof-boundary" aria-labelledby="boundary-title">
+      <div>
+        <div class="section-kicker">Proof boundary</div>
+        <h2 id="boundary-title">What this page claims, and what it does not.</h2>
+      </div>
+      <p>
+        This portfolio describes systems designed, structured, and documented. It does not claim unsupported quantified outcomes such as hours saved, revenue created, or percentage improvements. Those should be added only when they are measured and source-backed.
+      </p>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div>
+        <div class="section-kicker">Contact</div>
+        <h2 id="contact-title">For AI, operations, nonprofit technology, or civic-tech roles.</h2>
+        <p>
+          Joshua Jai Sellers · AI Systems Designer · Nonprofit Operations Strategist · Workflow Builder
+        </p>
+      </div>
+      <div class="contact-actions">
+        <a class="button primary" href="mailto:joshuajaisellers@gmail.com">joshuajaisellers@gmail.com</a>
+        <button class="button ghost" type="button" data-copy-email="joshuajaisellers@gmail.com">Copy email</button>
+        <p class="copy-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.querySelectorAll(".detail-toggle").forEach((button) => {
+      button.addEventListener("click", () => {
+        const detail = document.getElementById(button.getAttribute("aria-controls"));
+        const expanded = button.getAttribute("aria-expanded") === "true";
+
+        button.setAttribute("aria-expanded", String(!expanded));
+        button.textContent = expanded ? "Show project skills" : "Hide project skills";
+        detail.hidden = expanded;
+      });
+    });
+
+    const copyButton = document.querySelector("[data-copy-email]");
+    const copyStatus = document.querySelector(".copy-status");
+
+    if (copyButton && copyStatus) {
+      copyButton.addEventListener("click", async () => {
+        const email = copyButton.dataset.copyEmail;
+
+        try {
+          await navigator.clipboard.writeText(email);
+          copyStatus.textContent = "Email copied.";
+        } catch {
+          copyStatus.textContent = email;
+        }
+      });
+    }
+  </script>
+</Brand>
