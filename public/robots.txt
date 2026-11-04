@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /proofs/
 
-Sitemap: https://jaisellers.com/sitemap-index.xml
+Sitemap: https://www.jaisellers.com/sitemap-index.xml
