@@ -41,18 +41,18 @@ const faqs = [
     /* ---------- Hero ---------- */
     .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line-dark); }
     .hero-video {
-      position: absolute;
-      inset: 0;
+      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: .32;
-      pointer-events: none;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      max-height: 72svh;
+      object-fit: contain;
+      background: #000;
     }
     .motion-toggle {
-      position: absolute;
-      bottom: 12px;
-      right: var(--gutter);
+      float: right;
+      position: relative;
+      margin: 12px var(--gutter);
       padding: 8px 14px;
       background: var(--ink);
       color: var(--text-light);
@@ -60,13 +60,8 @@ const faqs = [
       font: inherit;
       cursor: pointer;
     }
-    .hero::before {
-      content: ""; position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(60% 70% at 85% 10%, rgba(201,168,76,.16), transparent 60%),
-        radial-gradient(40% 50% at 0% 100%, rgba(201,168,76,.07), transparent 70%);
-    }
-    .hero-grid { position: relative; display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(32px, 5vw, 72px); align-items: center; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 8vw, 110px); }
+    .hero-content { clear: both; padding: 0 0 clamp(48px, 6vw, 80px); }
+    .hero-content > div { max-width: 640px; }
     .hero h1 { margin: 26px 0 0; }
     .hero h1 .sub { display: block; font-size: .5em; line-height: 1.15; margin-top: 18px; color: var(--silver); font-style: italic; font-weight: 400; }
     .hero .lede { margin-top: 26px; }
@@ -74,20 +69,6 @@ const faqs = [
     .hero-proof { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 40px; padding-top: 26px; border-top: 1px solid var(--line-dark); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted-light); }
     .hero-proof span::before { content: "◆"; color: var(--gold); font-size: 8px; margin-right: 10px; vertical-align: 2px; }
 
-.portrait { position: relative; justify-self: end; width: min(100%, 540px); }
-    .portrait .ph { position: relative; }
-    .portrait .ph::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(90deg, var(--ink) 0%, transparent 28%), linear-gradient(0deg, var(--ink) 0%, transparent 22%), linear-gradient(180deg, var(--ink) 0%, transparent 10%), linear-gradient(270deg, var(--ink) 0%, transparent 14%); }
-    .portrait img { width: 100%; aspect-ratio: 1000 / 1202; object-fit: cover; filter: contrast(1.06); }
-    .portrait figcaption { position: relative; margin-top: -8px; padding-top: 16px; border-top: 1px solid rgba(201,168,76,.45); display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
-    .portrait figcaption strong { font-family: var(--serif); font-size: 24px; font-weight: 500; }
-    .portrait figcaption span { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
-
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .portrait { justify-self: center; width: min(100%, 440px); margin-top: 8px; }
-      .portrait figcaption { flex-wrap: wrap; }
-    }
 
     /* ---------- Tagline band ---------- */
     .band { background: var(--ink-2); border-bottom: 1px solid var(--line-dark); }
@@ -199,10 +180,11 @@ const faqs = [
 
   <!-- HERO -->
   <section class="hero">
-    <video id="hero-video" class="hero-video" muted playsinline loop preload="none" aria-hidden="true">
+    <video id="hero-video" class="hero-video" poster="/video/portrait-poster.jpg" muted playsinline loop preload="none" aria-label="Joshua Jai Sellers looking upward, fading into the JaiSellers Companies logo">
       <source src="/video/hero.mp4" type="video/mp4" />
     </video>
-    <div class="wrap hero-grid">
+    <button type="button" class="motion-toggle" aria-controls="hero-video" hidden>Play video</button>
+    <div class="wrap hero-content">
       <div>
         <span class="eyebrow">Nonprofit strategy &middot; Compliance &middot; Brand</span>
         <h1>
@@ -223,12 +205,7 @@ const faqs = [
           <span>Brand systems</span>
         </div>
       </div>
-      <figure class="portrait">
-        <div class="ph"><img src="/images/josh-sellers-headshot.jpg" alt="Black-and-white portrait of Joshua Jai Sellers, founder and principal of JaiSellers Companies" width="1000" height="1202" fetchpriority="high" /></div>
-        <figcaption><strong>Joshua Jai Sellers</strong><span>Founder &amp; Principal</span></figcaption>
-      </figure>
     </div>
-    <button type="button" class="motion-toggle" aria-controls="hero-video" hidden>Play background video</button>
   </section>
 
   <script>
@@ -237,7 +214,7 @@ const faqs = [
     if (video && toggle) {
       const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
       const updateLabel = () => {
-        toggle.textContent = video.paused ? "Play background video" : "Pause background video";
+        toggle.textContent = video.paused ? "Play video" : "Pause video";
       };
       const play = () => video.play().catch(updateLabel);
       video.addEventListener("playing", updateLabel);
