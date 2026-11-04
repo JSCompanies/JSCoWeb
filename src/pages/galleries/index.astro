@@ -1,4 +1,5 @@
 ---
+import HeadMeta from "../../components/HeadMeta.astro";
 const brand = "JaiSellers Companies";
 const title = "Client Gallery Access";
 const galleryLink = "https://drive.google.com/drive/folders/1BdfZ60kcpVZXyesnULvF3cIn4Ss6JFHo?usp=sharing";
@@ -13,6 +14,7 @@ const galleryLink = "https://drive.google.com/drive/folders/1BdfZ60kcpVZXyesnULv
       name="description"
       content="Client gallery access page for event photo delivery."
     />
+    <HeadMeta title={`${title} — ${brand}`} description="Client gallery access page for event photo delivery." noindex />
     <link rel="stylesheet" href="/site.css" />
   </head>
 

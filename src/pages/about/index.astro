@@ -1,4 +1,5 @@
 ---
+import HeadMeta from "../../components/HeadMeta.astro";
 const brand = "JaiSellers Companies";
 const title = "About";
 const jsiEmail = "justsystemsinitiatives@gmail.com";
@@ -13,6 +14,7 @@ const jsiEmail = "justsystemsinitiatives@gmail.com";
       name="description"
       content="Meet Joshua Jai Sellers — founder of JaiSellers Companies, a Cleveland County-rooted consulting, design, and justice-systems studio."
     />
+    <HeadMeta title={`${title} — ${brand}`} description="Meet Joshua Jai Sellers — founder of JaiSellers Companies, a Cleveland County-rooted consulting, design, and justice-systems studio." />
     <link rel="stylesheet" href="/site.css" />
     <style>
       /* ── About-page-specific styles ── */

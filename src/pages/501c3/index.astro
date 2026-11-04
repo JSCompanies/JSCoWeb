@@ -1,4 +1,5 @@
 ---
+import HeadMeta from "../../components/HeadMeta.astro";
 const title = "The 501(c)(3) Partnership";
 ---
 
@@ -8,6 +9,8 @@ const title = "The 501(c)(3) Partnership";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} | JaiSellers Companies</title>
+    <meta name="description" content="A guided partnership to build your nonprofit the right way — governance, compliance, and funding readiness, in that order." />
+    <HeadMeta title={`${title} | JaiSellers Companies`} description="A guided partnership to build your nonprofit the right way — governance, compliance, and funding readiness, in that order." />
     <style>
       body {
         font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;

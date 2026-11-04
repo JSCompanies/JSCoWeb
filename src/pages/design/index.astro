@@ -1,4 +1,5 @@
 ---
+import HeadMeta from "../../components/HeadMeta.astro";
 const brand = "JaiSellers Companies";
 const title = "Design Studio";
 ---
@@ -12,6 +13,7 @@ const title = "Design Studio";
       name="description"
       content="Brand identity, messaging, and campaign assets built to scale—clean, consistent, real-world usable."
     />
+    <HeadMeta title={`${title} — ${brand}`} description="Brand identity, messaging, and campaign assets built to scale—clean, consistent, real-world usable." />
     <link rel="stylesheet" href="/site.css" />
   </head>
 

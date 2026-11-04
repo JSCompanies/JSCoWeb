@@ -1,4 +1,5 @@
 ---
+import HeadMeta from "../components/HeadMeta.astro";
 interface Props {
   title: string;
   description: string;
@@ -14,7 +15,6 @@ const nav = [
   { href: "/ai-systems", label: "AI Systems" },
   { href: "/blog", label: "Insights" },
 ];
-const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <!doctype html>
@@ -24,16 +24,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL("/images/og-josh-sellers.jpg", Astro.site).toString()} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0a0a0b" />
+    <HeadMeta title={title} description={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -49,6 +40,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
       url: "https://jaisellers.com",
       email: "joshuajaisellers@gmail.com",
       image: "https://jaisellers.com/images/josh-sellers-headshot.jpg",
+      logo: "https://jaisellers.com/web-app-manifest-512x512.png",
       areaServed: "United States",
       address: { "@type": "PostalAddress", addressLocality: "Kings Mountain", addressRegion: "NC", addressCountry: "US" },
       description,

@@ -1,4 +1,5 @@
 ---
+import HeadMeta from "../../components/HeadMeta.astro";
 const brand = "JaiSellers Companies";
 const title = "Blog";
 const blogUrl = "https://jaisellers.blog";
@@ -14,6 +15,7 @@ const jsiEmail = "justsystemsinitiatives@gmail.com";
       name="description"
       content="Writing on nonprofit governance, justice systems, brand strategy, and building infrastructure that holds — from Joshua Jai Sellers."
     />
+    <HeadMeta title={`${title} — ${brand}`} description="Writing on nonprofit governance, justice systems, brand strategy, and building infrastructure that holds — from Joshua Jai Sellers." />
     <link rel="stylesheet" href="/site.css" />
     <style>
       .blog-hero {

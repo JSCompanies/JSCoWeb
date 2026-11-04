@@ -1,0 +1,52 @@
+---
+// Shared <head> tags: canonical URL, social previews, favicons, app manifest.
+// Drop <HeadMeta title=... description=... /> inside any page's <head>.
+interface Props {
+  title: string;
+  description: string;
+  image?: string; // path under /public, 1200x630 preferred
+  imageAlt?: string;
+  type?: "website" | "article" | "profile";
+  noindex?: boolean;
+}
+const {
+  title,
+  description,
+  image = "/images/og-josh-sellers.jpg",
+  imageAlt = "Joshua Jai Sellers, founder of JaiSellers Companies",
+  type = "website",
+  noindex = false,
+} = Astro.props;
+const site = Astro.site ?? new URL("https://jaisellers.com");
+const canonical = new URL(Astro.url.pathname, site).toString();
+const imageUrl = new URL(image, site).toString();
+---
+
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+
+<!-- Favicons: .ico for legacy/Google, PNG 96 for search results, SVG for modern browsers -->
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="apple-mobile-web-app-title" content="JaiSellers" />
+<meta name="theme-color" content="#0a0a0b" />
+
+<!-- Open Graph / social link previews -->
+<meta property="og:site_name" content="JaiSellers Companies" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt} />

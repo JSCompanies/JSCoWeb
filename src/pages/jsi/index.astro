@@ -1,4 +1,5 @@
 ---
+import HeadMeta from "../../components/HeadMeta.astro";
 const brand = "JaiSellers Companies";
 const title = "Just Systems Initiative";
 const email = "justsystemsinitiatives@gmail.com";
@@ -32,6 +33,7 @@ const materials = [
       name="description"
       content="Just Systems Initiative is a nonprofit organization in formation building pathways from incarceration to opportunity."
     />
+    <HeadMeta title={`${title} | ${brand}`} description="Just Systems Initiative is a nonprofit organization in formation building pathways from incarceration to opportunity." />
     <link rel="stylesheet" href="/site.css" />
     <style>
       :root {

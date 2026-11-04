@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: /proofs/
+
+Sitemap: https://jaisellers.com/sitemap-index.xml
