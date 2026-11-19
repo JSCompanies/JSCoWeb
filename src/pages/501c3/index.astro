@@ -1,121 +1,75 @@
 ---
-import HeadMeta from "../../components/HeadMeta.astro";
+import Brand from "../../layouts/Brand.astro";
 const title = "The 501(c)(3) Partnership";
+const description = "A guided partnership to build your nonprofit the right way — governance, compliance, and funding readiness, in that order.";
+const order = [
+  { n: "01", t: "Foundation", d: "Mission, governance, bylaws, board roles" },
+  { n: "02", t: "Operations", d: "Compliance, documentation, financial controls" },
+  { n: "03", t: "Funding", d: "Grants pursued from readiness, not panic" },
+];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} | JaiSellers Companies</title>
-    <meta name="description" content="A guided partnership to build your nonprofit the right way — governance, compliance, and funding readiness, in that order." />
-    <HeadMeta title={`${title} | JaiSellers Companies`} description="A guided partnership to build your nonprofit the right way — governance, compliance, and funding readiness, in that order." />
-    <style>
-      body {
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        background: #f7f7f8;
-        color: #111;
-      }
-      header {
-        background: #0c2340;
-        color: #fff;
-        padding: 48px 20px;
-        text-align: center;
-      }
-      .site-logo {
-        display: inline-flex;
-        align-items: center;
-        margin-bottom: 28px;
-      }
-      .site-logo img {
-        width: min(230px, 58vw);
-        height: auto;
-        max-height: 48px;
-        object-fit: contain;
-        display: block;
-      }
-      header h1 {
-        margin-bottom: 8px;
-        font-size: 2.1rem;
-      }
-      main {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 28px 20px;
-      }
-      .callout {
-        margin-top: 18px;
-        padding: 16px;
-        background: #eef2f7;
-        border-left: 4px solid #0c2340;
-        border-radius: 8px;
-      }
-      .callout strong {
-        color: #0c2340;
-      }
-      a {
-        color: #0c2340;
-        font-weight: 700;
-        text-decoration: none;
-      }
-      footer {
-        margin-top: 40px;
-        background: #082138;
-        color: #fff;
-        text-align: center;
-        padding: 18px;
-      }
-    </style>
-  </head>
+<Brand title={`${title} | JaiSellers Companies`} description={description} current="/consulting">
+  <style>
+    .intro { padding: clamp(64px, 9vw, 120px) 0 clamp(48px, 6vw, 80px); border-bottom: 1px solid var(--line-dark); background: radial-gradient(50% 80% at 90% 0%, rgba(201,168,76,.14), transparent 70%); }
+    .intro h1 { margin-top: 22px; max-width: 14ch; }
+    .intro .lede { margin-top: 24px; }
+    .body { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+    .body .for { font-size: 21px; line-height: 1.5; color: var(--text-dark); }
+    .callout { margin-top: 28px; border-left: 3px solid var(--gold-deep); padding: 4px 0 4px 24px; display: grid; gap: 14px; }
+    .callout strong { color: var(--text-dark); font-weight: 500; }
+    .order h4 { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-deep); font-weight: 500; margin-bottom: 18px; }
+    .order ol { list-style: none; padding: 0; display: grid; gap: 1px; background: var(--line-light); border: 1px solid var(--line-light); }
+    .order li { background: var(--ivory); padding: 24px 26px; display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; }
+    .order .n { grid-row: span 2; font-family: var(--serif); font-size: 18px; letter-spacing: .2em; color: var(--gold-deep); padding-top: 4px; }
+    .order h3 { font-size: 28px; }
+    .closing { text-align: center; }
+    .closing h2 { max-width: 18ch; margin: 18px auto 0; }
+    .closing .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 34px; }
+    @media (max-width: 860px) { .body { grid-template-columns: 1fr; } }
+  </style>
 
-  <body>
-    <header>
-      <a class="site-logo" href="/" aria-label="JaiSellers Companies home">
-        <img src="/images/jsco-wordbrand-2026.png" alt="JaiSellers Companies" />
-      </a>
+  <section class="intro">
+    <div class="wrap">
+      <span class="eyebrow">JaiSellers Consulting</span>
       <h1>{title}</h1>
-      <p>
-        A guided, collaborative partnership to build your nonprofit the right way —
-        from foundation to fundability.
-      </p>
-    </header>
+      <p class="lede">A guided, collaborative partnership to build your nonprofit the right way — from foundation to fundability.</p>
+    </div>
+  </section>
 
-    <main>
-      <p>
-        This partnership is for organizations already doing the work — but lacking
-        the structure funders expect.
-      </p>
-
-      <div class="callout">
-        <p>
-          <strong>Organizations that complete this partnership become fundable.</strong>
-        </p>
-        <p>
-          Not because of a single grant, but because they finally have the structure
-          funders require.
-        </p>
-        <p>
-          We do not build nonprofits overnight to meet last-minute grant deadlines.
-          We build organizations correctly so grants don’t become emergencies.
-        </p>
-        <p><strong>The order matters:</strong></p>
+  <section class="section section-ivory">
+    <div class="wrap body">
+      <div>
+        <p class="for">This partnership is for organizations already doing the work — but lacking the structure funders expect.</p>
+        <div class="callout">
+          <p><strong>Organizations that complete this partnership become fundable.</strong></p>
+          <p>Not because of a single grant, but because they finally have the structure funders require.</p>
+          <p>We do not build nonprofits overnight to meet last-minute grant deadlines. We build organizations correctly so grants don’t become emergencies.</p>
+        </div>
+      </div>
+      <div class="order">
+        <h4>The order matters</h4>
         <ol>
-          <li>Foundation — mission, governance, bylaws, board roles</li>
-          <li>Operations — compliance, documentation, financial controls</li>
-          <li>Funding — grants pursued from readiness, not panic</li>
+          {order.map((o) => (
+            <li>
+              <span class="n">{o.n}</span>
+              <h3>{o.t}</h3>
+              <p>{o.d}</p>
+            </li>
+          ))}
         </ol>
       </div>
+    </div>
+  </section>
 
-      <p style="margin-top: 24px;">
-        <a href="/">← Back to Home</a>
-      </p>
-    </main>
-
-    <footer>
-      © {new Date().getFullYear()} JaiSellers Companies
-    </footer>
-  </body>
-</html>
+  <section class="section section-ink2 closing">
+    <div class="wrap">
+      <span class="eyebrow">Next step</span>
+      <h2>Start with a <em>clear plan.</em></h2>
+      <div class="ctas">
+        <a class="btn btn-gold" href="/contact">Book a free clarity call <span class="arrow">&rarr;</span></a>
+        <a class="btn btn-line" href="/consulting#formation">See formation services</a>
+      </div>
+    </div>
+  </section>
+</Brand>

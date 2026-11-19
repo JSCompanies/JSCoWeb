@@ -1,8 +1,9 @@
 ---
-import HeadMeta from "../../components/HeadMeta.astro";
+import Brand from "../../layouts/Brand.astro";
 const title = "Services & Pricing";
 const brand = "JaiSellers Companies";
 const division = "JaiSellers Consulting";
+const description = "Compliance, funding, and systems support for small and mid-sized nonprofits. Flat fees, plain language, no surprises.";
 
 const compliance = [
   {
@@ -77,79 +78,23 @@ const ai = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} — {brand}</title>
-    <meta
-      name="description"
-      content="Compliance, funding, and systems support for small and mid-sized nonprofits. Flat fees, plain language, no surprises."
-    />
-    <HeadMeta title={`${title} — ${brand}`} description="Compliance, funding, and systems support for small and mid-sized nonprofits. Flat fees, plain language, no surprises." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --navy: #1c2b45;
-        --navy-dark: #0f1a2d;
-        --gold: #c9a84c;
-        --ink: #2c2c2c;
-        --ink-strong: #1f1f1f;
-        --ink-muted: #4a4a4a;
-        --ink-light: #e6e9ef;
-        --rule: #e4e1d8;
-        --sheet-pad: 56px;
-      }
+<Brand title={`${title} — ${brand}`} description={description} current="/consulting">
+  <style>
+      :global(body) { --sh-dark: #111113; --sh-accent: #9c7c2c; --sh-gold: #c9a84c; --sh-ink: #2c2c2c; --sh-ink-strong: #1f1f1f; --sh-ink-muted: #4a4a4a; --sh-ink-light: #ede5d6; --sh-rule: #e4e1d8; --sheet-pad: 56px; }
 
-      * {
-        box-sizing: border-box;
-      }
 
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        background: #ebe9e3;
-        color: var(--ink);
-        font-family: "Jost", ui-sans-serif, system-ui, Segoe UI, Roboto, Arial,
-          sans-serif;
-      }
 
-      a {
-        color: var(--navy);
-      }
-      a:hover {
-        color: var(--navy-dark);
-      }
+      .sheets { color: var(--sh-ink); }
+      .sheets a { color: var(--sh-accent); }
+      .sheets a:hover { color: var(--sh-dark); }
 
-      /* Back link to the rest of the site; not part of the printed sheet. */
-      .sheet-nav {
-        max-width: 816px;
-        margin: 0 auto;
-        padding: 20px 4px 0;
-        font-size: 15px;
-      }
-      .sheet-nav a {
-        color: var(--navy);
-        text-decoration: none;
-        font-weight: 500;
-      }
-      .sheet-nav a:hover {
-        text-decoration: underline;
-      }
 
       .sheets {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 32px;
-        padding: 20px 4px 48px;
+        padding: clamp(32px, 5vw, 56px) 4px clamp(56px, 8vw, 96px);
       }
 
       /* One letter-size page of the one-sheet. */
@@ -157,14 +102,14 @@ const ai = [
         width: 100%;
         max-width: 816px;
         background: #fff;
-        box-shadow: 0 18px 50px rgba(28, 43, 69, 0.14);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
         display: flex;
         flex-direction: column;
       }
 
       /* Navy masthead on the front page. */
       .masthead {
-        background: var(--navy);
+        background: var(--sh-dark);
         padding: 40px var(--sheet-pad) 32px;
         display: flex;
         flex-direction: column;
@@ -174,7 +119,7 @@ const ai = [
         font-size: 16px;
         letter-spacing: 3px;
         text-transform: uppercase;
-        color: var(--gold);
+        color: var(--sh-gold);
         font-weight: 500;
       }
       .masthead h1 {
@@ -188,14 +133,14 @@ const ai = [
       .masthead .rule {
         width: 72px;
         height: 3px;
-        background: var(--gold);
+        background: var(--sh-gold);
         margin-top: 8px;
       }
       .masthead p {
         margin: 8px 0 0;
         font-size: 21px;
         line-height: 1.4;
-        color: var(--ink-light);
+        color: var(--sh-ink-light);
       }
 
       .sheet-body {
@@ -215,8 +160,9 @@ const ai = [
         align-items: baseline;
         justify-content: space-between;
         gap: 24px;
-        border-bottom: 2px solid var(--gold);
+        border-bottom: 2px solid var(--sh-gold);
         padding-bottom: 6px;
+        margin-bottom: 0;
       }
       .section-head + .section-head,
       .rows + .section-head {
@@ -228,11 +174,11 @@ const ai = [
         font-weight: 700;
         font-size: 34px;
         line-height: 1.1;
-        color: var(--navy);
+        color: var(--sh-accent);
       }
       .section-head .meta {
         font-size: 17px;
-        color: var(--ink-muted);
+        color: var(--sh-ink-muted);
       }
 
       /* Priced line items. */
@@ -247,7 +193,7 @@ const ai = [
         align-items: baseline;
         gap: 24px;
         padding: 4px 0 8px;
-        border-bottom: 1px solid var(--rule);
+        border-bottom: 1px solid var(--sh-rule);
       }
       .rows .item {
         display: flex;
@@ -259,26 +205,26 @@ const ai = [
         font-size: 22px;
         font-weight: 600;
         line-height: 1.2;
-        color: var(--ink-strong);
+        color: var(--sh-ink-strong);
       }
       .rows p {
         margin: 0;
         font-size: 18px;
         line-height: 1.35;
-        color: var(--ink-muted);
+        color: var(--sh-ink-muted);
       }
       .rows .price {
         font-family: "Cormorant Garamond", Georgia, serif;
         font-size: 30px;
         font-weight: 700;
-        color: var(--navy);
+        color: var(--sh-accent);
         white-space: nowrap;
       }
 
       /* Retainer band. */
       .retainer {
         margin-top: 14px;
-        background: var(--navy);
+        background: var(--sh-dark);
         padding: 22px 28px;
         display: flex;
         justify-content: space-between;
@@ -302,26 +248,26 @@ const ai = [
         margin: 0;
         font-size: 19px;
         line-height: 1.35;
-        color: var(--ink-light);
+        color: var(--sh-ink-light);
       }
       .retainer .price {
         font-family: "Cormorant Garamond", Georgia, serif;
         font-size: 34px;
         font-weight: 700;
-        color: var(--gold);
+        color: var(--sh-gold);
         white-space: nowrap;
       }
 
       /* Seasonal rate note. */
       .rate-note {
-        border: 2px solid var(--gold);
+        border: 2px solid var(--sh-gold);
         padding: 14px 22px;
         font-size: 20px;
         line-height: 1.4;
-        color: var(--ink-strong);
+        color: var(--sh-ink-strong);
       }
       .rate-note strong {
-        color: var(--navy);
+        color: var(--sh-accent);
       }
 
       /* Front page foot. */
@@ -332,10 +278,10 @@ const ai = [
         align-items: center;
         gap: 16px;
         font-size: 17px;
-        color: var(--ink-muted);
+        color: var(--sh-ink-muted);
       }
       .sheet-foot .turn {
-        color: var(--navy);
+        color: var(--sh-accent);
         font-weight: 500;
       }
 
@@ -352,25 +298,15 @@ const ai = [
         font-size: 28px;
         font-weight: 700;
         line-height: 1.15;
-        color: var(--navy);
+        color: var(--sh-accent);
       }
       .contact p {
         margin: 0;
         font-size: 20px;
         line-height: 1.4;
-        color: var(--ink);
+        color: var(--sh-ink);
       }
 
-      .site-foot {
-        padding: 0 4px 40px;
-        text-align: center;
-        font-size: 13px;
-        color: var(--ink-muted);
-      }
-      .site-foot .sep {
-        opacity: 0.5;
-        margin: 0 8px;
-      }
 
       @media (max-width: 760px) {
         :root {
@@ -410,12 +346,12 @@ const ai = [
 
       /* Prints as the two-page letter one-sheet it was designed as. */
       @media print {
-        html,
-        body {
+        :global(body) {
           background: #fff;
         }
-        .sheet-nav,
-        .site-foot {
+        :global(.site-header),
+        :global(.site-footer),
+        .sheet-intro {
           display: none;
         }
         .sheets {
@@ -433,13 +369,24 @@ const ai = [
           break-after: auto;
         }
       }
-    </style>
-  </head>
+      .sheet-intro { padding: clamp(56px, 8vw, 104px) 0 clamp(24px, 4vw, 40px); border-bottom: 1px solid var(--line-dark); background: radial-gradient(50% 80% at 90% 0%, rgba(201,168,76,.14), transparent 70%); }
+      .sheet-intro h1 { margin-top: 22px; }
+      .sheet-intro .lede { margin-top: 20px; }
+      .sheet-intro .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+  </style>
 
-  <body>
-    <nav class="sheet-nav" aria-label="Breadcrumb">
-      <a href="/consulting">← {division}</a>
-    </nav>
+  <section class="sheet-intro">
+    <div class="wrap">
+      <span class="eyebrow">{division}</span>
+      <h1>Services &amp; <em>Pricing</em></h1>
+      <p class="lede">The printable fee sheet. Print or save as PDF for a two-page letter-size handout.</p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="/contact">Book a free clarity call <span class="arrow">&rarr;</span></a>
+        <a class="btn btn-line" href="/consulting">All services</a>
+      </div>
+    </div>
+  </section>
+
 
     <main class="sheets">
       <!-- Front: Compliance & Year-End -->
@@ -565,11 +512,4 @@ const ai = [
         </div>
       </article>
     </main>
-
-    <footer class="site-foot">
-      <span>© {new Date().getFullYear()} {brand}</span>
-      <span class="sep">•</span>
-      <a href="/contact">Contact</a>
-    </footer>
-  </body>
-</html>
+</Brand>
