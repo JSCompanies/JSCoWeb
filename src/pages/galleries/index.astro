@@ -1,45 +1,25 @@
 ---
-import HeadMeta from "../../components/HeadMeta.astro";
+import Brand from "../../layouts/Brand.astro";
 const brand = "JaiSellers Companies";
 const title = "Client Gallery Access";
 const galleryLink = "https://drive.google.com/drive/folders/1BdfZ60kcpVZXyesnULvF3cIn4Ss6JFHo?usp=sharing";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} — {brand}</title>
-    <meta
-      name="description"
-      content="Client gallery access page for event photo delivery."
-    />
-    <HeadMeta title={`${title} — ${brand}`} description="Client gallery access page for event photo delivery." noindex />
-    <link rel="stylesheet" href="/site.css" />
-  </head>
+<Brand title={`${title} — ${brand}`} description="Client gallery access page for event photo delivery." current="/design" noindex>
+  <style>
+    .gallery { min-height: 60vh; display: grid; place-items: center; text-align: center; background: radial-gradient(50% 70% at 50% 0%, rgba(201,168,76,.12), transparent 70%); }
+    .gallery h1 { margin-top: 22px; }
+    .gallery .lede { margin: 22px auto 0; }
+    .gallery .btn { margin-top: 34px; }
+  </style>
 
-  <body>
-    <header class="topbar">
-      <a class="logo" href="/">
-        <img src="/images/jsco-wordbrand-2026.png" alt={brand} class="logo-img" />
-      </a>
-    </header>
-    <main class="section">
-      <div class="container" style="max-width: 760px; text-align: center;">
-        <p class="kicker">Jai Galleries</p>
-        <h1>Client Event Gallery</h1>
-        <p style="margin-top: 14px; color: var(--muted);">
-          There are no photos posted yet. Images will be uploaded after the event.
-        </p>
-        <p style="margin-top: 8px; color: var(--muted);">
-          You can still open the gallery folder now and refresh later for new uploads.
-        </p>
-        <div style="margin-top: 24px;">
-          <a class="btn primary" href={galleryLink} target="_blank" rel="noopener noreferrer">
-            Open Client Gallery Folder
-          </a>
-        </div>
-      </div>
-    </main>
-  </body>
-</html>
+  <section class="section gallery">
+    <div class="wrap">
+      <span class="eyebrow">Jai Galleries</span>
+      <h1>Client Event <em>Gallery</em></h1>
+      <p class="lede">There are no photos posted yet. Images will be uploaded after the event.</p>
+      <p class="lede">You can still open the gallery folder now and refresh later for new uploads.</p>
+      <a class="btn btn-gold" href={galleryLink} target="_blank" rel="noopener noreferrer">Open Client Gallery Folder <span class="arrow">&rarr;</span></a>
+    </div>
+  </section>
+</Brand>
